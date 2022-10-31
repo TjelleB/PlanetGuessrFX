@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pMainBackground" maxHeight="640.0" maxWidth="480.0" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.MainMenuController">
+<AnchorPane fx:id="pMainBackground" style="-fx-background-color: #383434" maxHeight="640.0" maxWidth="480.0" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.MainMenuController">
    <children>
       <ImageView fitHeight="741.0" fitWidth="750.0" layoutX="-141.0" layoutY="-123.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,7 +35,7 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                        <TextField fx:id="txtPlayer3Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 3">
+                        <TextField fx:id="txtPlayer3Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 3" visible="false">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -44,12 +44,12 @@
             </VBox>
             <VBox prefHeight="100.0" prefWidth="234.0" spacing="10.0">
                <children>
-                        <TextField fx:id="txtPlayer2Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 2">
+                        <TextField fx:id="txtPlayer2Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 2" visible="false">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                        <TextField fx:id="txtPlayer4Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 4">
+                        <TextField fx:id="txtPlayer4Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 4" visible="false">
                      <font>
                         <Font size="18.0" />
                      </font>

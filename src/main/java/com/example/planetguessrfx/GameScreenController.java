@@ -56,14 +56,8 @@ public class GameScreenController {
 
     @FXML
     private void initialize(){
-        pBackground.setBackground(new Background(
-                new BackgroundFill(Color.rgb(56,52,52), new CornerRadii(0), new Insets(0))));
         planetName = "Test Planet";
         lblPlanetName.setText(planetName);
-        hPlayer1.setVisible(true);
-        hPlayer2.setVisible(false);
-        hPlayer3.setVisible(false);
-        hPlayer4.setVisible(false);
         imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Test Planet/3673498734(1).gif");
         ivPlanet.setImage(imgCurrentPlanet);
 

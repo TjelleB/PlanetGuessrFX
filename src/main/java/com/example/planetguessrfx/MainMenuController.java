@@ -25,6 +25,7 @@ import java.io.IOException;
 public class MainMenuController {
 
     public Pane pMainBackground;
+
     public Label lblTitle;
 
     ObservableList<String> playerList = FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
@@ -37,7 +38,6 @@ public class MainMenuController {
 
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     public String playerName1;
     public String playerName2;
@@ -49,12 +49,6 @@ public class MainMenuController {
     @FXML
     private void initialize(){
         cbPlayers.setItems(playerList);
-        txtPlayer2Name.setVisible(false);
-        txtPlayer3Name.setVisible(false);
-        txtPlayer4Name.setVisible(false);
-
-        pMainBackground.setBackground(new Background(
-                new BackgroundFill(Color.rgb(56,52,52), new CornerRadii(0), new Insets(0))));
     }
 
     public void checkNames(){
