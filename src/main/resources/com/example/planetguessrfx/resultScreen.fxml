@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.ResultScreenController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="4.0" layoutY="171.0" prefHeight="301.0" prefWidth="474.0" spacing="5.0">
+         <children>
+            <Label fx:id="txtNr1Score" text="1: &quot;PlayerName&quot; + Score">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtNr1UpdatedScore" text="Updated Score">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtNr2Score" text="2: &quot;PlayerName&quot; + Score">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtNr2UpdatedScore" text="Updated Score" />
+            <Label fx:id="txtNr3Score" text="3: &quot;PlayerName&quot; + Score">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtNr3UpdatedScore" text="Updated Score" />
+            <Label fx:id="txtNr4Score" text="4: &quot;PlayerName&quot; + Score">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtNr4UpdatedScore" text="Updated Score" />
+         </children>
+      </VBox>
+      <Button fx:id="bttnNextPlanet" layoutX="156.0" layoutY="557.0" mnemonicParsing="false" onAction="#nextPlanet" prefHeight="50.0" prefWidth="168.0" text="Next Planet">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="332.0" layoutY="558.0" mnemonicParsing="false" onAction="#returnToMain" prefHeight="50.0" prefWidth="50.0" text="Main Menu" textAlignment="CENTER" wrapText="true" />
+   </children>
+</AnchorPane>

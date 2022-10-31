@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pBackground" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.GameScreenController">
+   <children>
+        <ImageView fx:id="ivPlanet" fitHeight="650.0" fitWidth="650.0" layoutX="-200.0" layoutY="-200.0" pickOnBounds="true" preserveRatio="true" />
+       <Rectangle fx:id="rtInfos" arcHeight="16.0" arcWidth="15.0" fill="#5b5b5b" height="373.0" layoutX="246.0" layoutY="102.0" stroke="#0000004b" strokeType="INSIDE" width="200.0" />
+            <VBox fx:id="vInfos" alignment="TOP_CENTER" layoutX="246.0" layoutY="109.0" prefHeight="325.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Label fx:id="lblPlanetName" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+            <TextArea fx:id="txtBaseInfos" editable="false" maxWidth="181.0" minWidth="181.0" prefHeight="190.0" prefWidth="180.0" text="Base info here" wrapText="true" />
+                  <Button fx:id="bttnHint1" mnemonicParsing="false" text="Hint 1" />
+                  <Button fx:id="bttnHint2" mnemonicParsing="false" text="Hint 2" />
+                  <Button fx:id="BttnHint3" mnemonicParsing="false" text="Hint 3" />
+               </children>
+            </VBox>
+            <Button fx:id="btValues" layoutX="255.0" layoutY="443.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="182.0" text="Values" textAlignment="CENTER" />
+            <VBox fx:id="vInputs" layoutX="68.0" layoutY="511.0" prefHeight="86.0" prefWidth="345.0" spacing="10.0">
+               <children>
+                  <HBox fx:id="hRow1" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <HBox fx:id="hPlayer1" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="txtInput1" prefHeight="35.0" prefWidth="125.0" promptText="Player 1 Guess" />
+                              <ToggleButton fx:id="bttnConfirm1" mnemonicParsing="false" onAction="#checkConfirmation" prefHeight="35.0" prefWidth="35.0" text="Set" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="hPlayer2" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="txtInput2" prefHeight="35.0" prefWidth="125.0" promptText="Player 2 Guess" />
+                              <ToggleButton fx:id="bttnConfirm2" mnemonicParsing="false" onAction="#checkConfirmation" prefHeight="35.0" prefWidth="35.0" text="Set" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hRow2" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <HBox fx:id="hPlayer3" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="txtInput3" prefHeight="35.0" prefWidth="125.0" promptText="Player 3 Guess" />
+                              <ToggleButton fx:id="bttnConfirm3" mnemonicParsing="false" onAction="#checkConfirmation" prefHeight="35.0" prefWidth="35.0" text="Set" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="hPlayer4" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="txtInput4" prefHeight="35.0" prefWidth="125.0" promptText="Player 4 Guess" />
+                              <ToggleButton fx:id="bttnConfirm4" mnemonicParsing="false" onAction="#checkConfirmation" prefHeight="35.0" prefWidth="35.0" text="Set" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+      <Button fx:id="bttnReturnToMain" alignment="TOP_LEFT" layoutX="430.0" layoutY="5.0" mnemonicParsing="false" onAction="#returnToMain" prefHeight="45.0" prefWidth="45.0" text="Main Menu" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
