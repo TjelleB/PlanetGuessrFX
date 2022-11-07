@@ -1,4 +1,4 @@
-/*
+package com.example.planetguessrfx;/*
 Ersteller: Frederick
 0 = Zwerg
 1 = Riese

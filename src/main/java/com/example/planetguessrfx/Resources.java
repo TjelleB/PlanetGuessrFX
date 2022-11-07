@@ -1,4 +1,4 @@
-/*
+package com.example.planetguessrfx;/*
 Ersteller: Frederick
 */
 import java.util.Random;

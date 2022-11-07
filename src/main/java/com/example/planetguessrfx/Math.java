@@ -1,5 +1,6 @@
+package com.example.planetguessrfx;
 /*
-
+@Ivo Härtel
  */
 public class Math {
     //Attribute

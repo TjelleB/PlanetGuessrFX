@@ -1,4 +1,4 @@
-/*
+package com.example.planetguessrfx;/*
 Ersteller: Frederick
 0 = Stein
 1 = Wasser

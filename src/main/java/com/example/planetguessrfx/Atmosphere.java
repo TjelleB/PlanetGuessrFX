@@ -1,4 +1,4 @@
-/*
+package com.example.planetguessrfx;/*
 Ersteller: Frederick
 Wetter:
 0 = Moderat
