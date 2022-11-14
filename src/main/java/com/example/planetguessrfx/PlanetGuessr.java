@@ -17,7 +17,7 @@ public class PlanetGuessr extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         Parent root = loader.load();
         MainMenuController controller = loader.getController();
-        controller.setPlanettype(m.detImg());
+        controller.setPlanetType(m.detImg());
         Scene scene = new Scene(root, 480, 640);
         stage.setTitle("PlanetGuessr");
         stage.setScene(scene);

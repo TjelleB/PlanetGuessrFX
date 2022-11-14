@@ -82,8 +82,10 @@ public class Math {
     }
     public int detImg() {
         if (atmos.getAtmosphereType() == 0) {
+            System.out.println(atmos.getAtmosphereType());
             return 4;
         } else {
+            System.out.println(surf.getType());
             return this.surf.getType();
         }
     }
