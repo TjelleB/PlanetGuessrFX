@@ -127,19 +127,19 @@ public class GameScreenController {
 
     public void chgBackground(int v) {
         switch (v) {
-            case 0:
+            case 0: // Stoneplanet
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Test Planet/3673498734(1).gif");
+                break;
+            case 1: // Waterplanet
 
                 break;
-            case 1:
+            case 2: // Gasplanet
 
                 break;
-            case 2:
+            case 3: // Eisplanet
 
                 break;
-            case 3:
-
-                break;
-            case 4:
+            case 4: // No Atmosphere
 
                 break;
         }
