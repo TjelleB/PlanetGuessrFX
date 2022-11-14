@@ -1,4 +1,5 @@
-package com.example.planetguessrfx;/*
+package com.example.planetguessrfx;
+/*
 Ersteller: Frederick
 0 = Stein
 1 = Wasser
@@ -8,13 +9,17 @@ Ersteller: Frederick
 import java.util.Random;
 public class Surface extends Generator {
   private int type;
+  
   public Surface() {
     this.generate();
   }
+  
+  @Override
   public void generate() {
     Random rdm = new Random();
     type = rdm.nextInt(4);
   }
+  
   public int getType()
   {
     return type;

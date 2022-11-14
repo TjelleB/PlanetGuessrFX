@@ -1,4 +1,5 @@
-package com.example.planetguessrfx;/*
+package com.example.planetguessrfx;
+/*
 Ersteller: Frederick
 0 = Zwerg
 1 = Riese
@@ -13,14 +14,18 @@ public class Star extends Generator {
   // start attributes
   private int type;
   // end attributes
+  
   public Star() {
     this.generate();
   }
   // start methods
+  
+  @Override
   public void generate() {
     Random rdm = new Random();
     type = rdm.nextInt(4);
   }
+  
   public int getType()
   {
     return type;
