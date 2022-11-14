@@ -43,6 +43,7 @@ public class MainMenuController {
     public String playerName2;
     public String playerName3;
     public String playerName4 ;
+    public int p;
 
     public int players = 1;
 
@@ -69,12 +70,17 @@ public class MainMenuController {
         Parent root = loader.load();
         GameScreenController controller = loader.getController();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
+        controller.chgBackground(p);
 
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, 480, 640);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void setPlanettype(int p){
+        this.p = p;
     }
 
     public void playersSelected(ActionEvent event) throws IOException{

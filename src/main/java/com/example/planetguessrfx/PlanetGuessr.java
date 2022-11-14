@@ -2,8 +2,8 @@ package com.example.planetguessrfx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,8 +14,11 @@ public class PlanetGuessr extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PlanetGuessr.class.getResource("mainMenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 480, 640);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+        Parent root = loader.load();
+        MainMenuController controller = loader.getController();
+        controller.setPlanettype(m.detImg());
+        Scene scene = new Scene(root, 480, 640);
         stage.setTitle("PlanetGuessr");
         stage.setScene(scene);
         stage.show();
@@ -23,6 +26,6 @@ public class PlanetGuessr extends Application {
 
     public static void main(String[] args) {
         launch();
-    }
 
+    }
 }
