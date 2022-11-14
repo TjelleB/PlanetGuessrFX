@@ -125,29 +125,28 @@ public class GameScreenController {
     }
 
     public void chgBackground() {
-        imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Test Planet/2552982402.gif");
-        ivPlanet.setImage(imgCurrentPlanet);
-        /*switch (m.detImg()) {
+
+        switch (m.detImg()) {
             case 0: // Stoneplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Stone/4238028655.gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
             case 1: // Waterplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Water/4238028655.gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Water.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
             case 2: // Gasplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Gas/4238028655.gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Gas.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
             case 3: // Iceplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Ice/1835414745.gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Ice.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
             case 4: // No Atmosphere
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/No Atmos/4238028655.gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/No Atmos.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
-        }*/
+        }
     }
 }
