@@ -21,6 +21,7 @@ public class Atmosphere extends Generator {
   private int weather_type;
   private int atmosphere_type;
   public Atmosphere() {
+    this.generateWeather();
     this.generateAtmosphere();
   }
   public void generateAtmosphere() {

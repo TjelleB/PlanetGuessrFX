@@ -75,4 +75,11 @@ public class Math {
         }
         return val;
     }
+    public int detImg() {
+        if (atmos.getAtmosphereType() == 0) {
+            return 4;
+        } else {
+            return this.surf.getType();
+        }
+    }
 } // end of class Math

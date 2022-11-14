@@ -41,5 +41,3 @@ public class ResultScreenController {
         stage.show();
     }
 }
-
-

@@ -10,11 +10,7 @@ import java.io.IOException;
 
 public class PlanetGuessr extends Application {
 
-    public int players;
-    public String playerName1;
-    public String playerName2;
-    public String playerName3;
-    public String playerName4;
+    private Math m = new Math();
 
     @Override
     public void start(Stage stage) throws IOException {
