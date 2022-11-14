@@ -58,7 +58,6 @@ public class GameScreenController {
     private void initialize(){
         planetName = "Test Planet";
         lblPlanetName.setText(planetName);
-        imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Test Planet/3673498734(1).gif");
         ivPlanet.setImage(imgCurrentPlanet);
 
 
@@ -125,23 +124,18 @@ public class GameScreenController {
         System.out.println(players);
     }
 
-    public void chgBackground(int v) {
-        switch (v) {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-            case 4:
-
-                break;
+    public void chgBackground(int p) {
+        switch (p) {
+            case 0 -> // Stoneplanet
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Stone/341027259(1).gif");
+            case 1 -> // Waterplanet
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Water/341027259.gif");
+            case 2 -> // Gasplanet
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Gas/341027259(2).gif");
+            case 3 -> // Iceplanet
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Ice/341027259(3).gif");
+            case 4 -> // No Atmosphere
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/No Atmos/341027259(5).gif");
         }
     }
 }
