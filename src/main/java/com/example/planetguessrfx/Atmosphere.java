@@ -1,4 +1,5 @@
-package com.example.planetguessrfx;/*
+package com.example.planetguessrfx;
+/*
 Ersteller: Frederick
 Wetter:
 0 = Moderat
@@ -20,22 +21,24 @@ import java.util.Random;
 public class Atmosphere extends Generator {
   private int weather_type;
   private int atmosphere_type;
+  
   public Atmosphere() {
-    this.generateWeather();
-    this.generateAtmosphere();
+    this.generate();
   }
-  public void generateAtmosphere() {
-    Random rdm = new Random();
-    atmosphere_type = rdm.nextInt(4);
+  
+  @Override
+  public void generate() {
+    Random rdm1 = new Random();
+    atmosphere_type = rdm1.nextInt(4);
+    Random rdm2 = new Random();
+    weather_type = rdm2.nextInt(8);
   }
-  public void generateWeather() {
-    Random rdm = new Random();
-    weather_type = rdm.nextInt(8);
-  }
+  
   public int getWeatherType()
   {
     return weather_type;
   }
+  
   public int getAtmosphereType()
   {
     return atmosphere_type;
