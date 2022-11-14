@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class PlanetGuessr extends Application {
 
-    private Math m = new Math();
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -24,8 +24,9 @@ public class PlanetGuessr extends Application {
         stage.show();
     }
 
+
+
     public static void main(String[] args) {
         launch();
-
     }
 }

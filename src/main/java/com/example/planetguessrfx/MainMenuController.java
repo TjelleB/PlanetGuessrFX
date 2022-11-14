@@ -39,12 +39,15 @@ public class MainMenuController {
     public String playerName4 ;
     public int p;
 
+
     public int players = 1;
 
     @FXML
     private void initialize(){
         cbPlayers.setItems(playerList);
     }
+
+
 
     public void checkNames(){
         playerName1 = txtPlayer1Name.getText();
@@ -60,9 +63,11 @@ public class MainMenuController {
     public void startGame(ActionEvent event) throws IOException{
 
         checkNames();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
         Parent root = loader.load();
         GameScreenController controller = loader.getController();
+        controller.genNewPlanet();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
         controller.chgBackground(p);
 
