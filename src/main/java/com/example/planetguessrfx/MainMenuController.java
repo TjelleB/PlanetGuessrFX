@@ -69,7 +69,7 @@ public class MainMenuController {
         GameScreenController controller = loader.getController();
         controller.genNewPlanet();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
-        controller.chgBackground(p);
+        controller.chgBackground();
 
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

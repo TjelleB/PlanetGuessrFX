@@ -61,7 +61,7 @@ public class GameScreenController {
     }
 
     public void genNewPlanet(){
-        m.generate();
+        m.calcFinalVal();
     }
     public void returnToMain(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
@@ -124,28 +124,28 @@ public class GameScreenController {
         System.out.println(players);
     }
 
-    public void chgBackground(int p) {
-        imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Test Planet/2552982402.gif");
+    public void chgBackground() {
+        imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Stone/4238028655.gif");
         ivPlanet.setImage(imgCurrentPlanet);
-        /* switch (p) {
+        /*switch (m.detImg()) {
             case 0: // Stoneplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Stone/341027259(1).gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Stone/4238028655.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
             case 1: // Waterplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Water/341027259.gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Water/4238028655.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
             case 2: // Gasplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Gas/341027259(2).gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Gas/4238028655.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
             case 3: // Iceplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Ice/341027259(3).gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Ice/1835414745.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
             case 4: // No Atmosphere
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/No Atmos/341027259(5).gif");
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/No Atmos/4238028655.gif");
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
         }*/

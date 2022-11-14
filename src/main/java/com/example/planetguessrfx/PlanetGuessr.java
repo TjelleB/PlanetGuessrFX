@@ -16,8 +16,6 @@ public class PlanetGuessr extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         Parent root = loader.load();
-        MainMenuController controller = loader.getController();
-        controller.setPlanetType(m.detImg());
         Scene scene = new Scene(root, 480, 640);
         stage.setTitle("PlanetGuessr");
         stage.setScene(scene);
