@@ -125,7 +125,7 @@ public class GameScreenController {
     }
 
     public void chgBackground() {
-        imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Stone/4238028655.gif");
+        imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Test Planet/2552982402.gif");
         ivPlanet.setImage(imgCurrentPlanet);
         /*switch (m.detImg()) {
             case 0: // Stoneplanet
