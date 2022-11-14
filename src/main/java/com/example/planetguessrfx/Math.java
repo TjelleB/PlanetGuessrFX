@@ -20,17 +20,22 @@ public class Math {
     }
     public double calcFinalValueMultiplier() {
         //Berechnen der einzelnen Multiplikatoren
+        double m_atmosphere = this.calcM_Atmosphere();
         double m_surface = this.calcM_Surface();
         double m_star = this.calcM_Star();
-        double m_atmosphere = this.calcM_Atmosphere();
         double m_resources = this.calcM_Resources();
         double m_habitability = this.calcM_Habitability();
         double m_weather = this.calcM_Weather();
         //Berechnen und zurueckgeben vom finalen Multiplikator
         double m_final;
-        m_final = m_surface * m_star
-                * m_atmosphere * m_resources
-                * m_habitability * m_weather;
+        if (this.surf.getType() == 0) {
+            m_final = m_surface * m_star
+                    * m_atmosphere * m_resources
+                    * m_habitability * m_weather;
+        } else {
+            m_final = m_star
+                    * m_atmosphere * m_resources;
+        }
         return m_final;
     }
     public double calcM_Surface() {
