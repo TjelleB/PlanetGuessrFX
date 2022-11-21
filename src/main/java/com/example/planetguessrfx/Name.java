@@ -1,14 +1,20 @@
-package com.example.planetguessrfx;/*package com.example.planetguessrfx;*/
+/*package com.example.planetguessrfx;*/
 import java.util.Random;
 public class Name extends Generator {
   
-  private String[] names = {"Leon", "Kamela", "Marcel", "Hillary", "Edward", "Lisa", "Michael", "Marie", "Alexander", "Laura", "Felix", "Clara", "Lucas", "Charlotte", "Richard", "Elisabeth", "Julian", "Leonie", "Anton", "Emma", "Jeremy", "Johanna", "Joseph", "Leni", "Adam", "Anna",};
+  // start attributes
+  private String[] greek_letters = {"Alpha", "Beta", "Gamma", "Delta"};
+  private String[] numbers = {"I", "II", "III", "IV", "V"};
   private String name;
+  // end attributes
+  
+  
   
   public Name()
   {
-    this.setNames(names);
+    this.setGreek_letters(greek_letters);
     this.setName(name);
+    this.setNumbers(numbers);
   }
   // start methods
   
@@ -16,16 +22,15 @@ public class Name extends Generator {
   public void generate()
   {
     Random rdm = new Random(); 
-    int index = rdm.nextInt(names.length); 
-    name = (names[index]);
+    int index = rdm.nextInt(greek_letters.length); 
+    name = (greek_letters[index]);
+    
+    Random rdm2 = new Random();
+    int index2 = rdm2.nextInt(numbers.length);
+    name += (numbers[index2]);
   }
-  public String[] getNames() {
-    return names;
-  }
-
-  public void setNames(String[] namesNew) {
-    names = namesNew;
-  }
+  
+  
 
   public String getName() {
     return name;
@@ -33,6 +38,22 @@ public class Name extends Generator {
 
   public void setName(String nameNew) {
     name = nameNew;
+  }
+
+  public String[] getNumbers() {
+    return numbers;
+  }
+
+  public void setNumbers(String[] numbersNew) {
+    numbers = numbersNew;
+  }
+
+  public String[] getGreek_letters() {
+    return greek_letters;
+  }
+
+  public void setGreek_letters(String[] greek_lettersNew) {
+    greek_letters = greek_lettersNew;
   }
 
   // end methods
