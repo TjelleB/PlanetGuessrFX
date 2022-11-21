@@ -159,14 +159,14 @@ public class GameScreenController {
     }
     public String createStringH1() {
         String s = "" + this.createStringBH() +
-                "Atmosphäre: " + m.getH11() +
+                "Tipp 1:\nAtmosphäre: " + m.getH11() +
                 "\nWetter: " + m.getH12() +
                 "\n";
         return s;
     }
     public String createStringH2() {
         String s = "" + this.createStringH1() +
-                "Bewohnbar: " + m.getH2() +
+                "Tipp 2:\nBewohnbar: " + m.getH2() +
                 "\n";
         return s;
     }
