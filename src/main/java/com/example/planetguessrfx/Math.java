@@ -10,6 +10,12 @@ public class Math {
     private final Atmosphere atmos = new Atmosphere();
     private final Resources res = new Resources();
     private final Habitability hab = new Habitability();
+    private String bh1;
+    private String bh2;
+    private String h11;
+    private String h12;
+    private String h2;
+    private String h3;
 
     //Methoden
     public void calcFinalVal() {
@@ -47,25 +53,55 @@ public class Math {
         hab.generate();
     }
     public double getM_Surface() {
+        switch (surf.getType()) {
+            case 0 -> bh1 = "Stein";
+            case 1 -> bh1 = "Wasser";
+            case 2 -> bh1 = "Gas";
+            case 3 -> bh1 = "Eis";
+        }
         double[] m_surface_array = {1, 0.9, 0.7, 0.6};  //Alle möglichen Multiplikatoren
         return m_surface_array[surf.getType()];         //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Star() {
+        switch (star.getType()) {
+            case 0 -> bh2 = "Zwerg";
+            case 1 -> bh2 = "Riese";
+            case 2 -> bh2 = "Neutron";
+            case 3 -> bh2 = "Doppel";
+        }
         double[] m_star_array = {1, 0.9, 0.3, 0.9};     //Alle möglichen Multiplikatoren
         return m_star_array[star.getType()];            //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Atmosphere() {
+        switch (atmos.getAtmosphereType()) {
+            case 0 -> h11 = "Keine";
+            case 1 -> h11 = "Schwach";
+            case 2 -> h11 = "Normal";
+            case 3 -> h11 = "Stark";
+        }
         double[] m_atmosphere_array = {0.2, 0.6, 1, 1.5};   //Alle möglichen Multiplikatoren
         return m_atmosphere_array[atmos.getAtmosphereType()]; //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Weather() {
+        switch (atmos.getWeatherType()) {
+            case 0 -> h12 = "Moderat";
+            case 1 -> h12 = "Stürmisch";
+            case 2 -> h12 = "Extreme Hitze";
+            case 3 -> h12 = "Chemischer Regen";
+            case 4 -> h12 = "Kosmische Strahlung";
+            case 5 -> h12 = "Schneesturm";
+            case 6 -> h12 = "Permafrost";
+            case 7 -> h12 = "Vertrocknet";
+        }
         double[] m_weather_array = {1.1, 0.9, 0.65, 0.4, 0.3, 0.8, 0.7, 0.5};   //Alle möglichen Multiplikatoren
         return m_weather_array[atmos.getWeatherType()]; //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Habitability() {
         if(hab.getHabitable()) {
+            h2 = "Ja";
             return 1;
         } else {
+            h2 = "Nein";
             return 0.6;
         }
     }
@@ -109,4 +145,9 @@ public class Math {
         }
         return 0;
     }
+    public String getBh1() {return bh1;}
+    public String getBh2() {return bh2;}
+    public String getH11() {return h11;}
+    public String getH12() {return h12;}
+    public String getH2() {return h2;}
 } // end of class Math
