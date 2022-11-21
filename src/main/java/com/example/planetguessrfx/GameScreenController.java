@@ -46,7 +46,7 @@ public class GameScreenController {
     public String playerName2;
     public String playerName3;
     public String playerName4;
-    int player1guess;
+    int player1Guess;
     int player2Guess;
     int player3Guess;
     int player4Guess;
@@ -89,12 +89,23 @@ public class GameScreenController {
 
     public void checkConfirmation(ActionEvent event) throws IOException{
         if(bttnConfirm1.isSelected()&& players == 1){
+            player1Guess = Integer.parseInt(txtInput1.getText());
+            m.calcPts(player2Guess);
             showResult(event);
         } else if(players == 2 && bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
+            player1Guess = Integer.parseInt(txtInput1.getText());
+            player2Guess = Integer.parseInt(txtInput2.getText());
             showResult(event);
         }else if( players == 3&& bttnConfirm3.isSelected()&&bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
+            player1Guess = Integer.parseInt(txtInput1.getText());
+            player2Guess = Integer.parseInt(txtInput2.getText());
+            player3Guess = Integer.parseInt(txtInput3.getText());
             showResult(event);
         }else if(players == 4&&bttnConfirm4.isSelected()&& bttnConfirm3.isSelected()&&bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
+            player1Guess = Integer.parseInt(txtInput1.getText());
+            player2Guess = Integer.parseInt(txtInput1.getText());
+            player3Guess = Integer.parseInt(txtInput1.getText());
+            player4Guess = Integer.parseInt(txtInput1.getText());
             showResult(event);
         }
     }

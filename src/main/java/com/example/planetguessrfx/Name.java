@@ -1,4 +1,4 @@
-/*package com.example.planetguessrfx;*/
+package com.example.planetguessrfx;/*package com.example.planetguessrfx;*/
 import java.util.Random;
 public class Name extends Generator {
   
