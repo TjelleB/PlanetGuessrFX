@@ -89,4 +89,24 @@ public class Math {
             return this.surf.getType();
         }
     }
+    public long calcPts(long sc) {
+        long[] lwrBorders = new long[10];
+        long[] uprBorders = new long[10];
+        double multi = 0;
+        for (int i = 0; i < lwrBorders.length; i++) {
+            multi += 0.01;
+            lwrBorders[i] = (long) (value - value * multi);
+            uprBorders[i] = (long) (value + value * multi);
+        }
+        double reduce = 0;
+        for (int v = 0; v < uprBorders.length; v++) {
+            reduce += 0.1;
+            if (sc == value) {
+                return (value / 10000);
+            } else if (sc >= lwrBorders[v] && sc <= uprBorders[v]) {
+                return (long) ((value - (value * reduce)) / 10000);
+            }
+        }
+        return 0;
+    }
 } // end of class Math
