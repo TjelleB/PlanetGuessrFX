@@ -10,6 +10,7 @@ public class Math {
     private final Atmosphere atmos = new Atmosphere();
     private final Resources res = new Resources();
     private final Habitability hab = new Habitability();
+    protected final Name name = new Name();
     private String bh1;
     private String bh2;
     private String h11;
@@ -127,7 +128,7 @@ public class Math {
             return this.surf.getType();
         }
     }
-    public long calcPts(long sc) {
+    public int calcPts(long sc) {
         long[] lwrBorders = new long[10];
         long[] uprBorders = new long[10];
         double multi = 0;
@@ -143,9 +144,9 @@ public class Math {
             for (int v = 0; v < uprBorders.length; v++) {
                 reduce += 0.1;
                 if (sc == value) {
-                    return (value / 10000);
+                    return (int) (value / 10000);
                 } else if (sc >= lwrBorders[v] && sc <= uprBorders[v]) {
-                    return (long) ((value - (value * reduce)) / 10000);
+                    return (int) ((value - (value * reduce)) / 10000);
                 }
             }
         }
