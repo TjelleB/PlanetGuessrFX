@@ -10,8 +10,6 @@ import java.io.IOException;
 
 public class PlanetGuessr extends Application {
 
-
-
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));

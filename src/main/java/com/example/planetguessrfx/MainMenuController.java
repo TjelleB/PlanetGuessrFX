@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -59,7 +60,6 @@ public class MainMenuController {
     }
 
     public void startGame(ActionEvent event) throws IOException{
-
         checkNames();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
@@ -68,7 +68,6 @@ public class MainMenuController {
         controller.genNewPlanet();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
         controller.chgBackground();
-
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, 480, 640);

@@ -49,6 +49,7 @@ public class GameScreenController {
     public ImageView ivPlanet;
     public TextArea txtBaseInfos;
 
+
     private Math m = new Math();
     Image imgCurrentPlanet;
     String planetName;
@@ -63,6 +64,11 @@ public class GameScreenController {
     public void genNewPlanet(){
         m.calcFinalVal();
     }
+
+    public int getPlanettype(){
+        return m.detImg();
+    }
+
     public void returnToMain(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         Parent root = loader.load();
@@ -74,6 +80,8 @@ public class GameScreenController {
 
     public void showResult(ActionEvent event)throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resultScreen.fxml"));
+        ResultScreenController controller = loader.getController();
+        controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
         Parent root = loader.load();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 480, 640);
@@ -127,26 +135,26 @@ public class GameScreenController {
     public void chgBackground() {
 
         switch (m.detImg()) {
-            case 0: // Stoneplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
-            case 1: // Waterplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Water.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
-            case 2: // Gasplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Gas.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
-            case 3: // Iceplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Ice.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
-            case 4: // No Atmosphere
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/No Atmos.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
+            case 0 -> { // Stoneplanet
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
+            case 1 -> { // Waterplanet
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Water.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
+            case 2 -> { // Gasplanet
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Gas.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
+            case 3 -> { // Iceplanet
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Ice.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
+            case 4 -> { // No Atmosphere
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/No Atmos.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
         }
     }
 }
