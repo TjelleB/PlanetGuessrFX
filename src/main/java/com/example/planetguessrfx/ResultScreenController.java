@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.Serial;
 
 public class ResultScreenController {
     public Label txtNr1Score;
@@ -34,6 +35,10 @@ public class ResultScreenController {
     String playerName2;
     String playerName3;
     String playerName4;
+    int updatedScore1;
+    int updatedScore2;
+    int updatedScore3;
+    int updatedScore4;
 
     public void setPlayers(int p, String p1, String p2, String p3, String p4) {
         players = p;
@@ -59,13 +64,18 @@ public class ResultScreenController {
 
     public void displayScore(int playerScore1, int playerScore2, int playerScore3, int playerScore4,  int gainedScorePlayer1, int gainedScorePlayer2, int gainedScorePlayer3, int gainedScorePlayer4){
         txtNr1Score.setText("Player 1: " + playerName1 + " + " + gainedScorePlayer1);
-        txtNr1UpdatedScore.setText("Updated Score" + (playerScore1+gainedScorePlayer1));
+        updatedScore1 = playerScore1 + gainedScorePlayer1;
+        System.out.println(updatedScore1);
+        txtNr1UpdatedScore.setText("Updated Score: " + updatedScore1);
         txtNr2Score.setText("Player 2: " + playerName2 + " + " + gainedScorePlayer2);
-        txtNr1UpdatedScore.setText("Updated Score" + (playerScore2+gainedScorePlayer2));
+        updatedScore2 = playerScore2 + gainedScorePlayer2;
+        txtNr1UpdatedScore.setText("Updated Score: " + updatedScore2);
         txtNr3Score.setText("Player 3: " + playerName3 + " + " + gainedScorePlayer3);
-        txtNr1UpdatedScore.setText("Updated Score" + (playerScore3+gainedScorePlayer3));
+        updatedScore3 = playerScore3 + gainedScorePlayer3;
+        txtNr1UpdatedScore.setText("Updated Score: " + updatedScore3);
         txtNr4Score.setText("Player 4: " + playerName4 + " + " + gainedScorePlayer4);
-        txtNr1UpdatedScore.setText("Updated Score" + (playerScore4+gainedScorePlayer4));
+        updatedScore4 = playerScore4 + gainedScorePlayer3;
+        txtNr1UpdatedScore.setText("Updated Score: " + updatedScore4);
 
     }
 
