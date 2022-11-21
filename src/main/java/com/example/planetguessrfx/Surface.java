@@ -19,7 +19,11 @@ public class Surface extends Generator {
     Random rdm = new Random();
     type = rdm.nextInt(4);
   }
-  
+  public void checkType(int atmos) {
+    if (atmos == 0) {
+      type = 0;
+    }
+  }
   public int getType()
   {
     return type;

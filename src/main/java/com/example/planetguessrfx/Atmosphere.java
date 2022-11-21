@@ -28,17 +28,49 @@ public class Atmosphere extends Generator {
   
   @Override
   public void generate() {
-    Random rdm1 = new Random();
-    atmosphere_type = rdm1.nextInt(4);
-    Random rdm2 = new Random();
-    weather_type = rdm2.nextInt(8);
+    Random rdm = new Random();
+    atmosphere_type = rdm.nextInt(4);
   }
-  
+  public void generateW() {
+    Random rdm = new Random();
+    weather_type = rdm.nextInt(8);
+  }
   public int getWeatherType()
   {
     return weather_type;
   }
-  
+  public void checkWeatherType(int surf) {
+    if (!(atmosphere_type == 0 || atmosphere_type == 1)) {
+      while(weather_type == 4) {
+        this.generateW();
+      }
+    }
+    switch (surf) {
+      case 0:
+        break;
+      case 1:
+        if(weather_type == 7) {
+          while(weather_type == 7) {
+            this.generateW();
+          }
+        }
+        break;
+      case 2:
+        if(weather_type == 6 || weather_type == 7) {
+          while(weather_type == 6 || weather_type == 7) {
+            this.generateW();
+          }
+        }
+        break;
+      case 3:
+        if(weather_type == 2) {
+          while(weather_type == 2) {
+            this.generateW();
+          }
+        }
+        break;
+    }
+  }
   public int getAtmosphereType()
   {
     return atmosphere_type;

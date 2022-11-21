@@ -59,6 +59,7 @@ public class Math {
             case 2 -> bh1 = "Gas";
             case 3 -> bh1 = "Eis";
         }
+        surf.checkType(atmos.getAtmosphereType());
         double[] m_surface_array = {1, 0.9, 0.7, 0.6};  //Alle möglichen Multiplikatoren
         return m_surface_array[surf.getType()];         //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
@@ -93,10 +94,12 @@ public class Math {
             case 6 -> h12 = "Permafrost";
             case 7 -> h12 = "Vertrocknet";
         }
+        atmos.checkWeatherType(surf.getType());
         double[] m_weather_array = {1.1, 0.9, 0.65, 0.4, 0.3, 0.8, 0.7, 0.5};   //Alle möglichen Multiplikatoren
         return m_weather_array[atmos.getWeatherType()]; //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Habitability() {
+        hab.checkHab(atmos.getAtmosphereType(), surf.getType());
         if(hab.getHabitable()) {
             h2 = "Ja";
             return 1;
