@@ -26,7 +26,7 @@
             <TextArea fx:id="txtBaseInfos" editable="false" maxWidth="181.0" minWidth="181.0" prefHeight="190.0" prefWidth="180.0" text="Base info here" wrapText="true" />
                   <ToggleButton fx:id="bttnHint1" mnemonicParsing="false" text="Hint 1" onAction="#setHint1" />
                   <ToggleButton fx:id="bttnHint2" mnemonicParsing="false" text="Hint 2" onAction="#setHint2" />
-                  <ToggleButton fx:id="BttnHint3" mnemonicParsing="false" text="Hint 3" />
+                  <ToggleButton fx:id="bttnHint3" mnemonicParsing="false" text="Hint 3" />
                </children>
             </VBox>
             <Button fx:id="btValues" layoutX="255.0" layoutY="443.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="182.0" text="Values" textAlignment="CENTER" />

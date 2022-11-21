@@ -24,7 +24,7 @@ public class GameScreenController {
     public Label lblPlanetName;
     public ToggleButton bttnHint1;
     public ToggleButton bttnHint2;
-    public ToggleButton BttnHint3;
+    public ToggleButton bttnHint3;
     public Button btValues;
     public VBox vInputs;
     public HBox hRow1;
@@ -171,13 +171,18 @@ public class GameScreenController {
     public void setBaseHints() {
         txtBaseInfos.setEditable(false);
         txtBaseInfos.setText(this.createStringBH());
+        bttnHint1.setDisable(false);
+        bttnHint2.setDisable(true);
+        bttnHint3.setDisable(true);
     }
     public void setHint1() {
         txtBaseInfos.setText(this.createStringH1());
         bttnHint1.setDisable(true);
+        bttnHint2.setDisable(false);
     }
     public void setHint2() {
         txtBaseInfos.setText(this.createStringH2());
         bttnHint2.setDisable(true);
+        bttnHint3.setDisable(false);
     }
 }

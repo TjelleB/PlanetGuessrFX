@@ -40,6 +40,9 @@ public class Atmosphere extends Generator {
     return weather_type;
   }
   public void checkWeatherType(int surf) {
+    if(atmosphere_type == 0) {
+      weather_type = 4;
+    }
     if (!(atmosphere_type == 0 || atmosphere_type == 1)) {
       while(weather_type == 4) {
         this.generateW();
