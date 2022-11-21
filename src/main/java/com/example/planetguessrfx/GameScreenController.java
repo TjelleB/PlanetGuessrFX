@@ -165,6 +165,11 @@ public class GameScreenController {
                 "\n";
         return s;
     }
+    public String createStringH3() {
+        String s = "" + this.createStringH2() +
+                "Tipp 3:\nRessourcenanzahl der Wertetabelle hinzugefügt!";
+        return s;
+    }
     public void setBaseHints() {
         txtBaseInfos.setEditable(false);
         txtBaseInfos.setText(this.createStringBH());
@@ -181,5 +186,9 @@ public class GameScreenController {
         txtBaseInfos.setText(this.createStringH2());
         bttnHint2.setDisable(true);
         bttnHint3.setDisable(false);
+    }
+    public void setHint3() {
+        txtBaseInfos.setText(this.createStringH3());
+        bttnHint3.setDisable(true);
     }
 }
