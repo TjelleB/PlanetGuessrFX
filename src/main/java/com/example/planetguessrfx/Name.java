@@ -13,6 +13,7 @@ public class Name extends Generator {
     name +=  "-" + (numbers[index]);
   }
   public String getName() {
+    this.generate();
     return name;
   }
 }
