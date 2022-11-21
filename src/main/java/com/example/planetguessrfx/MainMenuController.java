@@ -37,8 +37,6 @@ public class MainMenuController {
     public String playerName2;
     public String playerName3;
     public String playerName4 ;
-    public int p;
-
 
     public int players = 1;
 
@@ -76,10 +74,6 @@ public class MainMenuController {
         scene = new Scene(root, 480, 640);
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void setPlanetType(int p){
-        this.p = p;
     }
 
     public void playersSelected(ActionEvent event) throws IOException{
