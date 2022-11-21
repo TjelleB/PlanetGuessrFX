@@ -40,7 +40,7 @@
                               <ToggleButton fx:id="bttnConfirm1" mnemonicParsing="false" onAction="#checkConfirmation" prefHeight="35.0" prefWidth="35.0" text="Set" />
                            </children>
                         </HBox>
-                        <HBox fx:id="hPlayer2" prefHeight="100.0" prefWidth="200.0" spacing="5.0" visible="false">
+                        <HBox fx:id="hPlayer2" prefHeight="100.0" prefWidth="200.0" spacing="5.0" >
                            <children>
                               <TextField fx:id="txtInput2" prefHeight="35.0" prefWidth="125.0" promptText="Player 2 Guess" />
                               <ToggleButton fx:id="bttnConfirm2" mnemonicParsing="false" onAction="#checkConfirmation" prefHeight="35.0" prefWidth="35.0" text="Set" />
@@ -50,13 +50,13 @@
                   </HBox>
                   <HBox fx:id="hRow2" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <HBox fx:id="hPlayer3" prefHeight="100.0" prefWidth="200.0" spacing="5.0" visible="false">
+                        <HBox fx:id="hPlayer3" prefHeight="100.0" prefWidth="200.0" spacing="5.0" >
                            <children>
                               <TextField fx:id="txtInput3" prefHeight="35.0" prefWidth="125.0" promptText="Player 3 Guess" />
                               <ToggleButton fx:id="bttnConfirm3" mnemonicParsing="false" onAction="#checkConfirmation" prefHeight="35.0" prefWidth="35.0" text="Set" />
                            </children>
                         </HBox>
-                        <HBox fx:id="hPlayer4" prefHeight="100.0" prefWidth="200.0" spacing="5.0" visible="false">
+                        <HBox fx:id="hPlayer4" prefHeight="100.0" prefWidth="200.0" spacing="5.0" >
                            <children>
                               <TextField fx:id="txtInput4" prefHeight="35.0" prefWidth="125.0" promptText="Player 4 Guess" />
                               <ToggleButton fx:id="bttnConfirm4" mnemonicParsing="false" onAction="#checkConfirmation" prefHeight="35.0" prefWidth="35.0" text="Set" />

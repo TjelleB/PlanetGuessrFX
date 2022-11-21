@@ -10,34 +10,50 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="4.0" layoutY="171.0" prefHeight="301.0" prefWidth="474.0" spacing="5.0">
          <children>
-            <Label fx:id="txtNr1Score" text="1: &quot;PlayerName&quot; + Score">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="txtNr1UpdatedScore" text="Updated Score">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="txtNr2Score" text="2: &quot;PlayerName&quot; + Score">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="txtNr2UpdatedScore" text="Updated Score" />
-            <Label fx:id="txtNr3Score" text="3: &quot;PlayerName&quot; + Score">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="txtNr3UpdatedScore" text="Updated Score" />
-            <Label fx:id="txtNr4Score" text="4: &quot;PlayerName&quot; + Score">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="txtNr4UpdatedScore" text="Updated Score" />
+            <VBox fx:id="box1" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="txtNr1Score" text="1: &quot;PlayerName&quot; + Score">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtNr1UpdatedScore" text="Updated Score">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox fx:id="box2" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="txtNr2Score" text="2: &quot;PlayerName&quot; + Score">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtNr2UpdatedScore" text="Updated Score" />
+               </children>
+            </VBox>
+            <VBox fx:id="box3" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="txtNr3Score" text="3: &quot;PlayerName&quot; + Score">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtNr3UpdatedScore" text="Updated Score" />
+               </children>
+            </VBox>
+            <VBox fx:id="box4" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="txtNr4Score" text="4: &quot;PlayerName&quot; + Score">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtNr4UpdatedScore" text="Updated Score" />
+               </children>
+            </VBox>
          </children>
       </VBox>
       <Button fx:id="bttnNextPlanet" layoutX="156.0" layoutY="557.0" mnemonicParsing="false" onAction="#nextPlanet" prefHeight="50.0" prefWidth="168.0" text="Next Planet">

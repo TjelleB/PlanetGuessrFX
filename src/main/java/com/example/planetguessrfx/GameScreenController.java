@@ -74,6 +74,8 @@ public class GameScreenController {
     public void showResult(ActionEvent event)throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resultScreen.fxml"));
         Parent root = loader.load();
+        ResultScreenController controller = loader.getController();
+        controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 480, 640);
         stage.setScene(scene);
@@ -103,49 +105,44 @@ public class GameScreenController {
         playerName4 = p4;
         txtInput4.setPromptText(playerName4 + "'s Guess");
 
-        if(players == 1){
-            hPlayer2.setVisible(false);
-            hPlayer3.setVisible(false);
-            hPlayer4.setVisible(false);
-        } else if(players == 2){
-            hPlayer2.setVisible(true);
-            hPlayer3.setVisible(false);
-            hPlayer4.setVisible(false);
-        } else if(players == 3){
-            hPlayer2.setVisible(true);
-            hPlayer3.setVisible(true);
-            hPlayer4.setVisible(false);
-        } else if(players == 4){
-            hPlayer2.setVisible(true);
-            hPlayer3.setVisible(true);
-            hPlayer4.setVisible(true);
+        switch (players){
+            case 1 -> {
+                hPlayer2.setVisible(false);
+                hPlayer3.setVisible(false);
+                hPlayer4.setVisible(false);
+            }
+            case 2 -> {
+                hPlayer3.setVisible(false);
+                hPlayer4.setVisible(false);
+            }
+            case 3 ->
+                hPlayer4.setVisible(false);
         }
-        System.out.println(players);
     }
 
     public void chgBackground() {
 
         switch (m.detImg()) {
-            case 0: // Stoneplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
-            case 1: // Waterplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Water.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
-            case 2: // Gasplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Gas.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
-            case 3: // Iceplanet
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Ice.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
-            case 4: // No Atmosphere
-                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/No Atmos.gif");
-                    ivPlanet.setImage(imgCurrentPlanet);
-                    break;
+            case 0 -> { // Stoneplanet
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
+            case 1 -> { // Waterplanet
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Water.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
+            case 2 -> { // Gasplanet
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Gas.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
+            case 3 -> { // Iceplanet
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Ice.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
+            case 4 -> { // No Atmosphere
+                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/No Atmos.gif");
+                ivPlanet.setImage(imgCurrentPlanet);
+            }
         }
     }
     public String createStringBH() {
