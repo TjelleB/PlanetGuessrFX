@@ -55,15 +55,12 @@ public class GameScreenController {
     public TextArea txtBaseInfos;
     private Math m = new Math();
     Image imgCurrentPlanet;
-    String planetName;
     int players;
 
     @FXML
     private void initialize(){
-        planetName = "Test Planet";
-        lblPlanetName.setText(planetName);
+        lblPlanetName.setText(m.name.getName());
     }
-
     public void genNewPlanet(){
         m.calcFinalVal();
     }
