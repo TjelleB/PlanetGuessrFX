@@ -46,10 +46,14 @@ public class GameScreenController {
     public String playerName2;
     public String playerName3;
     public String playerName4;
-    int player1Guess;
-    int player2Guess;
-    int player3Guess;
-    int player4Guess;
+    public int playerScore1;
+    public int playerScore2;
+    public int playerScore3;
+    public int playerScore4;
+    int player1GainedPoints;
+    int player2GainedPoints;
+    int player3GainedPoints;
+    int player4GainedPoints;
     int planetValue;
     public ImageView ivPlanet;
     public TextArea txtBaseInfos;
@@ -78,6 +82,7 @@ public class GameScreenController {
         Parent root = loader.load();
         ResultScreenController controller = loader.getController();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
+        controller.displayScore(playerScore1, playerScore2,playerScore3,playerScore4, player1GainedPoints, player2GainedPoints, player3GainedPoints, player4GainedPoints);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 480, 640);
         stage.setScene(scene);
@@ -86,23 +91,22 @@ public class GameScreenController {
 
     public void checkConfirmation(ActionEvent event) throws IOException{
         if(bttnConfirm1.isSelected()&& players == 1){
-            player1Guess = Integer.parseInt(txtInput1.getText());
-            m.calcPts(player2Guess);
+            player1GainedPoints =  m.calcPts(Integer.parseInt(txtInput1.getText()));
             showResult(event);
         } else if(players == 2 && bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
-            player1Guess = Integer.parseInt(txtInput1.getText());
-            player2Guess = Integer.parseInt(txtInput2.getText());
+            player1GainedPoints =  m.calcPts(Integer.parseInt(txtInput1.getText()));
+            player2GainedPoints =  m.calcPts(Integer.parseInt(txtInput2.getText()));
             showResult(event);
         }else if( players == 3&& bttnConfirm3.isSelected()&&bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
-            player1Guess = Integer.parseInt(txtInput1.getText());
-            player2Guess = Integer.parseInt(txtInput2.getText());
-            player3Guess = Integer.parseInt(txtInput3.getText());
+            player1GainedPoints =  m.calcPts(Integer.parseInt(txtInput1.getText()));
+            player2GainedPoints =  m.calcPts(Integer.parseInt(txtInput2.getText()));
+            player3GainedPoints =  m.calcPts(Integer.parseInt(txtInput3.getText()));
             showResult(event);
         }else if(players == 4&&bttnConfirm4.isSelected()&& bttnConfirm3.isSelected()&&bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
-            player1Guess = Integer.parseInt(txtInput1.getText());
-            player2Guess = Integer.parseInt(txtInput1.getText());
-            player3Guess = Integer.parseInt(txtInput1.getText());
-            player4Guess = Integer.parseInt(txtInput1.getText());
+            player1GainedPoints =  m.calcPts(Integer.parseInt(txtInput1.getText()));
+            player2GainedPoints =  m.calcPts(Integer.parseInt(txtInput2.getText()));
+            player3GainedPoints =  m.calcPts(Integer.parseInt(txtInput3.getText()));
+            player4GainedPoints =  m.calcPts(Integer.parseInt(txtInput4.getText()));
             showResult(event);
         }
     }
@@ -194,6 +198,7 @@ public class GameScreenController {
         txtBaseInfos.setText(this.createStringH1());
         bttnHint1.setDisable(true);
         bttnHint2.setDisable(false);
+        System.out.println(m.value);
     }
     public void setHint2() {
         txtBaseInfos.setText(this.createStringH2());

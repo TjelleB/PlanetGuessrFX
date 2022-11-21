@@ -57,7 +57,15 @@ public class ResultScreenController {
         }
     }
 
-    public void displayScore(int scorePlayer1, int scorePlayer2, int scorePlayer3, int scorePlayer4){
+    public void displayScore(int playerScore1, int playerScore2, int playerScore3, int playerScore4,  int gainedScorePlayer1, int gainedScorePlayer2, int gainedScorePlayer3, int gainedScorePlayer4){
+        txtNr1Score.setText("Player 1: " + playerName1 + " + " + gainedScorePlayer1);
+        txtNr1UpdatedScore.setText("Updated Score" + (playerScore1+gainedScorePlayer1));
+        txtNr2Score.setText("Player 2: " + playerName2 + " + " + gainedScorePlayer2);
+        txtNr1UpdatedScore.setText("Updated Score" + (playerScore2+gainedScorePlayer2));
+        txtNr3Score.setText("Player 3: " + playerName3 + " + " + gainedScorePlayer3);
+        txtNr1UpdatedScore.setText("Updated Score" + (playerScore3+gainedScorePlayer3));
+        txtNr4Score.setText("Player 4: " + playerName4 + " + " + gainedScorePlayer4);
+        txtNr1UpdatedScore.setText("Updated Score" + (playerScore4+gainedScorePlayer4));
 
     }
 
