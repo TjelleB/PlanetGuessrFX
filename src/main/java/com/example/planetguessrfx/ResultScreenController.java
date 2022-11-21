@@ -55,8 +55,6 @@ public class ResultScreenController {
                 box4.setVisible(false);
             }
         }
-
-
     }
 
     public void displayScore(int scorePlayer1, int scorePlayer2, int scorePlayer3, int scorePlayer4){

@@ -46,6 +46,11 @@ public class GameScreenController {
     public String playerName2;
     public String playerName3;
     public String playerName4;
+    int player1guess;
+    int player2Guess;
+    int player3Guess;
+    int player4Guess;
+    int planetValue;
     public ImageView ivPlanet;
     public TextArea txtBaseInfos;
     private Math m = new Math();
