@@ -117,7 +117,7 @@ public class Math {
     public int getResourcesVal() {
         int val = 0;
         for (int t = 0; t < res.getArrayLength(); t++) {
-            val += res.getResources(t) * res.getValues(t);
+            val += res.getValues(t);
         }
         return val;
     }
@@ -125,7 +125,7 @@ public class Math {
         if (atmos.getAtmosphereType() == 0) {
             return 4;
         } else {
-            return this.surf.getType();
+            return surf.getType();
         }
     }
     public int calcPts(long sc) {

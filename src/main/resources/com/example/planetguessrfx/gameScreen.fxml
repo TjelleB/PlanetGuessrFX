@@ -12,6 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.DialogPane?>
 <AnchorPane fx:id="pBackground" style="-fx-background-color: #383434" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.GameScreenController">
    <children>
         <ImageView fx:id="ivPlanet" fitHeight="650.0" fitWidth="650.0" layoutX="-200.0" layoutY="-200.0" pickOnBounds="true" preserveRatio="true" />
