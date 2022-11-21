@@ -2,7 +2,6 @@
 import java.util.Random;
 public class Name extends Generator {
   
-  // immer abwechselnd Männer und Frauen
   private String[] names = {"Leon", "Kamela", "Marcel", "Hillary", "Edward", "Lisa", "Michael", "Marie", "Alexander", "Laura", "Felix", "Clara", "Lucas", "Charlotte", "Richard", "Elisabeth", "Julian", "Leonie", "Anton", "Emma", "Jeremy", "Johanna", "Joseph", "Leni", "Adam", "Anna",};
   private String name;
   
