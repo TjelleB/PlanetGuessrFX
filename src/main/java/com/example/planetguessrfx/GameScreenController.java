@@ -22,9 +22,9 @@ public class GameScreenController {
     public Rectangle rtInfos;
     public VBox vInfos;
     public Label lblPlanetName;
-    public Button bttnHint1;
-    public Button bttnHint2;
-    public Button BttnHint3;
+    public ToggleButton bttnHint1;
+    public ToggleButton bttnHint2;
+    public ToggleButton BttnHint3;
     public Button btValues;
     public VBox vInputs;
     public HBox hRow1;
@@ -48,8 +48,6 @@ public class GameScreenController {
     public String playerName4;
     public ImageView ivPlanet;
     public TextArea txtBaseInfos;
-
-
     private Math m = new Math();
     Image imgCurrentPlanet;
     String planetName;
@@ -64,11 +62,6 @@ public class GameScreenController {
     public void genNewPlanet(){
         m.calcFinalVal();
     }
-
-    public int getPlanettype(){
-        return m.detImg();
-    }
-
     public void returnToMain(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         Parent root = loader.load();
@@ -80,8 +73,6 @@ public class GameScreenController {
 
     public void showResult(ActionEvent event)throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resultScreen.fxml"));
-        ResultScreenController controller = loader.getController();
-        controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
         Parent root = loader.load();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 480, 640);
@@ -135,26 +126,58 @@ public class GameScreenController {
     public void chgBackground() {
 
         switch (m.detImg()) {
-            case 0 -> { // Stoneplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 1 -> { // Waterplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Water.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 2 -> { // Gasplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Gas.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 3 -> { // Iceplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Ice.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 4 -> { // No Atmosphere
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/No Atmos.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
+            case 0: // Stoneplanet
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
+                    ivPlanet.setImage(imgCurrentPlanet);
+                    break;
+            case 1: // Waterplanet
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Water.gif");
+                    ivPlanet.setImage(imgCurrentPlanet);
+                    break;
+            case 2: // Gasplanet
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Gas.gif");
+                    ivPlanet.setImage(imgCurrentPlanet);
+                    break;
+            case 3: // Iceplanet
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Ice.gif");
+                    ivPlanet.setImage(imgCurrentPlanet);
+                    break;
+            case 4: // No Atmosphere
+                    imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/No Atmos.gif");
+                    ivPlanet.setImage(imgCurrentPlanet);
+                    break;
         }
+    }
+    public String createStringBH() {
+        String s =   "Basis Wert: 50.000.000" +
+                "\nOberfläche: " + m.getBh1() +
+                "\nStern: " + m.getBh2() +
+                "\n";
+        return s;
+    }
+    public String createStringH1() {
+        String s = "" + this.createStringBH() +
+                "Atmosphäre: " + m.getH11() +
+                "\nWetter: " + m.getH12() +
+                "\n";
+        return s;
+    }
+    public String createStringH2() {
+        String s = "" + this.createStringH1() +
+                "Bewohnbar: " + m.getH2() +
+                "\n";
+        return s;
+    }
+    public void setBaseHints() {
+        txtBaseInfos.setEditable(false);
+        txtBaseInfos.setText(this.createStringBH());
+    }
+    public void setHint1() {
+        txtBaseInfos.setText(this.createStringH1());
+        bttnHint1.setDisable(true);
+    }
+    public void setHint2() {
+        txtBaseInfos.setText(this.createStringH2());
+        bttnHint2.setDisable(true);
     }
 }
