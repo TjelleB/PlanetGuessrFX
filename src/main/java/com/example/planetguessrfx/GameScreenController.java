@@ -22,9 +22,9 @@ public class GameScreenController {
     public Rectangle rtInfos;
     public VBox vInfos;
     public Label lblPlanetName;
-    public Button bttnHint1;
-    public Button bttnHint2;
-    public Button BttnHint3;
+    public ToggleButton bttnHint1;
+    public ToggleButton bttnHint2;
+    public ToggleButton BttnHint3;
     public Button btValues;
     public VBox vInputs;
     public HBox hRow1;
@@ -48,7 +48,6 @@ public class GameScreenController {
     public String playerName4;
     public ImageView ivPlanet;
     public TextArea txtBaseInfos;
-
     private Math m = new Math();
     Image imgCurrentPlanet;
     String planetName;
@@ -148,5 +147,37 @@ public class GameScreenController {
                     ivPlanet.setImage(imgCurrentPlanet);
                     break;
         }
+    }
+    public String createStringBH() {
+        String s =   "Basis Wert: 50.000.000" +
+                "\nOberfläche: " + m.getBh1() +
+                "\nStern: " + m.getBh2() +
+                "\n";
+        return s;
+    }
+    public String createStringH1() {
+        String s = "" + this.createStringBH() +
+                "Atmosphäre: " + m.getH11() +
+                "\nWetter: " + m.getH12() +
+                "\n";
+        return s;
+    }
+    public String createStringH2() {
+        String s = "" + this.createStringH1() +
+                "Bewohnbar: " + m.getH2() +
+                "\n";
+        return s;
+    }
+    public void setBaseHints() {
+        txtBaseInfos.setEditable(false);
+        txtBaseInfos.setText(this.createStringBH());
+    }
+    public void setHint1() {
+        txtBaseInfos.setText(this.createStringH1());
+        bttnHint1.setDisable(true);
+    }
+    public void setHint2() {
+        txtBaseInfos.setText(this.createStringH2());
+        bttnHint2.setDisable(true);
     }
 }
