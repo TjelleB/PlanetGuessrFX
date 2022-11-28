@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ButtonType?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
@@ -77,6 +79,24 @@
          <buttonTypes>
             <ButtonType fx:constant="CLOSE" />
          </buttonTypes>
+         <header>
+            <Label alignment="CENTER" text="Ressourcentabelle" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </header>
+         <content>
+            <TableView prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </content>
+         <graphic>
+            <Button mnemonicParsing="false" text="Button" />
+         </graphic>
       </DialogPane>
    </children>
 </AnchorPane>

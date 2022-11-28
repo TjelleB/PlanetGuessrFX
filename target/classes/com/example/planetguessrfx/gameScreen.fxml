@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ButtonType?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
@@ -31,7 +33,7 @@
                   <ToggleButton fx:id="bttnHint3" mnemonicParsing="false" onAction="#setHint3" text="Hint 3" />
                </children>
             </VBox>
-            <Button fx:id="btnValues" onAction="#openTblRes" layoutX="255.0" layoutY="443.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="182.0" text="Values" textAlignment="CENTER" />
+            <Button fx:id="btnValues" layoutX="255.0" layoutY="443.0" mnemonicParsing="false" onAction="#openTblRes" prefHeight="25.0" prefWidth="182.0" text="Values" textAlignment="CENTER" />
             <VBox fx:id="vInputs" layoutX="68.0" layoutY="511.0" prefHeight="86.0" prefWidth="345.0" spacing="10.0">
                <children>
                   <HBox fx:id="hRow1" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -73,7 +75,28 @@
             <Font size="11.0" />
          </font>
       </Button>
-      <DialogPane fx:id="dlgResTbl" headerText="Ressourcentabelle" layoutX="66.0" layoutY="224.0" visible="false" >
+      <DialogPane fx:id="dlgResTbl" headerText="Ressourcentabelle" layoutX="66.0" layoutY="224.0" visible="false">
+         <buttonTypes>
+            <ButtonType fx:constant="CLOSE" />
+         </buttonTypes>
+         <header>
+            <Label alignment="CENTER" text="Ressourcentabelle" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </header>
+         <content>
+            <TableView prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </content>
+         <graphic>
+            <Button mnemonicParsing="false" text="Button" />
+         </graphic>
       </DialogPane>
    </children>
 </AnchorPane>
