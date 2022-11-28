@@ -25,7 +25,7 @@ public class GameScreenController {
     public ToggleButton bttnHint1;
     public ToggleButton bttnHint2;
     public ToggleButton bttnHint3;
-    public Button btValues;
+    public Button btnValues;
     public VBox vInputs;
     public HBox hRow1;
     public HBox hPlayer1;
@@ -50,6 +50,7 @@ public class GameScreenController {
     public int playerScore2;
     public int playerScore3;
     public int playerScore4;
+    public DialogPane dlgResTbl;
     int player1GainedPoints;
     int player2GainedPoints;
     int player3GainedPoints;
@@ -208,5 +209,8 @@ public class GameScreenController {
     public void setHint3() {
         txtBaseInfos.setText(this.createStringH3());
         bttnHint3.setDisable(true);
+    }
+    public void openTblRes() {
+        dlgResTbl.setVisible(true);
     }
 }
