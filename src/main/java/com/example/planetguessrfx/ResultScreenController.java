@@ -39,6 +39,12 @@ public class ResultScreenController {
     int updatedScore2;
     int updatedScore3;
     int updatedScore4;
+    int score1;
+    int score2;
+    int score3;
+    int score4;
+
+
 
     public void setPlayers(int p, String p1, String p2, String p3, String p4) {
         players = p;
@@ -62,20 +68,27 @@ public class ResultScreenController {
         }
     }
 
-    public void displayScore(int playerScore1, int playerScore2, int playerScore3, int playerScore4,  int gainedScorePlayer1, int gainedScorePlayer2, int gainedScorePlayer3, int gainedScorePlayer4){
-        txtNr1Score.setText("Player 1: " + playerName1 + " + " + gainedScorePlayer1);
-        updatedScore1 = playerScore1 + gainedScorePlayer1;
-        System.out.println(updatedScore1);
+    public void setScore(int s1, int s2, int s3, int s4){
+        score1 = s1;
+        score2 = s2;
+        score3 = s3;
+        score4 = s4;
+    }
+
+    public void displayScore(int gs1, int gs2, int gs3, int gs4){
+        updatedScore1 = gs1 + score1;
+        updatedScore2 = gs2 + score2;
+        updatedScore3 = gs3 + score3;
+        updatedScore4 = gs4 + score4;
+
+        txtNr1Score.setText("Player 1: " + playerName1 + " + " + gs1);
         txtNr1UpdatedScore.setText("Updated Score: " + updatedScore1);
-        txtNr2Score.setText("Player 2: " + playerName2 + " + " + gainedScorePlayer2);
-        updatedScore2 = playerScore2 + gainedScorePlayer2;
-        txtNr1UpdatedScore.setText("Updated Score: " + updatedScore2);
-        txtNr3Score.setText("Player 3: " + playerName3 + " + " + gainedScorePlayer3);
-        updatedScore3 = playerScore3 + gainedScorePlayer3;
-        txtNr1UpdatedScore.setText("Updated Score: " + updatedScore3);
-        txtNr4Score.setText("Player 4: " + playerName4 + " + " + gainedScorePlayer4);
-        updatedScore4 = playerScore4 + gainedScorePlayer3;
-        txtNr1UpdatedScore.setText("Updated Score: " + updatedScore4);
+        txtNr2Score.setText("Player 2: " + playerName2 + " + " + gs2);
+        txtNr2UpdatedScore.setText("Updated Score: " + updatedScore2);
+        txtNr3Score.setText("Player 3: " + playerName3 + " + " + gs3);
+        txtNr3UpdatedScore.setText("Updated Score: " + updatedScore3);
+        txtNr4Score.setText("Player 4: " + playerName4 + " + " + gs4);
+        txtNr4UpdatedScore.setText("Updated Score: " + updatedScore4);
 
     }
 
@@ -84,6 +97,7 @@ public class ResultScreenController {
         Parent root = loader.load();
         GameScreenController controller = loader.getController();
         controller.genNewPlanet();
+        controller.setScores(updatedScore1, updatedScore2, updatedScore3, updatedScore4);
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
         controller.chgBackground();
         controller.setBaseHints();
