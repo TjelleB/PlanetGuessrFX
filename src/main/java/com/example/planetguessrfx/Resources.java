@@ -11,8 +11,8 @@ public class Resources extends Generator {
   private static final int RARE = 351;
   private static final int VERY_RARE = 301;
   private static final int EXTREMELY_RARE = 101;
-  private int[] resources = new int[15];
-  private int[] values = new int[15];
+  private final int[] resources = new int[15];
+  private final double[] values = new double[15];
   private int type;
   
   public Resources() {
@@ -38,23 +38,23 @@ public class Resources extends Generator {
     resources[12] = rdm1.nextInt(VERY_FREQUENTLY);
     resources[13] = rdm1.nextInt(MODERATE);
     resources[14] = rdm1.nextInt(MODERATE);
-    
+
     Random rdm2 = new Random(); // creating Random object
-    values[0] = rdm2.nextInt(375)+75;
-    values[1] = rdm2.nextInt(43500)+35500;
-    values[2] = rdm2.nextInt(248500)+224000;
-    values[3] = rdm2.nextInt(1770000)+1692000;
-    values[4] = rdm2.nextInt(1038000)+896100;
-    values[5] = rdm2.nextInt(208)+124;
-    values[6] = rdm2.nextInt(2080)+1625;
-    values[7] = rdm2.nextInt(3500000)+3000000;
-    values[8] = rdm2.nextInt(26500)+20000;
-    values[9] = rdm2.nextInt(56000)+46500;
-    values[10] = rdm2.nextInt(11250)+6750;
-    values[11] = rdm2.nextInt(5700000)+3900000;
-    values[12] = 3000;
-    values[13] = rdm2.nextInt(20500)+16000;
-    values[14] = rdm2.nextInt(32000)+25000;
+    values[0] = (rdm2.nextInt(5-1)+1)/10.0;
+    values[1] = rdm2.nextInt(87-71)+71;
+    values[2] = rdm2.nextInt(710-640)+640;
+    values[3] = rdm2.nextInt(5900-5640)+5640;
+    values[4] = rdm2.nextInt(3460-2987)+2987;
+    values[5] = (rdm2.nextInt(32-19)+19)/100.0;
+    values[6] = (rdm2.nextInt(32-25)+25)/10.0;
+    values[7] = rdm2.nextInt(35000-30000)+30000;
+    values[8] = rdm2.nextInt(53-40)+40;
+    values[9] = rdm2.nextInt(112-93)+93;
+    values[10] = rdm2.nextInt(15-9)+9;
+    values[11] = rdm2.nextInt(19000-13000)+13000;
+    values[12] = 3;
+    values[13] = rdm2.nextInt(41-32)+32;
+    values[14] = rdm2.nextInt(64-50)+50;
     
     Random rdm3 = new Random();
     type = rdm3.nextInt(4);
@@ -66,7 +66,7 @@ public class Resources extends Generator {
   public int getResources(int c) {
     return resources[c];
   }
-  public int getValues(int c) {
+  public double getValues(int c) {
     return values[c];
   }
   public int getArrayLength() { //Wiedergabe der Array-Laenge

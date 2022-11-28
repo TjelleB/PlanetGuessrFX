@@ -117,7 +117,7 @@ public class Math {
     public int getResourcesVal() {
         int val = 0;
         for (int t = 0; t < res.getArrayLength(); t++) {
-            val += res.getValues(t);
+            val += res.getValues(t) * res.getResources(t);
         }
         return val;
     }

@@ -57,7 +57,7 @@ public class GameScreenController {
     int planetValue;
     public ImageView ivPlanet;
     public TextArea txtBaseInfos;
-    private Math m = new Math();
+    private final Math m = new Math();
     Image imgCurrentPlanet;
     int players;
 
