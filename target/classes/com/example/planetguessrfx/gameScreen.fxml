@@ -77,7 +77,7 @@
       </Button>
       <DialogPane fx:id="dlgResTbl" headerText="Ressourcentabelle" layoutX="66.0" layoutY="224.0" visible="false">
          <buttonTypes>
-            <ButtonType fx:constant="CLOSE" />
+            <ButtonType fx:id="btnClose" fx:constant="CLOSE" />
          </buttonTypes>
          <header>
             <Label alignment="CENTER" text="Ressourcentabelle" textAlignment="CENTER">
@@ -89,14 +89,12 @@
          <content>
             <TableView prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                  <TableColumn fx:id="tblColRes" editable="false" prefWidth="75.0" sortable="false" text="Ressource" />
+                <TableColumn fx:id="tblColValue" editable="false" prefWidth="75.0" sortable="false" text="Wert" />
+                <TableColumn fx:id="tblColAmount" editable="false" prefWidth="75.0" sortable="false" text="Menge" />
               </columns>
             </TableView>
          </content>
-         <graphic>
-            <Button mnemonicParsing="false" text="Button" />
-         </graphic>
       </DialogPane>
    </children>
 </AnchorPane>
