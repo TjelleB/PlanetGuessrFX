@@ -13,10 +13,9 @@ public class Name extends Generator {
     finalName = (greek_letters[index]) + " ";
     index = rdm.nextInt(name.length);
     finalName += (name[index]);
-    if(index >=3){finalName +=  " ";}
     index = rdm.nextInt(letter.length);
+    if(index >=3){finalName +=  "-";}
     finalName += (letter[index]);
-    if(index >=3){finalName +=  " ";}
     index = rdm.nextInt(numbers.length);
     finalName +=(numbers[index]);
   }
