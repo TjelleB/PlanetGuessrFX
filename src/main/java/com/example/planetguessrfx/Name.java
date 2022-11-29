@@ -17,6 +17,7 @@ public class Name extends Generator {
     if(index >=3){finalName +=  "-";}
     finalName += (letter[index]);
     index = rdm.nextInt(numbers.length);
+    if(index >=3){finalName +=  " ";}
     finalName +=(numbers[index]);
   }
   public String getName() {
