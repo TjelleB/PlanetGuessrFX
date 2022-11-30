@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PlanetGuessr extends Application {
+public class
+PlanetGuessr extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
