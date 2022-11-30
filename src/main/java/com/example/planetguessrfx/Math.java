@@ -128,7 +128,7 @@ public class Math {
             return surf.getType();
         }
     }
-    public int calcPts(long sc) {
+    public int calcPts(double redM, long sc) {
         long[] lwrBorders = new long[10];
         long[] uprBorders = new long[10];
         double multi = 0;
@@ -144,9 +144,9 @@ public class Math {
             for (int v = 0; v < uprBorders.length; v++) {
                 reduce += 0.1;
                 if (sc == value) {
-                    return (int) (value / 10000);
+                    return (int) ((value / 10000) * redM);
                 } else if (sc >= lwrBorders[v] && sc <= uprBorders[v]) {
-                    return (int) ((value - (value * reduce)) / 10000);
+                    return (int) (((value - (value * reduce)) / 10000) * redM);
                 }
             }
         }
