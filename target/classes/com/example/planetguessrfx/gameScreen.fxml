@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -77,54 +76,20 @@
       </Button>
       <Pane fx:id="tblPane" layoutX="10.0" layoutY="10.0" visible="false">
          <children>
-            <Label alignment="CENTER" text="Ressourcentabelle" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TableView fx:id="tblView" prefHeight="200.0" prefWidth="200.0">
-              <columns>
-                <TableColumn fx:id="tblColRes" prefWidth="75.0" text="Ressource" />
-                <TableColumn fx:id="tblColVal" prefWidth="75.0" text="Wert" />
-                <TableColumn fx:id="tblColAmount" prefWidth="75.0" text="Menge" visible="false"/>
-              </columns>
-            </TableView>
-            <VBox fx:id="vBPane" visible="false">
+            <VBox fx:id="vBPane">
                <children>
-                  <HBox fx:id="hBtbl" alignment="CENTER">
-                     <children>
-                        <VBox fx:id="vBres" alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label fx:id="lblResource" alignment="CENTER" text="Ressource" textAlignment="CENTER">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <ListView fx:id="lvRes" editable="false" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" />
-                           </children>
-                        </VBox>
-                        <VBox fx:id="vBval" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label fx:id="lblValue" alignment="CENTER" text="Wert" textAlignment="CENTER">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <ListView fx:id="lvVal" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" />
-                           </children>
-                        </VBox>
-                        <VBox fx:id="vBamount" alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label fx:id="lblAmount" alignment="CENTER" text="Menge" textAlignment="CENTER">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <ListView fx:id="lvAmount" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
+                  <Label alignment="CENTER" text="Ressourcentabelle" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tblView">
+                    <columns>
+                      <TableColumn fx:id="tblColRes" prefWidth="75.0" text="Ressource" />
+                      <TableColumn fx:id="tblColVal" prefWidth="75.0" text="Wert" />
+                      <TableColumn fx:id="tblColAmount" prefWidth="75.0" text="Menge" visible="false" />
+                    </columns>
+                  </TableView>
                </children>
             </VBox>
          </children>

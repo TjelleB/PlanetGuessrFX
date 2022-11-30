@@ -2,8 +2,6 @@ package com.example.planetguessrfx;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,17 +53,6 @@ public class GameScreenController {
     public int score3;
     public int score4;
     public Pane tblPane;
-    public VBox vBPane;
-    public HBox hBtbl;
-    public VBox vBres;
-    public Label lblResource;
-    public ListView lvRes;
-    public VBox vBval;
-    public Label lblValue;
-    public ListView lvVal;
-    public VBox vBamount;
-    public Label lblAmount;
-    public ListView lvAmount;
     public TableView tblView;
     public TableColumn tblColRes;
     public TableColumn tblColVal;
@@ -74,7 +61,6 @@ public class GameScreenController {
     int gainedScore2;
     int gainedScore3;
     int gainedScore4;
-    int planetValue;
     public ImageView ivPlanet;
     public TextArea txtBaseInfos;
     private final Math m = new Math();
@@ -84,6 +70,7 @@ public class GameScreenController {
     @FXML
     private void initialize() {
         lblPlanetName.setText(m.name.getName());
+        this.addDataToTbl();
     }
     public void genNewPlanet(){
         m.calcFinalVal();
@@ -191,29 +178,25 @@ public class GameScreenController {
         }
     }
     public String createStringBH() {
-        String s =   "Basis Wert: 50.000.000" +
+        return "Basis Wert: 50.000.000" +
                 "\nOberfläche: " + m.getBh1() +
                 "\nStern: " + m.getBh2() +
                 "\n";
-        return s;
     }
     public String createStringH1() {
-        String s = "" + this.createStringBH() +
+        return "" + this.createStringBH() +
                 "Tipp 1:\nAtmosphäre: " + m.getH11() +
                 "\nWetter: " + m.getH12() +
                 "\n";
-        return s;
     }
     public String createStringH2() {
-        String s = "" + this.createStringH1() +
+        return "" + this.createStringH1() +
                 "Tipp 2:\nBewohnbar: " + m.getH2() +
                 "\n";
-        return s;
     }
     public String createStringH3() {
-        String s = "" + this.createStringH2() +
+        return "" + this.createStringH2() +
                 "Tipp 3:\nRessourcenmenge der Wertetabelle hinzugefügt!";
-        return s;
     }
     public void setBaseHints() {
         txtBaseInfos.setEditable(false);
@@ -239,8 +222,7 @@ public class GameScreenController {
         bttnHint3.setDisable(true);
     }
     public void openTblRes() {
-        tblPane.setVisible(true);
-        this.addDataToTbl();
+        tblPane.setVisible(!tblPane.isVisible());
     }
     public void addDataToTbl() {
         String[][] data = new String[m.res.getArrayLength()][3];
