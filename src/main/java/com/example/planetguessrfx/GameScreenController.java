@@ -71,6 +71,14 @@ public class GameScreenController {
     private final Math m = new Math();
     Image imgCurrentPlanet;
     int players;
+    private double redMP1;
+    private double redMP2;
+    private double redMP3;
+    private double redMP4;
+    private boolean isLockedP1 = false;
+    private boolean isLockedP2 = false;
+    private boolean isLockedP3 = false;
+    private boolean isLockedP4 = false;
 
     @FXML
     private void initialize() {
@@ -116,29 +124,109 @@ public class GameScreenController {
         score3 = s3;
         score4 = s4;
     }
-
+    public void disableInput() {
+        txtInput1.setEditable(!bttnConfirm1.isSelected());
+        txtInput2.setEditable(!bttnConfirm2.isSelected());
+        txtInput3.setEditable(!bttnConfirm3.isSelected());
+        txtInput4.setEditable(!bttnConfirm4.isSelected());
+        bttnConfirm1.setDisable(bttnConfirm1.isSelected());
+        bttnConfirm2.setDisable(bttnConfirm2.isSelected());
+        bttnConfirm3.setDisable(bttnConfirm3.isSelected());
+        bttnConfirm4.setDisable(bttnConfirm4.isSelected());
+    }
+    public void calcReducedMultiplier() {
+        if(!isLockedP1) {
+            if (bttnConfirm1.isDisabled()) {
+                if (bttnHint3.isSelected()) {
+                    redMP1 = 0.65;
+                    isLockedP1 = true;
+                } else if (bttnHint2.isSelected()) {
+                    redMP1 = 0.70;
+                    isLockedP1 = true;
+                } else if (bttnHint1.isSelected()) {
+                    redMP1 = 0.85;
+                    isLockedP1 = true;
+                } else {
+                    redMP1 = 1;
+                    isLockedP1 = true;
+                }
+            }
+        }
+        if(!isLockedP2) {
+            if (bttnConfirm2.isDisabled()) {
+                if (bttnHint3.isSelected()) {
+                    redMP2 = 0.65;
+                    isLockedP2 = true;
+                } else if (bttnHint2.isSelected()) {
+                    redMP2 = 0.70;
+                    isLockedP2 = true;
+                } else if (bttnHint1.isSelected()) {
+                    redMP2 = 0.85;
+                    isLockedP2 = true;
+                } else {
+                    redMP2 = 1;
+                    isLockedP2 = true;
+                }
+            }
+        }
+        if(!isLockedP3) {
+            if (bttnConfirm3.isDisabled()) {
+                if (bttnHint3.isSelected()) {
+                    redMP3 = 0.65;
+                    isLockedP3 = true;
+                } else if (bttnHint2.isSelected()) {
+                    redMP3 = 0.70;
+                    isLockedP3 = true;
+                } else if (bttnHint1.isSelected()) {
+                    redMP3 = 0.85;
+                    isLockedP3 = true;
+                } else {
+                    redMP3 = 1;
+                    isLockedP3 = true;
+                }
+            }
+        }
+        if(!isLockedP4) {
+            if (bttnConfirm4.isDisabled()) {
+                if (bttnHint3.isSelected()) {
+                    redMP4 = 0.65;
+                    isLockedP4 = true;
+                } else if (bttnHint2.isSelected()) {
+                    redMP4 = 0.70;
+                    isLockedP4 = true;
+                } else if (bttnHint1.isSelected()) {
+                    redMP4 = 0.85;
+                    isLockedP4 = true;
+                } else {
+                    redMP4 = 1;
+                    isLockedP4 = true;
+                }
+            }
+        }
+    }
     public void checkConfirmation(ActionEvent event) throws IOException{
+        this.disableInput();
+        this.calcReducedMultiplier();
         if(bttnConfirm1.isSelected()&& players == 1){
-            gainedScore1 =  m.calcPts(Integer.parseInt(txtInput1.getText()));
+            gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
             showResult(event);
         } else if(players == 2 && bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
-            gainedScore1 =  m.calcPts(Integer.parseInt(txtInput1.getText()));
-            gainedScore2 =  m.calcPts(Integer.parseInt(txtInput2.getText()));
+            gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
+            gainedScore2 =  m.calcPts(redMP2, Integer.parseInt(txtInput2.getText()));
             showResult(event);
         }else if( players == 3&& bttnConfirm3.isSelected()&&bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
-            gainedScore1 =  m.calcPts(Integer.parseInt(txtInput1.getText()));
-            gainedScore2 =  m.calcPts(Integer.parseInt(txtInput2.getText()));
-            gainedScore3 =  m.calcPts(Integer.parseInt(txtInput3.getText()));
+            gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
+            gainedScore2 =  m.calcPts(redMP2, Integer.parseInt(txtInput2.getText()));
+            gainedScore3 =  m.calcPts(redMP3, Integer.parseInt(txtInput3.getText()));
             showResult(event);
         }else if(players == 4&&bttnConfirm4.isSelected()&& bttnConfirm3.isSelected()&&bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
-            gainedScore1 =  m.calcPts(Integer.parseInt(txtInput1.getText()));
-            gainedScore2 =  m.calcPts(Integer.parseInt(txtInput2.getText()));
-            gainedScore3 =  m.calcPts(Integer.parseInt(txtInput3.getText()));
-            gainedScore4 =  m.calcPts(Integer.parseInt(txtInput4.getText()));
+            gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
+            gainedScore2 =  m.calcPts(redMP2, Integer.parseInt(txtInput2.getText()));
+            gainedScore3 =  m.calcPts(redMP3, Integer.parseInt(txtInput3.getText()));
+            gainedScore4 =  m.calcPts(redMP4, Integer.parseInt(txtInput4.getText()));
             showResult(event);
         }
     }
-
     public void setPlayers(int p, String p1, String p2, String p3, String p4){
         players = p;
         playerName1 = p1;
