@@ -7,11 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.Serial;
+import java.sql.SQLException;
 
 public class ResultScreenController {
     public Label txtNr1Score;
@@ -27,6 +29,10 @@ public class ResultScreenController {
     public VBox box2;
     public VBox box3;
     public VBox box4;
+    public Pane pSaveGame;
+    public Button btnMenu;
+    public Button btnSave;
+    public Label lblYourCode;
     Stage stage;
     Scene scene;
 
@@ -68,6 +74,11 @@ public class ResultScreenController {
         }
     }
 
+    public void displaySaveOption(ActionEvent event){
+        pSaveGame.setVisible(true);
+
+    }
+
     public void setScore(int s1, int s2, int s3, int s4){
         score1 = s1;
         score2 = s2;
@@ -90,6 +101,14 @@ public class ResultScreenController {
         txtNr4Score.setText("Player 4: " + playerName4 + " + " + gs4);
         txtNr4UpdatedScore.setText("Updated Score: " + updatedScore4);
 
+    }
+
+    public void saveScore() throws SQLException {
+        database db = new database();
+        db.connect();
+        db.save(players,playerName1,playerName2,playerName3,playerName4,updatedScore1,updatedScore2,updatedScore3,updatedScore4);
+        lblYourCode.setText("Your code is: " + db.getSaveID());
+        btnSave.setDisable(true);
     }
 
     public void nextPlanet(ActionEvent event) throws IOException {
