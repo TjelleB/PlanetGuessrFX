@@ -8,7 +8,7 @@ public class Math {
     private final Surface surf = new Surface();
     private final Star star = new Star();
     private final Atmosphere atmos = new Atmosphere();
-    private final Resources res = new Resources();
+    protected final Resources res = new Resources();
     private final Habitability hab = new Habitability();
     protected final Name name = new Name();
     private String bh1;
@@ -117,7 +117,7 @@ public class Math {
     public int getResourcesVal() {
         int val = 0;
         for (int t = 0; t < res.getArrayLength(); t++) {
-            val += res.getValues(t) * res.getResources(t);
+            val += res.getValues(t) * res.getAmounts(t);
         }
         return val;
     }

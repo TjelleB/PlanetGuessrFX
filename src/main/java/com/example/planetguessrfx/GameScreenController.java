@@ -1,5 +1,9 @@
 package com.example.planetguessrfx;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +16,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class GameScreenController {
     public Pane pBackground;
@@ -48,7 +54,22 @@ public class GameScreenController {
     public int score2;
     public int score3;
     public int score4;
-    public DialogPane dlgResTbl;
+    public Pane tblPane;
+    public VBox vBPane;
+    public HBox hBtbl;
+    public VBox vBres;
+    public Label lblResource;
+    public ListView lvRes;
+    public VBox vBval;
+    public Label lblValue;
+    public ListView lvVal;
+    public VBox vBamount;
+    public Label lblAmount;
+    public ListView lvAmount;
+    public TableView tblView;
+    public TableColumn tblColRes;
+    public TableColumn tblColVal;
+    public TableColumn tblColAmount;
     int gainedScore1;
     int gainedScore2;
     int gainedScore3;
@@ -61,7 +82,7 @@ public class GameScreenController {
     int players;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         lblPlanetName.setText(m.name.getName());
     }
     public void genNewPlanet(){
@@ -191,7 +212,7 @@ public class GameScreenController {
     }
     public String createStringH3() {
         String s = "" + this.createStringH2() +
-                "Tipp 3:\nRessourcenanzahl der Wertetabelle hinzugefügt!";
+                "Tipp 3:\nRessourcenmenge der Wertetabelle hinzugefügt!";
         return s;
     }
     public void setBaseHints() {
@@ -213,10 +234,57 @@ public class GameScreenController {
         bttnHint3.setDisable(false);
     }
     public void setHint3() {
+        tblColAmount.setVisible(true);
         txtBaseInfos.setText(this.createStringH3());
         bttnHint3.setDisable(true);
     }
     public void openTblRes() {
-        dlgResTbl.setVisible(true);
+        tblPane.setVisible(true);
+        this.addDataToTbl();
+    }
+    public void addDataToTbl() {
+        String[][] data = new String[m.res.getArrayLength()][3];
+        String[] resources = {"Salz", "Kobalt", "Silber", "Gold", "Platin", "Kohlenstoff", "Natrium",
+                                "Tritium", "Eisen", "Kupfer", "Amonium", "Uran", "Dioxid", "Phosphor",
+                                "Dihydrogen"};
+        for (int i = 0; i < m.res.getArrayLength(); i++) {
+            data[i][0] = "" + resources[i];
+            data[i][1] = "" + m.res.getValues(i);
+            data[i][2] = "" + m.res.getAmounts(i);
+        }
+        tblColRes.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<String[], String> p) {
+                String[] x = p.getValue();
+                if (x != null && x.length>0) {
+                    return new SimpleStringProperty(x[0]);
+                } else {
+                    return new SimpleStringProperty("<no name>");
+                }
+            }
+        });
+        tblColVal.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<String[], String> p) {
+                String[] x = p.getValue();
+                if (x != null && x.length>1) {
+                    return new SimpleStringProperty(x[1]);
+                } else {
+                    return new SimpleStringProperty("<no value>");
+                }
+            }
+        });
+        tblColAmount.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<String[], String> p) {
+                String[] x = p.getValue();
+                if (x != null && x.length>2) {
+                    return new SimpleStringProperty(x[2]);
+                } else {
+                    return new SimpleStringProperty("<no value>");
+                }
+            }
+        });
+        tblView.getItems().addAll(Arrays.asList(data));
     }
 }
