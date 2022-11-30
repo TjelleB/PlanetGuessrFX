@@ -63,7 +63,7 @@
          </font>
       </Button>
       <Button layoutX="332.0" layoutY="558.0" mnemonicParsing="false" onAction="#displaySaveOption" prefHeight="50.0" prefWidth="50.0" text="Main Menu" textAlignment="CENTER" wrapText="true" />
-      <Pane fx:id="pSaveGame" focusTraversable="true" layoutX="85.0" layoutY="200.0" prefHeight="200.0" prefWidth="315.0" style="-fx-background-color: WHITE;">
+      <Pane fx:id="pSaveGame" focusTraversable="true" layoutX="85.0" layoutY="200.0" prefHeight="200.0" prefWidth="315.0" style="-fx-background-color: WHITE;" visible="false">
          <children>
             <Label layoutX="20.0" layoutY="14.0" text="Do you want to save your Session?">
                <font>

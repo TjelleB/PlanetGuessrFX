@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 public class GameScreenController {
@@ -43,6 +44,10 @@ public class GameScreenController {
     public HBox hPlayer4;
     public TextField txtInput4;
     public ToggleButton bttnConfirm4;
+    public Pane pSaveGame;
+    public Button btnMenu;
+    public Button btnSave;
+    public Label lblYourCode;
 
     public String playerName1;
     public String playerName2;
@@ -95,6 +100,14 @@ public class GameScreenController {
         Scene scene = new Scene(root, 480, 640);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void saveScore() throws SQLException {
+        database db = new database();
+        db.connect();
+        db.save(players,playerName1,playerName2,playerName3,playerName4,score1,score2,score3,score4);
+        lblYourCode.setText("Your code is: " + db.getSaveID());
+        btnSave.setDisable(true);
     }
 
     public  void setScores(int s1, int s2, int s3, int s4){
