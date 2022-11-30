@@ -27,12 +27,12 @@
                      </font>
                   </Label>
             <TextArea fx:id="txtBaseInfos" editable="false" maxWidth="181.0" minWidth="181.0" prefHeight="190.0" prefWidth="180.0" text="Base info here" wrapText="true" />
-                  <ToggleButton fx:id="bttnHint1" mnemonicParsing="false" onAction="#setHint1" text="Hint 1" />
-                  <ToggleButton fx:id="bttnHint2" mnemonicParsing="false" onAction="#setHint2" text="Hint 2" />
-                  <ToggleButton fx:id="bttnHint3" mnemonicParsing="false" onAction="#setHint3" text="Hint 3" />
+                  <ToggleButton fx:id="bttnHint1" mnemonicParsing="false" onAction="#setHint1" text="Tipp 1" />
+                  <ToggleButton fx:id="bttnHint2" mnemonicParsing="false" onAction="#setHint2" text="Tipp 2" />
+                  <ToggleButton fx:id="bttnHint3" mnemonicParsing="false" onAction="#setHint3" text="Tipp 3" />
                </children>
             </VBox>
-            <Button fx:id="btnValues" layoutX="255.0" layoutY="443.0" mnemonicParsing="false" onAction="#openTblRes" prefHeight="25.0" prefWidth="182.0" text="Values" textAlignment="CENTER" />
+            <Button fx:id="btnValues" layoutX="255.0" layoutY="443.0" mnemonicParsing="false" onAction="#openTblRes" prefHeight="25.0" prefWidth="182.0" text="Ressourcen" textAlignment="CENTER" />
             <VBox fx:id="vInputs" layoutX="68.0" layoutY="511.0" prefHeight="86.0" prefWidth="345.0" spacing="10.0">
                <children>
                   <HBox fx:id="hRow1" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
