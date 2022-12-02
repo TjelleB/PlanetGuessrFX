@@ -128,22 +128,27 @@ public class GameScreenController {
         score3 = s3;
         score4 = s4;
     }
+
+    //disableInput() = @Ivo
     public void disableInput() {
-        txtInput1.setEditable(!bttnConfirm1.isSelected());
+        txtInput1.setEditable(!bttnConfirm1.isSelected()); //Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
         txtInput2.setEditable(!bttnConfirm2.isSelected());
         txtInput3.setEditable(!bttnConfirm3.isSelected());
         txtInput4.setEditable(!bttnConfirm4.isSelected());
-        bttnConfirm1.setDisable(bttnConfirm1.isSelected());
+        bttnConfirm1.setDisable(bttnConfirm1.isSelected()); //Der ToggleButton wird deaktiviert, wenn er gedrückt ist
         bttnConfirm2.setDisable(bttnConfirm2.isSelected());
         bttnConfirm3.setDisable(bttnConfirm3.isSelected());
         bttnConfirm4.setDisable(bttnConfirm4.isSelected());
     }
+
+    //calcReducedMultiplier() = @Ivo
     public void calcReducedMultiplier() {
-        if(!isLockedP1) {
-            if (bttnConfirm1.isDisabled()) {
-                if (bttnHint3.isSelected()) {
-                    redMP1 = 0.65;
-                    isLockedP1 = true;
+        //Funktion für Spieler 1 - 4 identisch
+        if(!isLockedP1) { //Um die Abfrage nach einmaliger Benutzung zu
+            if (bttnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
+                if (bttnHint3.isSelected()) { //Wenn der letzte Tipp aktiviert wurde
+                    redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
+                    isLockedP1 = true; //If-Bedingung wird gesperrt, damit
                 } else if (bttnHint2.isSelected()) {
                     redMP1 = 0.70;
                     isLockedP1 = true;
@@ -282,27 +287,37 @@ public class GameScreenController {
             }
         }
     }
+
+    //createStringBH() = @Ivo
     public String createStringBH() {
         return "Basis Wert: 50.000.000" +
                 "\nOberfläche: " + m.getBh1() +
                 "\nStern: " + m.getBh2() +
                 "\n";
     }
+
+    //createStringH1() = @Ivo
     public String createStringH1() {
         return "" + this.createStringBH() +
                 "Tipp 1:\nAtmosphäre: " + m.getH11() +
                 "\nWetter: " + m.getH12() +
                 "\n";
     }
+
+    //createStringH2() = @Ivo
     public String createStringH2() {
         return "" + this.createStringH1() +
                 "Tipp 2:\nBewohnbar: " + m.getH2() +
                 "\n";
     }
+
+    //createStringH3() = @Ivo
     public String createStringH3() {
         return "" + this.createStringH2() +
                 "Tipp 3:\nRessourcenmenge der Wertetabelle hinzugefügt!";
     }
+
+    //setBaseHints() = @Ivo
     public void setBaseHints() {
         txtBaseInfos.setEditable(false);
         txtBaseInfos.setText(this.createStringBH());
@@ -310,29 +325,39 @@ public class GameScreenController {
         bttnHint2.setDisable(true);
         bttnHint3.setDisable(true);
     }
+
+    //setHint1() = @Ivo
     public void setHint1() {
         txtBaseInfos.setText(this.createStringH1());
         bttnHint1.setDisable(true);
         bttnHint2.setDisable(false);
         System.out.println(m.value);
     }
+
+    //setHint2() = @Ivo
     public void setHint2() {
         txtBaseInfos.setText(this.createStringH2());
         bttnHint2.setDisable(true);
         bttnHint3.setDisable(false);
     }
+
+    //setHint3() = @Ivo
     public void setHint3() {
         tblColAmount.setVisible(true);
         txtBaseInfos.setText(this.createStringH3());
         bttnHint3.setDisable(true);
     }
+
+    //openTblRes() = @Ivo
     public void openTblRes() {
         tblPane.setVisible(!tblPane.isVisible());
     }
+
+    //addDataToTbl() = @Ivo
     public void addDataToTbl() {
         String[][] data = new String[m.res.getArrayLength()][3];
         String[] resources = {"Salz", "Kobalt", "Silber", "Gold", "Platin", "Kohlenstoff", "Natrium",
-                                "Tritium", "Eisen", "Kupfer", "Amonium", "Uran", "Dioxid", "Phosphor",
+                                "Tritium", "Eisen", "Kupfer", "Ammonium", "Uran", "Dioxid", "Phosphor",
                                 "Dihydrogen"};
         for (int i = 0; i < m.res.getArrayLength(); i++) {
             data[i][0] = "" + resources[i];

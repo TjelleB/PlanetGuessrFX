@@ -15,6 +15,8 @@ public class Habitability extends Generator {
     Random rdm = new Random();
     habitable = rdm.nextBoolean();
   }
+
+  //checkHab() = @Ivo
   public void checkHab(int atmos, int surf) {
     if(atmos == 0) {
       habitable = false;

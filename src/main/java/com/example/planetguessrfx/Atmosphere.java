@@ -39,6 +39,8 @@ public class Atmosphere extends Generator {
   {
     return weather_type;
   }
+
+  //checkWeatherType() = @Ivo
   public void checkWeatherType(int surf) {
     if(atmosphere_type == 0) {
       weather_type = 4;
