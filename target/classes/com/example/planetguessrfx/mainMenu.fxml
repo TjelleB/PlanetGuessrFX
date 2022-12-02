@@ -8,10 +8,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pMainBackground" style="-fx-background-color: #383434" maxHeight="640.0" maxWidth="480.0" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.MainMenuController">
+<AnchorPane fx:id="pMainBackground" maxHeight="640.0" maxWidth="480.0" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: #383434" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.MainMenuController">
    <children>
       <ImageView fitHeight="741.0" fitWidth="750.0" layoutX="-141.0" layoutY="-123.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -59,5 +60,21 @@
          </children>
       </HBox>
             <ChoiceBox fx:id="cbPlayers" layoutX="5.0" layoutY="420.0" onAction="#playersSelected" prefHeight="34.0" prefWidth="112.0" value="1 Player" />
+      <Button fx:id="btnResume" layoutX="150.0" layoutY="373.0" mnemonicParsing="false" onAction="#showResumeDialog" prefHeight="40.0" prefWidth="40.0" text="Resume">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </Button>
+      <Pane fx:id="pResumeDialog" layoutX="129.0" layoutY="220.0" prefHeight="122.0" prefWidth="200.0" style="-fx-background-color: White;" visible="false">
+         <children>
+            <Button layoutX="53.0" layoutY="71.0" mnemonicParsing="false" text="Resume Game" />
+            <TextField layoutX="54.0" layoutY="41.0" prefHeight="25.0" prefWidth="92.0" />
+            <Label layoutX="56.0" layoutY="14.0" text="Your Code:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

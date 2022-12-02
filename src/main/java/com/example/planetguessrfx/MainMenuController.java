@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -22,6 +23,8 @@ public class MainMenuController {
     public Pane pMainBackground;
 
     public Label lblTitle;
+    public Pane pResumeDialog;
+    public Button btnResume;
 
     ObservableList<String> playerList = FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
 
@@ -75,6 +78,12 @@ public class MainMenuController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void showResumeDialog(){
+        pResumeDialog.setVisible(true);
+    }
+
+
 
     public void playersSelected(ActionEvent event) throws IOException{
         if(cbPlayers.getValue() == "1 Player"){
