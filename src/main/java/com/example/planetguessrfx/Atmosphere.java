@@ -3,7 +3,7 @@ package com.example.planetguessrfx;
 Ersteller: Frederick
 Wetter:
 0 = Moderat
-1 = Stürmisch
+1 = StÃ¼rmisch
 2 = Extreme Hitze
 3 = Chemischer Regen
 4 = Kosmische Strahlung
@@ -11,7 +11,7 @@ Wetter:
 6 = Permafrost
 7 = Vertrocknet
 
-Atmosphäre:
+AtmosphÃ¤re:
 0 = Keine
 1 = Schwach
 2 = Mittel
