@@ -36,7 +36,7 @@ public class Math {
         double m_weather = this.getM_Weather();
         //Berechnen und Zurueckgeben vom finalen Multiplikator
         double m_final;
-        if (this.atmos.getAtmosphereType() != 0) { //We
+        if (this.atmos.getAtmosphereType() != 0) { //Berechnung mit Multiplikatoren, die nur bei einer vorhandenen Atmosphaere logisch sind
             m_final = m_surface * m_star
                     * m_atmosphere * m_resources
                     * m_habitability * m_weather;
@@ -46,6 +46,8 @@ public class Math {
         }
         return m_final;
     }
+
+    //Generiere jeden Random-Wert neu
     public void generate() {
         surf.generate();
         atmos.generate();
@@ -54,9 +56,11 @@ public class Math {
         res.generate();
         hab.generate();
     }
+
+
     public double getM_Surface() {
-        surf.checkType(atmos.getAtmosphereType());
-        switch (surf.getType()) {
+        surf.checkType(atmos.getAtmosphereType()); //Checkt ob der Oberflaechentyp mit der Atmosphaere kompatibel ist
+        switch (surf.getType()) { //Bestimmung des Strings für die Tipps
             case 0 -> bh1 = "Stein";
             case 1 -> bh1 = "Wasser";
             case 2 -> bh1 = "Gas";
@@ -66,7 +70,7 @@ public class Math {
         return m_surface_array[surf.getType()];         //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Star() {
-        switch (star.getType()) {
+        switch (star.getType()) { //Bestimmung des Strings für die Tipps
             case 0 -> bh2 = "Zwerg";
             case 1 -> bh2 = "Riese";
             case 2 -> bh2 = "Neutron";
@@ -76,7 +80,7 @@ public class Math {
         return m_star_array[star.getType()];            //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Atmosphere() {
-        switch (atmos.getAtmosphereType()) {
+        switch (atmos.getAtmosphereType()) { //Bestimmung des Strings für die Tipps
             case 0 -> h11 = "Keine";
             case 1 -> h11 = "Schwach";
             case 2 -> h11 = "Normal";
@@ -86,8 +90,8 @@ public class Math {
         return m_atmosphere_array[atmos.getAtmosphereType()]; //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Weather() {
-        atmos.checkWeatherType(surf.getType());
-        switch (atmos.getWeatherType()) {
+        atmos.checkWeatherType(surf.getType()); //Checkt, ob das Wetter mit der Atmosphaere kompatibel ist
+        switch (atmos.getWeatherType()) { //Bestimmung des Strings für die Tipps
             case 0 -> h12 = "Moderat";
             case 1 -> h12 = "Stürmisch";
             case 2 -> h12 = "Extreme Hitze";
@@ -101,26 +105,30 @@ public class Math {
         return m_weather_array[atmos.getWeatherType()]; //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Habitability() {
-        hab.checkHab(atmos.getAtmosphereType(), surf.getType());
+        hab.checkHab(atmos.getAtmosphereType(), surf.getType()); //Checkt ob die Bewohnbarkeit mit Oberflaeche und Atmosphaere kompatibel ist
         if(hab.getHabitable()) {
-            h2 = "Ja";
-            return 1;
+            h2 = "Ja"; //String für Tipp
+            return 1; //Multiplikator
         } else {
-            h2 = "Nein";
-            return 0.6;
+            h2 = "Nein"; //String für Tipp
+            return 0.6; //Multiplikator
         }
     }
     public double getM_Resources() {
         double[] m_resources_array = {0.3, 0.7, 1, 1.4};  //Alle möglichen Multiplikatoren
         return m_resources_array[res.getType()];    //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
+
+    //Berechnet den totalen Wert aller Ressourcen des Planeten
     public int getResourcesVal() {
         int val = 0;
         for (int t = 0; t < res.getArrayLength(); t++) {
-            val += res.getValues(t) * res.getAmounts(t);
+            val += res.getValues(t) * res.getAmounts(t); //Wert der Ressource * vorhandene Menge
         }
         return val;
     }
+
+    //Bestimmt welches Gif geladen wird
     public int detImg() {
         if (atmos.getAtmosphereType() == 0) {
             return 4;
@@ -129,8 +137,8 @@ public class Math {
         }
     }
     public int calcPts(double redM, long sc) {
-        long[] lwrBorders = new long[10];
-        long[] uprBorders = new long[10];
+        long[] lwrBorders = new long[25];
+        long[] uprBorders = new long[25];
         double multi = 0;
         for (int i = 0; i < lwrBorders.length; i++) {
             multi += 0.01;
@@ -142,7 +150,7 @@ public class Math {
             return 0;
         } else {
             for (int v = 0; v < uprBorders.length; v++) {
-                reduce += 0.1;
+                reduce += 0.02;
                 if (sc == value) {
                     return (int) ((value / 10000) * redM);
                 } else if (sc >= lwrBorders[v] && sc <= uprBorders[v]) {
