@@ -36,7 +36,7 @@ public class Math {
         double m_weather = this.getM_Weather();
         //Berechnen und Zurueckgeben vom finalen Multiplikator
         double m_final;
-        if (this.atmos.getAtmosphereType() == 0) { //We
+        if (this.atmos.getAtmosphereType() != 0) { //We
             m_final = m_surface * m_star
                     * m_atmosphere * m_resources
                     * m_habitability * m_weather;
