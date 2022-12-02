@@ -16,7 +16,7 @@ public class Math {
     private String h11;
     private String h12;
     private String h2;
-    private String h3;
+
 
     //Methoden
     public void calcFinalVal() {
@@ -27,16 +27,16 @@ public class Math {
         value = (long) (m_baseval + resourceval);
     }
     public double calcFinalValueMultiplier() {
-        //Berechnen der einzelnen Multiplikatoren
+        //Aufrufen der einzelnen Funktionen zum Berechnen der Multiplikatoren
         double m_atmosphere = this.getM_Atmosphere();
         double m_surface = this.getM_Surface();
         double m_star = this.getM_Star();
         double m_resources = this.getM_Resources();
         double m_habitability = this.getM_Habitability();
         double m_weather = this.getM_Weather();
-        //Berechnen und zurueckgeben vom finalen Multiplikator
+        //Berechnen und Zurueckgeben vom finalen Multiplikator
         double m_final;
-        if (this.surf.getType() == 0) {
+        if (this.atmos.getAtmosphereType() == 0) { //We
             m_final = m_surface * m_star
                     * m_atmosphere * m_resources
                     * m_habitability * m_weather;
