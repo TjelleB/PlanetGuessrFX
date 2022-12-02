@@ -17,14 +17,12 @@ public class Math {
     private String h12;
     private String h2;
 
-
     //Methoden
     public void calcFinalVal() {
-        this.generate();
-        int resourceval = this.getResourcesVal();
-        int baseval = 50000000;
-        double m_baseval = baseval * this.calcFinalValueMultiplier();
-        value = (long) (m_baseval + resourceval);
+        this.generate(); //Alle Random-Wert werden neu generiert
+        int baseval = 50000000; //Basiswert des Planeten
+        double m_baseval = baseval * this.calcFinalValueMultiplier(); //Basiswert * kompletter berechneter Multiplikator
+        value = (long) (m_baseval + this.getResourcesVal()); //Endwert = angepasster Planetenwert + kompletter Ressourcenwert des Planeten
     }
     public double calcFinalValueMultiplier() {
         //Aufrufen der einzelnen Funktionen zum Berechnen der Multiplikatoren
@@ -36,7 +34,7 @@ public class Math {
         double m_weather = this.getM_Weather();
         //Berechnen und Zurueckgeben vom finalen Multiplikator
         double m_final;
-        if (this.atmos.getAtmosphereType() != 0) { //Berechnung mit Multiplikatoren, die nur bei einer vorhandenen Atmosphaere logisch sind
+        if (this.atmos.getAtmosphereType() != 0) { //Berechnung mit Multiplikatoren, die nur bei einer vorhandenen Atmosphäre logisch sind
             m_final = m_surface * m_star
                     * m_atmosphere * m_resources
                     * m_habitability * m_weather;
@@ -59,7 +57,7 @@ public class Math {
 
 
     public double getM_Surface() {
-        surf.checkType(atmos.getAtmosphereType()); //Checkt ob der Oberflaechentyp mit der Atmosphaere kompatibel ist
+        surf.checkType(atmos.getAtmosphereType()); //Checkt, ob der Oberflächentyp mit der Atmosphäre kompatibel ist
         switch (surf.getType()) { //Bestimmung des Strings für die Tipps
             case 0 -> bh1 = "Stein";
             case 1 -> bh1 = "Wasser";
@@ -90,7 +88,7 @@ public class Math {
         return m_atmosphere_array[atmos.getAtmosphereType()]; //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Weather() {
-        atmos.checkWeatherType(surf.getType()); //Checkt, ob das Wetter mit der Atmosphaere kompatibel ist
+        atmos.checkWeatherType(surf.getType()); //Checkt, ob das Wetter mit der Atmosphäre kompatibel ist
         switch (atmos.getWeatherType()) { //Bestimmung des Strings für die Tipps
             case 0 -> h12 = "Moderat";
             case 1 -> h12 = "Stürmisch";
@@ -105,7 +103,7 @@ public class Math {
         return m_weather_array[atmos.getWeatherType()]; //Rueckgabe vom Multiplikator, Bestimmung via Abfrage vom generierten Wert
     }
     public double getM_Habitability() {
-        hab.checkHab(atmos.getAtmosphereType(), surf.getType()); //Checkt ob die Bewohnbarkeit mit Oberflaeche und Atmosphaere kompatibel ist
+        hab.checkHab(atmos.getAtmosphereType(), surf.getType()); //Checkt, ob die Bewohnbarkeit mit Oberfläche und Atmosphäre kompatibel ist
         if(hab.getHabitable()) {
             h2 = "Ja"; //String für Tipp
             return 1; //Multiplikator
@@ -136,9 +134,13 @@ public class Math {
             return surf.getType();
         }
     }
+
+    //Berechnen der Punkte mit dem Wert des Users und seinem reduzierten Tipp-Multiplikator
     public int calcPts(double redM, long sc) {
+        //Arrays zum Speichern der Grenzwert für die Punkteberechnung
         long[] lwrBorders = new long[25];
         long[] uprBorders = new long[25];
+        //Schritte in 1% bis 25% (25% = Maximal erlaubte Abweichung zum tatsächlichen Wert)
         double multi = 0;
         for (int i = 0; i < lwrBorders.length; i++) {
             multi += 0.01;
@@ -146,9 +148,11 @@ public class Math {
             uprBorders[i] = (long) (value + value * multi);
         }
         double reduce = 0;
+        //Wenn der Score außerhalb der 25 % liegt, wird 0 als Punkte zurückgegeben
         if(sc < lwrBorders[lwrBorders.length-1] || sc > uprBorders[uprBorders.length-1]) {
             return 0;
         } else {
+            //Der Score wird mit jedem Grenzwert verglichen, jeder den er überschreitet, reduziert die Punkte um 2% (Max 50%)
             for (int v = 0; v < uprBorders.length; v++) {
                 reduce += 0.02;
                 if (sc == value) {
@@ -160,6 +164,7 @@ public class Math {
         }
         return 0;
     }
+    //Tipp-Strings
     public String getBh1() {return bh1;}
     public String getBh2() {return bh2;}
     public String getH11() {return h11;}
