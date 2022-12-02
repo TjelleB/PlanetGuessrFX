@@ -110,6 +110,10 @@ public class GameScreenController {
         stage.show();
     }
 
+    public void displaySaveOption(){
+        pSaveGame.setVisible(true);
+    }
+
     public void saveScore() throws SQLException {
         database db = new database();
         db.connect();

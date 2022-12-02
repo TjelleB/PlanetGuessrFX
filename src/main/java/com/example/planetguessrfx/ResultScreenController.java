@@ -74,9 +74,8 @@ public class ResultScreenController {
         }
     }
 
-    public void displaySaveOption(ActionEvent event){
+    public void displaySaveOption(){
         pSaveGame.setVisible(true);
-
     }
 
     public void setScore(int s1, int s2, int s3, int s4){
