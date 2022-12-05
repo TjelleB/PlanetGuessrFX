@@ -29,7 +29,7 @@ public class MainMenuController {
     public TextField txtPlayer3Name;
     public TextField txtPlayer2Name;
     public ChoiceBox cbPlayers;
-    ObservableList<String> playerList = FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
+    private final ObservableList<String> playerList = FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
     public String playerName1;
     public String playerName2;
     public String playerName3;
