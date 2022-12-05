@@ -29,7 +29,6 @@ public class MainMenuController {
     public TextField txtPlayer3Name;
     public TextField txtPlayer2Name;
     public ChoiceBox cbPlayers;
-
     ObservableList<String> playerList = FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
     public String playerName1;
     public String playerName2;
@@ -57,13 +56,10 @@ public class MainMenuController {
     public void startGame(ActionEvent event) throws IOException{
         checkNames();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
-        Parent root = loader.load();
         GameScreenController controller = loader.getController();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 480, 640);
-        stage.setScene(scene);
+        stage.setScene(new Scene(loader.load(), 480, 640));
         stage.show();
     }
 
