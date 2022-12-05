@@ -56,10 +56,13 @@ public class MainMenuController {
     public void startGame(ActionEvent event) throws IOException{
         checkNames();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
+        Parent root = loader.load();
         GameScreenController controller = loader.getController();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(loader.load(), 480, 640));
+        Scene scene = new Scene(root, 480, 640);
+        stage.setScene(scene);
         stage.show();
     }
 

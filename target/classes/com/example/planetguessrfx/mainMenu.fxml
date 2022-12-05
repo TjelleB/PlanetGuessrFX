@@ -12,69 +12,71 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pMainBackground" maxHeight="640.0" maxWidth="480.0" minHeight="530.0" minWidth="480.0" prefHeight="530.0" prefWidth="480.0" style="-fx-background-color: #383434" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.MainMenuController">
-   <children>
-      <ImageView fitHeight="741.0" fitWidth="750.0" layoutX="-141.0" layoutY="-123.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Pictures/BackgroundGalaxy.gif" />
-         </image>
-      </ImageView>
-            <Label fx:id="lblTitle" alignment="CENTER" layoutX="5.0" layoutY="247.0" prefHeight="70.0" prefWidth="366.0" text="PlanetGuessr" textFill="white">
-               <font>
-                  <Font size="64.0" />
-               </font></Label>
-            <Button fx:id="bttnStart" layoutX="5.0" layoutY="373.0" mnemonicParsing="false" onAction="#startGame" prefHeight="40.0" prefWidth="137.0" text="Start Game" textAlignment="CENTER">
+<AnchorPane fx:id="pMainBackground" maxHeight="640.0" maxWidth="480.0" minHeight="530.0" minWidth="480.0"
+            prefHeight="530.0" prefWidth="480.0" style="-fx-background-color: #383434"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.planetguessrfx.MainMenuController">
+   <ImageView fitHeight="741.0" fitWidth="750.0" layoutX="-141.0" layoutY="-123.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@Pictures/BackgroundGalaxy.gif"/>
+   </ImageView>
+   <Label fx:id="lblTitle" alignment="CENTER" layoutX="5.0" layoutY="247.0" prefHeight="70.0" prefWidth="366.0"
+          text="PlanetGuessr" textFill="white">
+      <font>
+         <Font size="64.0"/>
+      </font>
+   </Label>
+   <Button fx:id="bttnStart" layoutX="5.0" layoutY="373.0" mnemonicParsing="false" onAction="#startGame"
+           prefHeight="40.0" prefWidth="137.0" text="Start Game" textAlignment="CENTER">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Button>
+   <HBox layoutX="5.0" layoutY="468.0" prefHeight="128.0" prefWidth="470.0" spacing="5.0">
+      <VBox prefHeight="269.0" prefWidth="252.0" spacing="10.0">
+         <TextField fx:id="txtPlayer1Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 1">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </TextField>
+         <TextField fx:id="txtPlayer3Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 3"
+                    visible="false">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </TextField>
+      </VBox>
+      <VBox prefHeight="100.0" prefWidth="234.0" spacing="10.0">
+         <TextField fx:id="txtPlayer2Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 2"
+                    visible="false">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </TextField>
+         <TextField fx:id="txtPlayer4Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 4"
+                    visible="false">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </TextField>
+      </VBox>
+   </HBox>
+   <ChoiceBox fx:id="cbPlayers" layoutX="5.0" layoutY="420.0" onAction="#playersSelected" prefHeight="34.0"
+              prefWidth="112.0" value="1 Player"/>
+   <Button fx:id="btnResume" layoutX="150.0" layoutY="373.0" mnemonicParsing="false" onAction="#showResumeDialog"
+           prefHeight="40.0" prefWidth="40.0" text="Resume">
+      <font>
+         <Font size="8.0"/>
+      </font>
+   </Button>
+   <Pane fx:id="pResumeDialog" layoutX="129.0" layoutY="220.0" prefHeight="122.0" prefWidth="200.0"
+         style="-fx-background-color: White;" visible="false">
+      <Button layoutX="53.0" layoutY="71.0" mnemonicParsing="false" text="Resume Game"/>
+      <TextField layoutX="54.0" layoutY="41.0" prefHeight="25.0" prefWidth="92.0"/>
+      <Label layoutX="56.0" layoutY="14.0" text="Your Code:">
          <font>
-            <Font size="18.0" />
-         </font></Button>
-      <HBox layoutX="5.0" layoutY="468.0" prefHeight="128.0" prefWidth="470.0" spacing="5.0">
-         <children>
-            <VBox prefHeight="269.0" prefWidth="252.0" spacing="10.0">
-               <children>
-                        <TextField fx:id="txtPlayer1Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                        <TextField fx:id="txtPlayer3Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 3" visible="false">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="234.0" spacing="10.0">
-               <children>
-                        <TextField fx:id="txtPlayer2Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 2" visible="false">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                        <TextField fx:id="txtPlayer4Name" prefHeight="55.0" prefWidth="175.0" promptText="Player 4" visible="false">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-            <ChoiceBox fx:id="cbPlayers" layoutX="5.0" layoutY="420.0" onAction="#playersSelected" prefHeight="34.0" prefWidth="112.0" value="1 Player" />
-      <Button fx:id="btnResume" layoutX="150.0" layoutY="373.0" mnemonicParsing="false" onAction="#showResumeDialog" prefHeight="40.0" prefWidth="40.0" text="Resume">
-         <font>
-            <Font size="8.0" />
+            <Font size="18.0"/>
          </font>
-      </Button>
-      <Pane fx:id="pResumeDialog" layoutX="129.0" layoutY="220.0" prefHeight="122.0" prefWidth="200.0" style="-fx-background-color: White;" visible="false">
-         <children>
-            <Button layoutX="53.0" layoutY="71.0" mnemonicParsing="false" text="Resume Game" />
-            <TextField layoutX="54.0" layoutY="41.0" prefHeight="25.0" prefWidth="92.0" />
-            <Label layoutX="56.0" layoutY="14.0" text="Your Code:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </children>
+      </Label>
+   </Pane>
 </AnchorPane>
