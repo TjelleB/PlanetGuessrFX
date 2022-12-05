@@ -17,22 +17,17 @@ int players = 0;         //Spieleranzahl
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:GalaxyDB.db";
+            String url = "jdbc:sqlite:src/main/resources/com/example/planetguessrfx/GalaxyDB.db";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
-
             System.out.println("Connection has been established.");
 
-
 //Ausführen von Prepared Statement
-
-            //String query = " SELECT * FROM sqlite_master where type='table'";
             PreparedStatement myStmt = conn.prepareStatement(pstatement);
             if(number == 1)
             {
                 System.out.println(number);
                 for(int i = 1; i < players; i++) {    //Save score
-
                     myStmt.setInt(1, ScoreID);
                     myStmt.setInt(2, saveID);
                     myStmt.setString(3, playerNameArray[i - 1]);
@@ -47,7 +42,6 @@ int players = 0;         //Spieleranzahl
                 myStmt.setString(3, playerNameArray[1]);
                 myStmt.setString(4, playerNameArray[2]);
                 myStmt.setString(5, playerNameArray[3]);
-
             }
             else if (number == 3) //ScoreID
             {
@@ -55,10 +49,7 @@ int players = 0;         //Spieleranzahl
             } else if (number == 4) {     //SaveID,
                 System.out.println(number);
             }
-
             ResultSet myRs = myStmt.executeQuery();
-
-
             if (number ==1) {
                 result = myRs;
             } else if (number == 2) {
@@ -66,10 +57,8 @@ int players = 0;         //Spieleranzahl
             } else if (number == 3) { // ScoreID
                 result = myRs;
                 ScoreID = result.getInt(String.valueOf(myRs));
-
             } else if (number ==4){   //SaveID
                 saveID = result.getInt(String.valueOf(myRs));
-                result = myRs;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -84,75 +73,49 @@ int players = 0;         //Spieleranzahl
         }
     }
 
-public ResultSet getRS(){
+    public ResultSet getRS(){
        return result;
     }
 
     private String getPS(String t) {
         pstatement = t;
         connect();
-return null;
+    return null;
     }
 
     public void generateSaveID() throws SQLException {
          String SaveIDSQL = "SELECT MAX(SaveID) from Saves";
-    number =4;
-        getPS(SaveIDSQL);
-       ResultSet ret = getRS();
-       // saveID = getInt(ret) +1; //+1, um die nächst höhere Zahl zu bekommen
-        //return saveID;
-        //Wird gebraucht in Save (Saves[SaveID])
+         number =4;
+         getPS(SaveIDSQL);
+         ResultSet ret = getRS();
     }
-
 
     public void createArray(int SA, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4){
 
-
-        String[] SNA={SN1, SN2, SN3, SN4}; //Array für die Spielernamen
-        int[] Score = {SC1, SC2, SC3, SC4}; //Array für den Score
-
+        playerNameArray[1] = SN1;
+        playerNameArray[2] = SN2;
+        playerNameArray[3] = SN3;
+        playerNameArray[4] = SN4;//Array für die Spielernamen
+        Score[1] = SC1;
+        Score[2] = SC2;
+        Score[3] = SC3;
+        Score[4] = SC4;
+        //Array für den Score
     }
-
 
     public void save(int SA, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4) throws SQLException {
 
-
-       generateSaveID();
-       getNewScoreID();
+        generateSaveID();
+        getNewScoreID();
         createArray(SA, SN1, SN2, SN3, SN4, SC1, SC2, SC3,SC4);
 
-
-
-
-//SA = Score Anzahl: Anzahl an übergebenen Scores
-/*
-        for(int i = 1; i < SA; i++){    //Save score
-
-            String InsertScore = "INSERT INTO SCOREBOARD(?, ?, ?, ?)";
-            PreparedStatement SIS = conn.prepareStatement(InsertScore);
-            PreparedStatement.setInt(1, getNewScoreID());
-            PreparedStatement.setInt(2, saveID);
-            PreparedStatement.setString(3, SNA[i-1]);
-            PreparedStatement.setInt(4, Score[i-1]);
-
-            getPS2(InsertScore); //übergibt ps ohne eingaben
-            zahl = 1;
-       }*/
         String InsertScore = "INSERT INTO SCOREBOARD(?, ?, ?, ?)";
         getPS(InsertScore); //übergibt ps ohne eingaben
         number = 1;
 
-
 // Zum speichern des Spiels
         String InsertSave = "INSERT INTO Saves(?, ?, ?, ?, ?)";
-                               /*
-                                           PreparedStatement SPP = conn.prepareStatement(InsertSave);
-                                           SPP.setInt(1, saveID);
-                                           SPP.setString(2, SNA[0]);
-                                           SPP.setString(3, SNA[1]);
-                                           SPP.setString(4, SNA[2]);
-                                           SPP.setString(5, SNA[3]);
-*/
+
         getPS(InsertSave);
         number = 2;
     }
@@ -163,14 +126,8 @@ return null;
     public void getNewScoreID() throws SQLException {
                String ScoreIDSQL = "SELECT MAX(ScoreID) from Scoreboard";
 
-       // PreparedStatement ScoreSQLS = conn.PrepareStatement(ScoreIDSQL);
         number = 3;
         getPS(ScoreIDSQL);
         ResultSet e = getRS();
-
-       // ScoreID1 = getInt(e) +1; //+1, um die nächst höhere Zahl zu bekommen
-       // ScoreID = ScoreID1;
     }
-
-
 }
