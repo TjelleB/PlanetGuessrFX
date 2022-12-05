@@ -65,6 +65,7 @@ public class GameScreenController {
     public int score2;
     public int score3;
     public int score4;
+    public Button btnReturnToMain;
     int gainedScore1;
     int gainedScore2;
     int gainedScore3;
@@ -86,9 +87,9 @@ public class GameScreenController {
 
     // generiert einen neuen Planeten und holt sich den namen und wert aus der math klasse, legt den hintergrund passend zum Planetentypen fest
     public void genNewPlanet() {
-        lblPlanetName.setText(m.name.getName());
         this.addDataToTbl();
         m.calcFinalVal();
+        lblPlanetName.setText(m.name.getName());
         chgBackground();
         setBaseHints();
     }

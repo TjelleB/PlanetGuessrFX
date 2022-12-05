@@ -67,7 +67,7 @@
             </HBox>
         </HBox>
     </VBox>
-    <Button fx:id="bttnReturnToMain" alignment="TOP_LEFT" layoutX="430.0" layoutY="5.0" mnemonicParsing="false"
+    <Button fx:id="btnReturnToMain" alignment="TOP_LEFT" layoutX="430.0" layoutY="5.0" mnemonicParsing="false"
             onAction="#displaySaveOption" prefHeight="45.0" prefWidth="45.0" text="Main Menu" textAlignment="CENTER"
             wrapText="true">
         <font>
