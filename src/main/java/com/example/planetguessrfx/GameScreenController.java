@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 
 public class GameScreenController {
+    //FXML Objects
     public Pane pBackground;
     public Rectangle rtInfos;
     public VBox vInfos;
@@ -48,6 +49,13 @@ public class GameScreenController {
     public Button btnMenu;
     public Button btnSave;
     public Label lblYourCode;
+    public Pane tblPane;
+    public TableView tblView;
+    public TableColumn tblColRes;
+    public TableColumn tblColVal;
+    public TableColumn tblColAmount;
+    public ImageView ivPlanet;
+    public TextArea txtBaseInfos;
 
     public String playerName1;
     public String playerName2;
@@ -57,17 +65,10 @@ public class GameScreenController {
     public int score2;
     public int score3;
     public int score4;
-    public Pane tblPane;
-    public TableView tblView;
-    public TableColumn tblColRes;
-    public TableColumn tblColVal;
-    public TableColumn tblColAmount;
     int gainedScore1;
     int gainedScore2;
     int gainedScore3;
     int gainedScore4;
-    public ImageView ivPlanet;
-    public TextArea txtBaseInfos;
     private final Math m = new Math();
     Image imgCurrentPlanet;
     int players;
@@ -81,13 +82,18 @@ public class GameScreenController {
     private boolean isLockedP4 = false;
 
     @FXML
-    private void initialize() {
+    private void initialize() {genNewPlanet();}
+
+    // generiert einen neuen Planeten und holt sich den namen und wert aus der math klasse, legt den hintergrund passend zum Planetentypen fest
+    public void genNewPlanet() {
         lblPlanetName.setText(m.name.getName());
         this.addDataToTbl();
-    }
-    public void genNewPlanet(){
         m.calcFinalVal();
+        chgBackground();
+        setBaseHints();
     }
+
+    //Lädt das Main menu
     public void returnToMain(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         Parent root = loader.load();
@@ -97,23 +103,25 @@ public class GameScreenController {
         stage.show();
     }
 
+    //Lädt den result screeen und übergibt spieler anzahl, namen und punkte
     public void showResult(ActionEvent event)throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resultScreen.fxml"));
         Parent root = loader.load();
         ResultScreenController controller = loader.getController();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
-        controller.setScore(score1, score2, score3, score4);
-        controller.displayScore(gainedScore1, gainedScore2, gainedScore3, gainedScore4);
+        controller.displayScore(score1, score2, score3, score4, gainedScore1, gainedScore2, gainedScore3, gainedScore4);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 480, 640);
         stage.setScene(scene);
         stage.show();
     }
 
+    //Zeigt Speicheroption an
     public void displaySaveOption(){
         pSaveGame.setVisible(true);
     }
 
+    //Übergibt daten an die database klasse
     public void saveScore() throws SQLException {
         database db = new database();
         db.connect();
@@ -122,6 +130,7 @@ public class GameScreenController {
         btnSave.setDisable(true);
     }
 
+    //Setzt den aktuellen score aller Spieler
     public  void setScores(int s1, int s2, int s3, int s4){
         score1 = s1;
         score2 = s2;
@@ -129,93 +138,55 @@ public class GameScreenController {
         score4 = s4;
     }
 
-    //disableInput() = @Ivo
-    public void disableInput() {
+    public void checkP1() {
         txtInput1.setEditable(!bttnConfirm1.isSelected()); //Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
-        txtInput2.setEditable(!bttnConfirm2.isSelected());
-        txtInput3.setEditable(!bttnConfirm3.isSelected());
-        txtInput4.setEditable(!bttnConfirm4.isSelected());
         bttnConfirm1.setDisable(bttnConfirm1.isSelected()); //Der ToggleButton wird deaktiviert, wenn er gedrückt ist
-        bttnConfirm2.setDisable(bttnConfirm2.isSelected());
-        bttnConfirm3.setDisable(bttnConfirm3.isSelected());
-        bttnConfirm4.setDisable(bttnConfirm4.isSelected());
+        if (bttnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
+            if (bttnHint3.isSelected()) redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
+            else if (bttnHint2.isSelected()) redMP1 = 0.70;
+            else if (bttnHint1.isSelected()) redMP1 = 0.85;
+            else redMP1 = 1;
+            isLockedP1 = true; //If-Bedingung wird gesperrt
+        }
     }
-
-    //calcReducedMultiplier() = @Ivo
-    public void calcReducedMultiplier() {
-        //Funktion für Spieler 1 - 4 identisch
-        if(!isLockedP1) { //Um die Abfrage nach einmaliger Benutzung zu
-            if (bttnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
-                if (bttnHint3.isSelected()) { //Wenn der letzte Tipp aktiviert wurde
-                    redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
-                    isLockedP1 = true; //If-Bedingung wird gesperrt, damit
-                } else if (bttnHint2.isSelected()) {
-                    redMP1 = 0.70;
-                    isLockedP1 = true;
-                } else if (bttnHint1.isSelected()) {
-                    redMP1 = 0.85;
-                    isLockedP1 = true;
-                } else {
-                    redMP1 = 1;
-                    isLockedP1 = true;
-                }
-            }
+    public void checkP2() {
+        txtInput2.setEditable(!bttnConfirm2.isSelected());
+        bttnConfirm2.setDisable(bttnConfirm2.isSelected());
+        if (bttnConfirm2.isDisabled()) {
+            if (bttnHint3.isSelected()) redMP2 = 0.65;
+            else if (bttnHint2.isSelected()) redMP2 = 0.70;
+            else if (bttnHint1.isSelected()) redMP2 = 0.85;
+            else redMP2 = 1;
+            isLockedP2 = true;
         }
-        if(!isLockedP2) {
-            if (bttnConfirm2.isDisabled()) {
-                if (bttnHint3.isSelected()) {
-                    redMP2 = 0.65;
-                    isLockedP2 = true;
-                } else if (bttnHint2.isSelected()) {
-                    redMP2 = 0.70;
-                    isLockedP2 = true;
-                } else if (bttnHint1.isSelected()) {
-                    redMP2 = 0.85;
-                    isLockedP2 = true;
-                } else {
-                    redMP2 = 1;
-                    isLockedP2 = true;
-                }
-            }
+    }
+    public void checkP3() {
+        txtInput3.setEditable(!bttnConfirm3.isSelected());
+        bttnConfirm3.setDisable(bttnConfirm3.isSelected());
+        if (bttnConfirm3.isDisabled()) {
+            if (bttnHint3.isSelected()) redMP3 = 0.65;
+            else if (bttnHint2.isSelected()) redMP3 = 0.70;
+            else if (bttnHint1.isSelected()) redMP3 = 0.85;
+            else redMP3 = 1;
+            isLockedP3 = true;
         }
-        if(!isLockedP3) {
-            if (bttnConfirm3.isDisabled()) {
-                if (bttnHint3.isSelected()) {
-                    redMP3 = 0.65;
-                    isLockedP3 = true;
-                } else if (bttnHint2.isSelected()) {
-                    redMP3 = 0.70;
-                    isLockedP3 = true;
-                } else if (bttnHint1.isSelected()) {
-                    redMP3 = 0.85;
-                    isLockedP3 = true;
-                } else {
-                    redMP3 = 1;
-                    isLockedP3 = true;
-                }
-            }
-        }
-        if(!isLockedP4) {
-            if (bttnConfirm4.isDisabled()) {
-                if (bttnHint3.isSelected()) {
-                    redMP4 = 0.65;
-                    isLockedP4 = true;
-                } else if (bttnHint2.isSelected()) {
-                    redMP4 = 0.70;
-                    isLockedP4 = true;
-                } else if (bttnHint1.isSelected()) {
-                    redMP4 = 0.85;
-                    isLockedP4 = true;
-                } else {
-                    redMP4 = 1;
-                    isLockedP4 = true;
-                }
-            }
+    }
+    public void checkP4() {
+        txtInput4.setEditable(!bttnConfirm4.isSelected());
+        bttnConfirm4.setDisable(bttnConfirm4.isSelected());
+        if (bttnConfirm4.isDisabled()) {
+            if (bttnHint3.isSelected()) redMP4 = 0.65;
+            else if (bttnHint2.isSelected()) redMP4 = 0.70;
+            else if (bttnHint1.isSelected()) redMP4 = 0.85;
+            else redMP4 = 1;
+            isLockedP4 = true;
         }
     }
     public void checkConfirmation(ActionEvent event) throws IOException{
-        this.disableInput();
-        this.calcReducedMultiplier();
+        if(!isLockedP1) checkP1();
+        if(!isLockedP2) checkP2();
+        if(!isLockedP3) checkP3();
+        if(!isLockedP4) checkP4();
         if(bttnConfirm1.isSelected()&& players == 1){
             gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
             showResult(event);
@@ -236,16 +207,13 @@ public class GameScreenController {
             showResult(event);
         }
     }
+    //Zeigt den Spielernamen in der inputbox an und setzt sie auf sichtbar, jenachdem wie viele da sind
     public void setPlayers(int p, String p1, String p2, String p3, String p4){
         players = p;
-        playerName1 = p1;
-        txtInput1.setPromptText(playerName1 + "'s Guess");
-        playerName2 = p2;
-        txtInput2.setPromptText(playerName2 + "'s Guess");
-        playerName3 = p3;
-        txtInput3.setPromptText(playerName3 + "'s Guess");
-        playerName4 = p4;
-        txtInput4.setPromptText(playerName4 + "'s Guess");
+        txtInput1.setPromptText(p1 + "'s Guess");
+        txtInput2.setPromptText(p2 + "'s Guess");
+        txtInput3.setPromptText(p3 + "'s Guess");
+        txtInput4.setPromptText(p4 + "'s Guess");
 
         switch (players){
             case 1 -> {
@@ -262,8 +230,8 @@ public class GameScreenController {
         }
     }
 
+    //Setzt den hintergrund zum passenden planeten
     public void chgBackground() {
-
         switch (m.detImg()) {
             case 0 -> { // Stoneplanet
                 imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
@@ -289,7 +257,7 @@ public class GameScreenController {
     }
 
     //createStringBH() = @Ivo
-    public String createStringBH() {
+    public String createStringBH() { //String für Basistipps
         return "Basis Wert: 50.000.000" +
                 "\nOberfläche: " + m.getBh1() +
                 "\nStern: " + m.getBh2() +
@@ -297,28 +265,28 @@ public class GameScreenController {
     }
 
     //createStringH1() = @Ivo
-    public String createStringH1() {
-        return "" + this.createStringBH() +
+    public String createStringH1() { //String für Tipp 1
+        return this.createStringBH() +
                 "Tipp 1:\nAtmosphäre: " + m.getH11() +
                 "\nWetter: " + m.getH12() +
                 "\n";
     }
 
     //createStringH2() = @Ivo
-    public String createStringH2() {
-        return "" + this.createStringH1() +
+    public String createStringH2() { //String für Tipp 2
+        return this.createStringH1() +
                 "Tipp 2:\nBewohnbar: " + m.getH2() +
                 "\n";
     }
 
     //createStringH3() = @Ivo
-    public String createStringH3() {
-        return "" + this.createStringH2() +
+    public String createStringH3() { //String für Tipp 3
+        return this.createStringH2() +
                 "Tipp 3:\nRessourcenmenge der Wertetabelle hinzugefügt!";
     }
 
     //setBaseHints() = @Ivo
-    public void setBaseHints() {
+    public void setBaseHints() { //Basistipps werden in TextArea geschrieben, Button für Tipp 1 wird verfügbar
         txtBaseInfos.setEditable(false);
         txtBaseInfos.setText(this.createStringBH());
         bttnHint1.setDisable(false);
@@ -327,7 +295,7 @@ public class GameScreenController {
     }
 
     //setHint1() = @Ivo
-    public void setHint1() {
+    public void setHint1() { //Tipp 1 wird in TextArea geschrieben, Button für Tipp 2 wird verfügbar
         txtBaseInfos.setText(this.createStringH1());
         bttnHint1.setDisable(true);
         bttnHint2.setDisable(false);
@@ -335,30 +303,31 @@ public class GameScreenController {
     }
 
     //setHint2() = @Ivo
-    public void setHint2() {
+    public void setHint2() { //Tipp 2 wird in TextArea geschrieben, Button für Tipp 3 wird verfügbar
         txtBaseInfos.setText(this.createStringH2());
         bttnHint2.setDisable(true);
         bttnHint3.setDisable(false);
     }
 
     //setHint3() = @Ivo
-    public void setHint3() {
+    public void setHint3() { //Tipp 3 werden in TextArea geschrieben, zusätzliche Tabellenspalte wird angezeigt, Tipp 3 Button wird deaktiviert
         tblColAmount.setVisible(true);
         txtBaseInfos.setText(this.createStringH3());
         bttnHint3.setDisable(true);
     }
 
     //openTblRes() = @Ivo
-    public void openTblRes() {
+    public void openTblRes() { //Ändert die Visibility der Tabelle zum derzeitigen Gegenteil
         tblPane.setVisible(!tblPane.isVisible());
     }
 
     //addDataToTbl() = @Ivo
     public void addDataToTbl() {
-        String[][] data = new String[m.res.getArrayLength()][3];
+        String[][] data = new String[m.res.getArrayLength()][3]; //2D-Array mit 3 Spalten und Rows = Anzahl Ressourcen
         String[] resources = {"Salz", "Kobalt", "Silber", "Gold", "Platin", "Kohlenstoff", "Natrium",
                                 "Tritium", "Eisen", "Kupfer", "Ammonium", "Uran", "Dioxid", "Phosphor",
                                 "Dihydrogen"};
+        //2D-Array wird mit den Ressourcen und ihren Werten/Mengen befüllt
         for (int i = 0; i < m.res.getArrayLength(); i++) {
             data[i][0] = "" + resources[i];
             data[i][1] = "" + m.res.getValues(i);
@@ -390,7 +359,11 @@ public class GameScreenController {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<String[], String> p) {
                 String[] x = p.getValue();
-                if (x != null && x.length>2) {
+                for (int i = 0; i < x.length; i++) {
+                    System.out.println(i + " " + x[i]);
+                    System.out.println(Arrays.toString(p.getValue()));
+                }
+                if (x.length>2) {
                     return new SimpleStringProperty(x[2]);
                 } else {
                     return new SimpleStringProperty("<no value>");
