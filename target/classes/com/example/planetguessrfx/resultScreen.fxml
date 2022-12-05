@@ -7,73 +7,65 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.ResultScreenController">
-   <children>
-      <VBox alignment="TOP_CENTER" layoutX="4.0" layoutY="171.0" prefHeight="301.0" prefWidth="474.0" spacing="5.0">
-         <children>
-            <VBox fx:id="box1" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label fx:id="txtNr1Score" text="1: &quot;PlayerName&quot; + Score">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="txtNr1UpdatedScore" text="Updated Score">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox fx:id="box2" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label fx:id="txtNr2Score" text="2: &quot;PlayerName&quot; + Score">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="txtNr2UpdatedScore" text="Updated Score" />
-               </children>
-            </VBox>
-            <VBox fx:id="box3" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label fx:id="txtNr3Score" text="3: &quot;PlayerName&quot; + Score">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="txtNr3UpdatedScore" text="Updated Score" />
-               </children>
-            </VBox>
-            <VBox fx:id="box4" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label fx:id="txtNr4Score" text="4: &quot;PlayerName&quot; + Score">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="txtNr4UpdatedScore" text="Updated Score" />
-               </children>
-            </VBox>
-         </children>
+<AnchorPane prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.planetguessrfx.ResultScreenController">
+   <VBox alignment="TOP_CENTER" layoutX="4.0" layoutY="171.0" prefHeight="301.0" prefWidth="474.0" spacing="5.0">
+      <VBox fx:id="box1" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <Label fx:id="txtNr1Score" text="1: &quot;PlayerName&quot; + Score">
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </Label>
+         <Label fx:id="txtNr1UpdatedScore" text="Updated Score">
+            <font>
+               <Font size="14.0"/>
+            </font>
+         </Label>
       </VBox>
-      <Button fx:id="bttnNextPlanet" layoutX="156.0" layoutY="557.0" mnemonicParsing="false" onAction="#nextPlanet" prefHeight="50.0" prefWidth="168.0" text="Next Planet">
+      <VBox fx:id="box2" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <Label fx:id="txtNr2Score" text="2: &quot;PlayerName&quot; + Score">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <Label fx:id="txtNr2UpdatedScore" text="Updated Score"/>
+      </VBox>
+      <VBox fx:id="box3" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <Label fx:id="txtNr3Score" text="3: &quot;PlayerName&quot; + Score">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <Label fx:id="txtNr3UpdatedScore" text="Updated Score"/>
+      </VBox>
+      <VBox fx:id="box4" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <Label fx:id="txtNr4Score" text="4: &quot;PlayerName&quot; + Score">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <Label fx:id="txtNr4UpdatedScore" text="Updated Score"/>
+      </VBox>
+   </VBox>
+   <Button fx:id="bttnNextPlanet" layoutX="156.0" layoutY="557.0" mnemonicParsing="false" onAction="#nextPlanet"
+           prefHeight="50.0" prefWidth="168.0" text="Next Planet">
+      <font>
+         <Font size="24.0"/>
+      </font>
+   </Button>
+   <Button layoutX="332.0" layoutY="558.0" mnemonicParsing="false" onAction="#displaySaveOption" prefHeight="50.0"
+           prefWidth="50.0" text="Main Menu" textAlignment="CENTER" wrapText="true"/>
+   <Pane fx:id="pSaveGame" focusTraversable="true" layoutX="85.0" layoutY="200.0" prefHeight="200.0" prefWidth="315.0"
+         style="-fx-background-color: WHITE;" visible="false">
+      <Label layoutX="20.0" layoutY="14.0" text="Do you want to save your Session?">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0"/>
          </font>
-      </Button>
-      <Button layoutX="332.0" layoutY="558.0" mnemonicParsing="false" onAction="#displaySaveOption" prefHeight="50.0" prefWidth="50.0" text="Main Menu" textAlignment="CENTER" wrapText="true" />
-      <Pane fx:id="pSaveGame" focusTraversable="true" layoutX="85.0" layoutY="200.0" prefHeight="200.0" prefWidth="315.0" style="-fx-background-color: WHITE;" visible="false">
-         <children>
-            <Label layoutX="20.0" layoutY="14.0" text="Do you want to save your Session?">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnMenu" layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#returnToMain" text="Main Menu" />
-            <Button fx:id="btnSave" layoutX="112.0" layoutY="128.0" mnemonicParsing="false" onAction="#saveScore" prefHeight="35.0" prefWidth="92.0" text="Save" />
-            <Label fx:id="lblYourCode" alignment="CENTER" layoutX="90.0" layoutY="83.0" text="Your code is:" />
-         </children>
-      </Pane>
-   </children>
+      </Label>
+      <Button fx:id="btnMenu" layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#returnToMain"
+              text="Main Menu"/>
+      <Button fx:id="btnSave" layoutX="112.0" layoutY="128.0" mnemonicParsing="false" onAction="#saveScore"
+              prefHeight="35.0" prefWidth="92.0" text="Save"/>
+      <Label fx:id="lblYourCode" alignment="CENTER" layoutX="90.0" layoutY="83.0" text="Your code is:"/>
+   </Pane>
 </AnchorPane>
