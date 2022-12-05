@@ -18,7 +18,7 @@
 <AnchorPane fx:id="pBackground" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: #383434" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planetguessrfx.GameScreenController">
    <children>
         <ImageView fx:id="ivPlanet" fitHeight="650.0" fitWidth="650.0" layoutX="-200.0" layoutY="-200.0" pickOnBounds="true" preserveRatio="true" />
-       <Rectangle fx:id="rtInfos" arcHeight="16.0" arcWidth="15.0" fill="#5b5b5b" height="373.0" layoutX="246.0" layoutY="102.0" stroke="#0000004b" strokeType="INSIDE" width="200.0" />
+       <Rectangle fx:id="rtInfos" arcHeight="15.0" arcWidth="15.0" fill="#5b5b5b" height="373.0" layoutX="246.0" layoutY="102.0" stroke="#0000004b" strokeType="INSIDE" width="200.0" />
             <VBox fx:id="vInfos" alignment="TOP_CENTER" layoutX="246.0" layoutY="109.0" prefHeight="325.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Label fx:id="lblPlanetName" textFill="WHITE">

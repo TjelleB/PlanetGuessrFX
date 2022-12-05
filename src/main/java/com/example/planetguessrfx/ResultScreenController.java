@@ -22,7 +22,7 @@ public class ResultScreenController {
     public Label txtNr3UpdatedScore;
     public Label txtNr4Score;
     public Label txtNr4UpdatedScore;
-    public Button bttnNextPlanet;
+    public Button btnNextPlanet;
     public VBox box1;
     public VBox box2;
     public VBox box3;
