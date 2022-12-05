@@ -17,7 +17,7 @@ int players = 0;         //Spieleranzahl
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:PlanetGuessr.db";
+            String url = "jdbc:sqlite:GalaxyDB.db";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 
