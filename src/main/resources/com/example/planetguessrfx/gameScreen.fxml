@@ -31,9 +31,9 @@
         </Label>
         <TextArea fx:id="txtBaseInfos" editable="false" maxWidth="181.0" minWidth="181.0" prefHeight="190.0"
                   prefWidth="180.0" text="Base info here" wrapText="true"/>
-        <ToggleButton fx:id="bttnHint1" mnemonicParsing="false" onAction="#setHint1" text="Tipp 1"/>
-        <ToggleButton fx:id="bttnHint2" mnemonicParsing="false" onAction="#setHint2" text="Tipp 2"/>
-        <ToggleButton fx:id="bttnHint3" mnemonicParsing="false" onAction="#setHint3" text="Tipp 3"/>
+        <ToggleButton fx:id="btnHint1" mnemonicParsing="false" onAction="#setHint1" text="Tipp 1"/>
+        <ToggleButton fx:id="btnHint2" mnemonicParsing="false" onAction="#setHint2" text="Tipp 2"/>
+        <ToggleButton fx:id="btnHint3" mnemonicParsing="false" onAction="#setHint3" text="Tipp 3"/>
     </VBox>
     <Button fx:id="btnValues" layoutX="255.0" layoutY="443.0" mnemonicParsing="false" onAction="#openTblRes"
             prefHeight="25.0" prefWidth="182.0" text="Ressourcen" textAlignment="CENTER"/>
@@ -42,13 +42,13 @@
             <HBox fx:id="hPlayer1" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                 <TextField fx:id="txtInput1" prefHeight="35.0" prefWidth="125.0"
                            promptText="Player 1 Guess"/>
-                <ToggleButton fx:id="bttnConfirm1" mnemonicParsing="false" onAction="#checkConfirmation"
+                <ToggleButton fx:id="btnConfirm1" mnemonicParsing="false" onAction="#checkConfirmation"
                               prefHeight="35.0" prefWidth="35.0" text="Set"/>
             </HBox>
             <HBox fx:id="hPlayer2" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                 <TextField fx:id="txtInput2" prefHeight="35.0" prefWidth="125.0"
                            promptText="Player 2 Guess"/>
-                <ToggleButton fx:id="bttnConfirm2" mnemonicParsing="false" onAction="#checkConfirmation"
+                <ToggleButton fx:id="btnConfirm2" mnemonicParsing="false" onAction="#checkConfirmation"
                               prefHeight="35.0" prefWidth="35.0" text="Set"/>
             </HBox>
         </HBox>
@@ -56,13 +56,13 @@
             <HBox fx:id="hPlayer3" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                 <TextField fx:id="txtInput3" prefHeight="35.0" prefWidth="125.0"
                            promptText="Player 3 Guess"/>
-                <ToggleButton fx:id="bttnConfirm3" mnemonicParsing="false" onAction="#checkConfirmation"
+                <ToggleButton fx:id="btnConfirm3" mnemonicParsing="false" onAction="#checkConfirmation"
                               prefHeight="35.0" prefWidth="35.0" text="Set"/>
             </HBox>
             <HBox fx:id="hPlayer4" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                 <TextField fx:id="txtInput4" prefHeight="35.0" prefWidth="125.0"
                            promptText="Player 4 Guess"/>
-                <ToggleButton fx:id="bttnConfirm4" mnemonicParsing="false" onAction="#checkConfirmation"
+                <ToggleButton fx:id="btnConfirm4" mnemonicParsing="false" onAction="#checkConfirmation"
                               prefHeight="35.0" prefWidth="35.0" text="Set"/>
             </HBox>
         </HBox>

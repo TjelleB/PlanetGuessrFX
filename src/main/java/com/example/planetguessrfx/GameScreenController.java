@@ -26,25 +26,25 @@ public class GameScreenController {
     public Rectangle rtInfos;
     public VBox vInfos;
     public Label lblPlanetName;
-    public ToggleButton bttnHint1;
-    public ToggleButton bttnHint2;
-    public ToggleButton bttnHint3;
+    public ToggleButton btnHint1;
+    public ToggleButton btnHint2;
+    public ToggleButton btnHint3;
     public Button btnValues;
     public VBox vInputs;
     public HBox hRow1;
     public HBox hPlayer1;
     public TextField txtInput1;
-    public ToggleButton bttnConfirm1;
+    public ToggleButton btnConfirm1;
     public HBox hPlayer2;
     public TextField txtInput2;
-    public ToggleButton bttnConfirm2;
+    public ToggleButton btnConfirm2;
     public HBox hRow2;
     public HBox hPlayer3;
     public TextField txtInput3;
-    public ToggleButton bttnConfirm3;
+    public ToggleButton btnConfirm3;
     public HBox hPlayer4;
     public TextField txtInput4;
-    public ToggleButton bttnConfirm4;
+    public ToggleButton btnConfirm4;
     public Pane pSaveGame;
     public Button btnMenu;
     public Button btnSave;
@@ -140,45 +140,45 @@ public class GameScreenController {
     }
 
     public void checkP1() {
-        txtInput1.setEditable(!bttnConfirm1.isSelected()); //Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
-        bttnConfirm1.setDisable(bttnConfirm1.isSelected()); //Der ToggleButton wird deaktiviert, wenn er gedrückt ist
-        if (bttnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
-            if (bttnHint3.isSelected()) redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
-            else if (bttnHint2.isSelected()) redMP1 = 0.70;
-            else if (bttnHint1.isSelected()) redMP1 = 0.85;
+        txtInput1.setEditable(!btnConfirm1.isSelected()); //Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
+        btnConfirm1.setDisable(btnConfirm1.isSelected()); //Der ToggleButton wird deaktiviert, wenn er gedrückt ist
+        if (btnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
+            if (btnHint3.isSelected()) redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
+            else if (btnHint2.isSelected()) redMP1 = 0.70;
+            else if (btnHint1.isSelected()) redMP1 = 0.85;
             else redMP1 = 1;
             isLockedP1 = true; //If-Bedingung wird gesperrt
         }
     }
     public void checkP2() {
-        txtInput2.setEditable(!bttnConfirm2.isSelected());
-        bttnConfirm2.setDisable(bttnConfirm2.isSelected());
-        if (bttnConfirm2.isDisabled()) {
-            if (bttnHint3.isSelected()) redMP2 = 0.65;
-            else if (bttnHint2.isSelected()) redMP2 = 0.70;
-            else if (bttnHint1.isSelected()) redMP2 = 0.85;
+        txtInput2.setEditable(!btnConfirm2.isSelected());
+        btnConfirm2.setDisable(btnConfirm2.isSelected());
+        if (btnConfirm2.isDisabled()) {
+            if (btnHint3.isSelected()) redMP2 = 0.65;
+            else if (btnHint2.isSelected()) redMP2 = 0.70;
+            else if (btnHint1.isSelected()) redMP2 = 0.85;
             else redMP2 = 1;
             isLockedP2 = true;
         }
     }
     public void checkP3() {
-        txtInput3.setEditable(!bttnConfirm3.isSelected());
-        bttnConfirm3.setDisable(bttnConfirm3.isSelected());
-        if (bttnConfirm3.isDisabled()) {
-            if (bttnHint3.isSelected()) redMP3 = 0.65;
-            else if (bttnHint2.isSelected()) redMP3 = 0.70;
-            else if (bttnHint1.isSelected()) redMP3 = 0.85;
+        txtInput3.setEditable(!btnConfirm3.isSelected());
+        btnConfirm3.setDisable(btnConfirm3.isSelected());
+        if (btnConfirm3.isDisabled()) {
+            if (btnHint3.isSelected()) redMP3 = 0.65;
+            else if (btnHint2.isSelected()) redMP3 = 0.70;
+            else if (btnHint1.isSelected()) redMP3 = 0.85;
             else redMP3 = 1;
             isLockedP3 = true;
         }
     }
     public void checkP4() {
-        txtInput4.setEditable(!bttnConfirm4.isSelected());
-        bttnConfirm4.setDisable(bttnConfirm4.isSelected());
-        if (bttnConfirm4.isDisabled()) {
-            if (bttnHint3.isSelected()) redMP4 = 0.65;
-            else if (bttnHint2.isSelected()) redMP4 = 0.70;
-            else if (bttnHint1.isSelected()) redMP4 = 0.85;
+        txtInput4.setEditable(!btnConfirm4.isSelected());
+        btnConfirm4.setDisable(btnConfirm4.isSelected());
+        if (btnConfirm4.isDisabled()) {
+            if (btnHint3.isSelected()) redMP4 = 0.65;
+            else if (btnHint2.isSelected()) redMP4 = 0.70;
+            else if (btnHint1.isSelected()) redMP4 = 0.85;
             else redMP4 = 1;
             isLockedP4 = true;
         }
@@ -188,19 +188,19 @@ public class GameScreenController {
         if(!isLockedP2) checkP2();
         if(!isLockedP3) checkP3();
         if(!isLockedP4) checkP4();
-        if(bttnConfirm1.isSelected()&& players == 1){
+        if(btnConfirm1.isSelected()&& players == 1){
             gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
             showResult(event);
-        } else if(players == 2 && bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
+        } else if(players == 2 && btnConfirm2.isSelected()&& btnConfirm1.isSelected()){
             gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
             gainedScore2 =  m.calcPts(redMP2, Integer.parseInt(txtInput2.getText()));
             showResult(event);
-        }else if( players == 3&& bttnConfirm3.isSelected()&&bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
+        }else if( players == 3&& btnConfirm3.isSelected()&&btnConfirm2.isSelected()&& btnConfirm1.isSelected()){
             gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
             gainedScore2 =  m.calcPts(redMP2, Integer.parseInt(txtInput2.getText()));
             gainedScore3 =  m.calcPts(redMP3, Integer.parseInt(txtInput3.getText()));
             showResult(event);
-        }else if(players == 4&&bttnConfirm4.isSelected()&& bttnConfirm3.isSelected()&&bttnConfirm2.isSelected()&& bttnConfirm1.isSelected()){
+        }else if(players == 4&&btnConfirm4.isSelected()&& btnConfirm3.isSelected()&&btnConfirm2.isSelected()&& btnConfirm1.isSelected()){
             gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
             gainedScore2 =  m.calcPts(redMP2, Integer.parseInt(txtInput2.getText()));
             gainedScore3 =  m.calcPts(redMP3, Integer.parseInt(txtInput3.getText()));
@@ -290,31 +290,31 @@ public class GameScreenController {
     public void setBaseHints() { //Basistipps werden in TextArea geschrieben, Button für Tipp 1 wird verfügbar
         txtBaseInfos.setEditable(false);
         txtBaseInfos.setText(this.createStringBH());
-        bttnHint1.setDisable(false);
-        bttnHint2.setDisable(true);
-        bttnHint3.setDisable(true);
+        btnHint1.setDisable(false);
+        btnHint2.setDisable(true);
+        btnHint3.setDisable(true);
     }
 
     //setHint1() = @Ivo
     public void setHint1() { //Tipp 1 wird in TextArea geschrieben, Button für Tipp 2 wird verfügbar
         txtBaseInfos.setText(this.createStringH1());
-        bttnHint1.setDisable(true);
-        bttnHint2.setDisable(false);
+        btnHint1.setDisable(true);
+        btnHint2.setDisable(false);
         System.out.println(m.value);
     }
 
     //setHint2() = @Ivo
     public void setHint2() { //Tipp 2 wird in TextArea geschrieben, Button für Tipp 3 wird verfügbar
         txtBaseInfos.setText(this.createStringH2());
-        bttnHint2.setDisable(true);
-        bttnHint3.setDisable(false);
+        btnHint2.setDisable(true);
+        btnHint3.setDisable(false);
     }
 
     //setHint3() = @Ivo
     public void setHint3() { //Tipp 3 werden in TextArea geschrieben, zusätzliche Tabellenspalte wird angezeigt, Tipp 3 Button wird deaktiviert
         tblColAmount.setVisible(true);
         txtBaseInfos.setText(this.createStringH3());
-        bttnHint3.setDisable(true);
+        btnHint3.setDisable(true);
     }
 
     //openTblRes() = @Ivo
