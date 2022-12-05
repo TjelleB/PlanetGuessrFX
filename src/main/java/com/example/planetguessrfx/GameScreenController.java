@@ -103,8 +103,7 @@ public class GameScreenController {
         Parent root = loader.load();
         ResultScreenController controller = loader.getController();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
-        controller.setScore(score1, score2, score3, score4);
-        controller.displayScore(gainedScore1, gainedScore2, gainedScore3, gainedScore4);
+        controller.displayScore(score1, score2, score3, score4, gainedScore1, gainedScore2, gainedScore3, gainedScore4);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 480, 640);
         stage.setScene(scene);
