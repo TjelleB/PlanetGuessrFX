@@ -1,6 +1,5 @@
 package com.example.planetguessrfx;
-
-import javafx.beans.property.SimpleStringProperty;
+import      javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,11 +14,9 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
-
 public class GameScreenController {
     //FXML Objects
     public Pane pBackground;
@@ -56,7 +53,6 @@ public class GameScreenController {
     public TableColumn tblColAmount;
     public ImageView ivPlanet;
     public TextArea txtBaseInfos;
-
     public String playerName1;
     public String playerName2;
     public String playerName3;
@@ -66,13 +62,13 @@ public class GameScreenController {
     public int score3;
     public int score4;
     public Button btnReturnToMain;
-    int gainedScore1;
-    int gainedScore2;
-    int gainedScore3;
-    int gainedScore4;
+    private int gainedScore1;
+    private int gainedScore2;
+    private int gainedScore3;
+    private int gainedScore4;
     private final Math m = new Math();
-    Image imgCurrentPlanet;
-    int players;
+    private Image imgCurrentPlanet;
+    private int players;
     private double redMP1;
     private double redMP2;
     private double redMP3;
