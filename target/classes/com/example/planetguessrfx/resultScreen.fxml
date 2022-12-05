@@ -47,7 +47,7 @@
          <Label fx:id="txtNr4UpdatedScore" text="Updated Score"/>
       </VBox>
    </VBox>
-   <Button fx:id="bttnNextPlanet" layoutX="156.0" layoutY="557.0" mnemonicParsing="false" onAction="#nextPlanet"
+   <Button fx:id="btnNextPlanet" layoutX="156.0" layoutY="557.0" mnemonicParsing="false" onAction="#nextPlanet"
            prefHeight="50.0" prefWidth="168.0" text="Next Planet">
       <font>
          <Font size="24.0"/>
