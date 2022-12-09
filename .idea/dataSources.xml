@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="PlanetGuessr.db" uuid="bc349322-3b2c-4383-89a7-22b176d79d20">
+    <data-source source="LOCAL" name="PlanetGuessr.db" uuid="99af29c6-9d86-4656-ba41-f5afba9199ea">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:PlanetGuessr.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/PlanetGuessr.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

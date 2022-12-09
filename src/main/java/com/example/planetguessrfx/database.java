@@ -49,16 +49,15 @@ int players = 0;         //Spieleranzahl
             } else if (number == 4) {     //SaveID,
                 System.out.println(number);
             }
-            ResultSet myRs = myStmt.executeQuery();
+            result = myStmt.executeQuery();
             if (number ==1) {
-                result = myRs;
+
             } else if (number == 2) {
-                result = myRs;
+
             } else if (number == 3) { // ScoreID
-                result = myRs;
-                ScoreID = result.getInt(String.valueOf(myRs));
+                ScoreID = result.getInt(String.valueOf(result));
             } else if (number ==4){   //SaveID
-                saveID = result.getInt(String.valueOf(myRs));
+                saveID = result.getInt(String.valueOf(result));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -77,29 +76,27 @@ int players = 0;         //Spieleranzahl
        return result;
     }
 
-    private String getPS(String t) {
+    private void getPS(String t) {
         pstatement = t;
         connect();
-    return null;
     }
 
     public void generateSaveID() throws SQLException {
          String SaveIDSQL = "SELECT MAX(SaveID) from Saves";
          number =4;
          getPS(SaveIDSQL);
-         ResultSet ret = getRS();
     }
 
     public void createArray(int SA, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4){
 
-        playerNameArray[1] = SN1;
-        playerNameArray[2] = SN2;
-        playerNameArray[3] = SN3;
-        playerNameArray[4] = SN4;//Array für die Spielernamen
-        Score[1] = SC1;
-        Score[2] = SC2;
-        Score[3] = SC3;
-        Score[4] = SC4;
+        playerNameArray[0] = SN1;
+        playerNameArray[1] = SN2;
+        playerNameArray[2] = SN3;
+        playerNameArray[3] = SN4;//Array für die Spielernamen
+        Score[0] = SC1;
+        Score[1] = SC2;
+        Score[2] = SC3;
+        Score[3] = SC4;
         //Array für den Score
     }
 
@@ -128,6 +125,5 @@ int players = 0;         //Spieleranzahl
 
         number = 3;
         getPS(ScoreIDSQL);
-        ResultSet e = getRS();
     }
 }
