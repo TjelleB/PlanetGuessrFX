@@ -228,28 +228,7 @@ public class GameScreenController {
 
     //Setzt den hintergrund zum passenden planeten
     public void chgBackground() {
-        switch (m.detImg()) {
-            case 0 -> { // Stoneplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 1 -> { // Waterplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Water.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 2 -> { // Gasplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Gas.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 3 -> { // Iceplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Ice.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 4 -> { // No Atmosphere
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/No Atmos.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-        }
+      ivPlanet.setImage(PlanetGuessr.getPictures(m.detImg()));
     }
 
     //createStringBH() = @Ivo
