@@ -29,6 +29,7 @@ public class MainMenuController {
     public TextField txtPlayer3Name;
     public TextField txtPlayer2Name;
     public ChoiceBox cbPlayers;
+
     private final ObservableList<String> playerList = FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
     public String playerName1;
     public String playerName2;
@@ -42,15 +43,20 @@ public class MainMenuController {
     }
     //Überprüft ob ein spieler einen Namen eigegeben hat, wenn nicht wird ein standardname verwendet
     public void checkNames(){
-        playerName1 = txtPlayer1Name.getText();
-        if(playerName1 == ""){ playerName1 = "Player 1";}
-        playerName2 = txtPlayer2Name.getText();
-        if(playerName2 == ""){ playerName2 = "Player 2";}
-        playerName3 = txtPlayer3Name.getText();
-        if(playerName3 == ""){ playerName3 = "Player 3";}
-        playerName4 = txtPlayer4Name.getText();
-        if(playerName4 == ""){ playerName4 = "Player 4";}
+        String[] playerNames = new String[]{txtPlayer1Name.getText(), txtPlayer2Name.getText(), txtPlayer3Name.getText(), txtPlayer4Name.getText()};
+        String[] defaultNames = new String[]{"Player 1", "Player 2", "Player 3", "Player 4"};
+
+        for(int i = 0; i < playerNames.length; i++){
+            if(playerNames[i] == ""){
+                playerNames[i] = defaultNames[i];
+            }
+        }
+        playerName1 = playerNames[0];
+        playerName2 = playerNames[1];
+        playerName3 = playerNames[2];
+        playerName4 = playerNames[3];
     }
+
 
     //lädt den Game screen und übergibt die spielernamen
     public void startGame(ActionEvent event) throws IOException{
@@ -59,7 +65,6 @@ public class MainMenuController {
         Parent root = loader.load();
         GameScreenController controller = loader.getController();
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 480, 640);
         stage.setScene(scene);
