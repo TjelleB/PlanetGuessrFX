@@ -61,6 +61,10 @@ public class GameScreenController {
     public int score2;
     public int score3;
     public int score4;
+    public int guess1;
+    public int guess2;
+    public int guess3;
+    public int guess4;
     public Button btnReturnToMain;
     private int gainedScore1;
     private int gainedScore2;
@@ -135,71 +139,103 @@ public class GameScreenController {
     }
 
     public void checkP1() {
-        txtInput1.setEditable(!btnConfirm1.isSelected()); //Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
-        btnConfirm1.setDisable(btnConfirm1.isSelected()); //Der ToggleButton wird deaktiviert, wenn er gedrückt ist
-        if (btnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
-            if (btnHint3.isSelected()) redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
-            else if (btnHint2.isSelected()) redMP1 = 0.70;
-            else if (btnHint1.isSelected()) redMP1 = 0.85;
-            else redMP1 = 1;
-            isLockedP1 = true; //If-Bedingung wird gesperrt
+        try {
+            guess1 = Integer.parseInt(txtInput1.getText());
+            txtInput1.setEditable(!btnConfirm1.isSelected()); //Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
+            btnConfirm1.setDisable(btnConfirm1.isSelected()); //Der ToggleButton wird deaktiviert, wenn er gedrückt ist
+            if (btnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
+                if (btnHint3.isSelected()) redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
+                else if (btnHint2.isSelected()) redMP1 = 0.70;
+                else if (btnHint1.isSelected()) redMP1 = 0.85;
+                else redMP1 = 1;
+                isLockedP1 = true; //If-Bedingung wird gesperrt
+            }
+        } catch (NumberFormatException e) {
+            btnConfirm1.setSelected(false);
+            System.out.println("Fehler:Eingabe 1 ist kein Integer");
         }
+
     }
     public void checkP2() {
-        txtInput2.setEditable(!btnConfirm2.isSelected());
-        btnConfirm2.setDisable(btnConfirm2.isSelected());
-        if (btnConfirm2.isDisabled()) {
-            if (btnHint3.isSelected()) redMP2 = 0.65;
-            else if (btnHint2.isSelected()) redMP2 = 0.70;
-            else if (btnHint1.isSelected()) redMP2 = 0.85;
-            else redMP2 = 1;
-            isLockedP2 = true;
+        try {
+            guess2 = Integer.parseInt(txtInput2.getText());
+            txtInput2.setEditable(!btnConfirm2.isSelected());
+            btnConfirm2.setDisable(btnConfirm2.isSelected());
+            if (btnConfirm2.isDisabled()) {
+                if (btnHint3.isSelected()) redMP2 = 0.65;
+                else if (btnHint2.isSelected()) redMP2 = 0.70;
+                else if (btnHint1.isSelected()) redMP2 = 0.85;
+                else redMP2 = 1;
+                isLockedP2 = true;
+            }
+        } catch (NumberFormatException e) {
+
+            if(players >1)
+                btnConfirm2.setSelected(false);
+            System.out.println("Fehler:Eingabe 2 ist kein Integer");
         }
     }
+
     public void checkP3() {
-        txtInput3.setEditable(!btnConfirm3.isSelected());
-        btnConfirm3.setDisable(btnConfirm3.isSelected());
-        if (btnConfirm3.isDisabled()) {
-            if (btnHint3.isSelected()) redMP3 = 0.65;
-            else if (btnHint2.isSelected()) redMP3 = 0.70;
-            else if (btnHint1.isSelected()) redMP3 = 0.85;
-            else redMP3 = 1;
-            isLockedP3 = true;
+        try {
+            guess3 = Integer.parseInt(txtInput3.getText());
+            txtInput3.setEditable(!btnConfirm3.isSelected());
+            btnConfirm3.setDisable(btnConfirm3.isSelected());
+            if (btnConfirm3.isDisabled()) {
+                if (btnHint3.isSelected()) redMP3 = 0.65;
+                else if (btnHint2.isSelected()) redMP3 = 0.70;
+                else if (btnHint1.isSelected()) redMP3 = 0.85;
+                else redMP3 = 1;
+                isLockedP3 = true;
+            }
+        } catch (NumberFormatException e) {
+            if(players > 2) {
+                btnConfirm3.setSelected(false);
+                System.out.println("Fehler:Eingabe 3 ist kein Integer");
+            }
         }
     }
     public void checkP4() {
-        txtInput4.setEditable(!btnConfirm4.isSelected());
-        btnConfirm4.setDisable(btnConfirm4.isSelected());
-        if (btnConfirm4.isDisabled()) {
-            if (btnHint3.isSelected()) redMP4 = 0.65;
-            else if (btnHint2.isSelected()) redMP4 = 0.70;
-            else if (btnHint1.isSelected()) redMP4 = 0.85;
-            else redMP4 = 1;
-            isLockedP4 = true;
+        try {
+            guess4 = Integer.parseInt(txtInput4.getText());
+            txtInput4.setEditable(!btnConfirm4.isSelected());
+            btnConfirm4.setDisable(btnConfirm4.isSelected());
+            if (btnConfirm4.isDisabled()) {
+                if (btnHint3.isSelected()) redMP4 = 0.65;
+                else if (btnHint2.isSelected()) redMP4 = 0.70;
+                else if (btnHint1.isSelected()) redMP4 = 0.85;
+                else redMP4 = 1;
+                isLockedP4 = true;
+            }
+        } catch (NumberFormatException e) {
+            if(players > 3) {
+                btnConfirm4.setSelected(false);
+                System.out.println("Fehler:Eingabe 4 ist kein Integer");
+            }
         }
     }
     public void checkConfirmation(ActionEvent event) throws IOException{
-        if(!isLockedP1) checkP1();
-        if(!isLockedP2) checkP2();
-        if(!isLockedP3) checkP3();
-        if(!isLockedP4) checkP4();
-        if(btnConfirm1.isSelected()&& players == 1){
-            gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
+            if (!isLockedP1) checkP1();
+            if (!isLockedP2) checkP2();
+            if (!isLockedP3) checkP3();
+            if (!isLockedP4) checkP4();
+        if(btnConfirm1.isDisabled()&& players == 1){
+            gainedScore1 =  m.calcPts(redMP1, guess1);
             showResult(event);
-        } else if(players == 2 && btnConfirm2.isSelected()&& btnConfirm1.isSelected()){
-            gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
-            gainedScore2 =  m.calcPts(redMP2, Integer.parseInt(txtInput2.getText()));
+        } else if(players == 2 && btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
+            gainedScore1 =  m.calcPts(redMP1, guess2);
+            gainedScore2 =  m.calcPts(redMP2, guess3);
             showResult(event);
-        }else if( players == 3&& btnConfirm3.isSelected()&&btnConfirm2.isSelected()&& btnConfirm1.isSelected()){
-            gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
-            gainedScore2 =  m.calcPts(redMP2, Integer.parseInt(txtInput2.getText()));
-            gainedScore3 =  m.calcPts(redMP3, Integer.parseInt(txtInput3.getText()));
+        }else if( players == 3&& btnConfirm3.isDisabled()&&btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
+            gainedScore1 =  m.calcPts(redMP1, guess1);
+            gainedScore2 =  m.calcPts(redMP2, guess2);
+            gainedScore3 =  m.calcPts(redMP3, guess3);
             showResult(event);
-        }else if(players == 4&&btnConfirm4.isSelected()&& btnConfirm3.isSelected()&&btnConfirm2.isSelected()&& btnConfirm1.isSelected()){
-            gainedScore1 =  m.calcPts(redMP1, Integer.parseInt(txtInput1.getText()));
-            gainedScore2 =  m.calcPts(redMP2, Integer.parseInt(txtInput2.getText()));
-            gainedScore3 =  m.calcPts(redMP3, Integer.parseInt(txtInput3.getText()));
-            gainedScore4 =  m.calcPts(redMP4, Integer.parseInt(txtInput4.getText()));
+        }else if(players == 4&&btnConfirm4.isDisabled()&& btnConfirm3.isDisabled()&&btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
+            gainedScore1 =  m.calcPts(redMP1, guess1);
+            gainedScore2 =  m.calcPts(redMP2, guess2);
+            gainedScore3 =  m.calcPts(redMP3, guess3);
+            gainedScore4 =  m.calcPts(redMP4, guess4);
             showResult(event);
         }
     }
