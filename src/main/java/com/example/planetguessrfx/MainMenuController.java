@@ -75,7 +75,7 @@ public class MainMenuController {
     public void resumeGame(ActionEvent event) throws IOException {
         try {
             int sID = Integer.parseInt(txtSIDInput.getText());
-            database db = new database();
+            Database db = new Database();
             db.loadGame(sID);
             int playercount = db.loadSpielerAnzahl();
             String[] playernames = db.loadPlayerNameGame();
