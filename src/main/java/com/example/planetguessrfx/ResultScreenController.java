@@ -74,13 +74,13 @@ public class ResultScreenController {
         updatedScore3 = gs3 + s3;
         updatedScore4 = gs4 + s4;
         txtNr1Score.setText("Player 1: " + playerName1 + " + " + gs1);
-        txtNr1UpdatedScore.setText("Updated Score: " + updatedScore1);
+        txtNr1UpdatedScore.setText("Updated score: " + updatedScore1);
         txtNr2Score.setText("Player 2: " + playerName2 + " + " + gs2);
-        txtNr2UpdatedScore.setText("Updated Score: " + updatedScore2);
+        txtNr2UpdatedScore.setText("Updated score: " + updatedScore2);
         txtNr3Score.setText("Player 3: " + playerName3 + " + " + gs3);
-        txtNr3UpdatedScore.setText("Updated Score: " + updatedScore3);
+        txtNr3UpdatedScore.setText("Updated score: " + updatedScore3);
         txtNr4Score.setText("Player 4: " + playerName4 + " + " + gs4);
-        txtNr4UpdatedScore.setText("Updated Score: " + updatedScore4);
+        txtNr4UpdatedScore.setText("Updated score: " + updatedScore4);
     }
     //Übergibt die Spielernamen und den Updated score an die database klasse
     public void saveScore() throws SQLException {

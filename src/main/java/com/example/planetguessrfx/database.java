@@ -5,9 +5,9 @@ import java.sql.*;
 public class database { ResultSet result = null;           //Result der executeQuery
 String pstatement = null;           //Prepared Statement
 int number = 0;                       //Variable, damit in die Prepared statements eingesetzt werden kann
-int ScoreID = 0;                    //ScoreID, um Spielernamen und Score zu verknüpfen
+int scoreID = 0;                    //scoreID, um Spielernamen und score zu verknüpfen
 int saveID = 0;                     //Eine ID; die am ende dem User gegeben wird, um das gespeicherte Spiel fortzuführen
-int[] Score = new int[4];           //Array für Spielerscore
+int[] score = new int[4];           //Array für Spielerscore
 String[] playerNameArray = new String[4];       //Array für Spielernamen
 int players = 0;         //Spieleranzahl
 
@@ -28,10 +28,11 @@ int players = 0;         //Spieleranzahl
             {
                 System.out.println(number);
                 for(int i = 1; i < players; i++) {    //Save score
-                    myStmt.setInt(1, ScoreID);
+                    myStmt.setInt(1, scoreID);
                     myStmt.setInt(2, saveID);
                     myStmt.setString(3, playerNameArray[i - 1]);
-                    myStmt.setInt(4, Score[i - 1]);
+                    myStmt.setInt(4, score[i - 1]);
+
                 }
             }
             else if (number == 2)
@@ -43,22 +44,21 @@ int players = 0;         //Spieleranzahl
                 myStmt.setString(4, playerNameArray[2]);
                 myStmt.setString(5, playerNameArray[3]);
             }
-            else if (number == 3) //ScoreID
+            else if (number == 3) //scoreID
             {
-                System.out.println(number);
+                System.out.println("scoreID");
             } else if (number == 4) {     //SaveID,
-                System.out.println(number);
+                System.out.println("SaveID");
             }
-            ResultSet myRs = myStmt.executeQuery();
+            result = myStmt.executeQuery();
             if (number ==1) {
-                result = myRs;
+
             } else if (number == 2) {
-                result = myRs;
-            } else if (number == 3) { // ScoreID
-                result = myRs;
-                ScoreID = result.getInt(String.valueOf(myRs));
+
+            } else if (number == 3) { // scoreID
+                scoreID = result.getInt(String.valueOf(result));
             } else if (number ==4){   //SaveID
-                saveID = result.getInt(String.valueOf(myRs));
+                saveID = result.getInt(String.valueOf(result));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -73,34 +73,28 @@ int players = 0;         //Spieleranzahl
         }
     }
 
-    public ResultSet getRS(){
-       return result;
-    }
-
-    private String getPS(String t) {
+    private void getPS(String t) {
         pstatement = t;
         connect();
-    return null;
     }
 
     public void generateSaveID() throws SQLException {
          String SaveIDSQL = "SELECT MAX(SaveID) from Saves";
          number =4;
          getPS(SaveIDSQL);
-         ResultSet ret = getRS();
     }
 
     public void createArray(int SA, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4){
 
-        playerNameArray[1] = SN1;
-        playerNameArray[2] = SN2;
-        playerNameArray[3] = SN3;
-        playerNameArray[4] = SN4;//Array für die Spielernamen
-        Score[1] = SC1;
-        Score[2] = SC2;
-        Score[3] = SC3;
-        Score[4] = SC4;
-        //Array für den Score
+        playerNameArray[0] = SN1;
+        playerNameArray[1] = SN2;
+        playerNameArray[2] = SN3;
+        playerNameArray[3] = SN4;//Array für die Spielernamen
+        score[0] = SC1;
+        score[1] = SC2;
+        score[2] = SC3;
+        score[3] = SC4;
+        //Array für den score
     }
 
     public void save(int SA, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4) throws SQLException {
@@ -110,24 +104,24 @@ int players = 0;         //Spieleranzahl
         createArray(SA, SN1, SN2, SN3, SN4, SC1, SC2, SC3,SC4);
 
         String InsertScore = "INSERT INTO SCOREBOARD(?, ?, ?, ?)";
-        getPS(InsertScore); //übergibt ps ohne eingaben
         number = 1;
+        getPS(InsertScore); //übergibt ps ohne eingaben
+
 
 // Zum speichern des Spiels
         String InsertSave = "INSERT INTO Saves(?, ?, ?, ?, ?)";
-
-        getPS(InsertSave);
         number = 2;
+        getPS(InsertSave);
+
     }
 
     public int getSaveID(){
         return saveID;
     }
     public void getNewScoreID() throws SQLException {
-               String ScoreIDSQL = "SELECT MAX(ScoreID) from Scoreboard";
+               String ScoreIDSQL = "SELECT MAX(scoreID) from Scoreboard";
 
         number = 3;
         getPS(ScoreIDSQL);
-        ResultSet e = getRS();
     }
 }

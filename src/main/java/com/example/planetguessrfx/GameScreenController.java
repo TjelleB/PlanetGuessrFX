@@ -121,7 +121,6 @@ public class GameScreenController {
     //Übergibt daten an die database klasse
     public void saveScore() throws SQLException {
         database db = new database();
-        db.connect();
         db.save(players,playerName1,playerName2,playerName3,playerName4,score1,score2,score3,score4);
         lblYourCode.setText("Your code is: " + db.getSaveID());
         btnSave.setDisable(true);
@@ -229,28 +228,7 @@ public class GameScreenController {
 
     //Setzt den hintergrund zum passenden planeten
     public void chgBackground() {
-        switch (m.detImg()) {
-            case 0 -> { // Stoneplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Stone.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 1 -> { // Waterplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Water.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 2 -> { // Gasplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Gas.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 3 -> { // Iceplanet
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/Ice.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-            case 4 -> { // No Atmosphere
-                imgCurrentPlanet = new Image("com/example/planetguessrfx/Pictures/Planet Imgs/No Atmos.gif");
-                ivPlanet.setImage(imgCurrentPlanet);
-            }
-        }
+      ivPlanet.setImage(PlanetGuessr.getPictures(m.detImg()));
     }
 
     //createStringBH() = @Ivo
