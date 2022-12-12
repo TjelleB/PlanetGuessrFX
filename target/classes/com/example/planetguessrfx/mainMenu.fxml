@@ -16,9 +16,8 @@
             prefHeight="530.0" prefWidth="480.0" style="-fx-background-color: #383434"
             xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.planetguessrfx.MainMenuController">
-   <ImageView fitHeight="741.0" fitWidth="750.0" layoutX="-141.0" layoutY="-123.0" pickOnBounds="true"
+   <ImageView fx:id="ivBackground" fitHeight="741.0" fitWidth="750.0" layoutX="-141.0" layoutY="-123.0" pickOnBounds="true"
               preserveRatio="true">
-      <Image url="@Pictures/BackgroundGalaxy.gif"/>
    </ImageView>
    <Label fx:id="lblTitle" alignment="CENTER" layoutX="5.0" layoutY="247.0" prefHeight="70.0" prefWidth="366.0"
           text="PlanetGuessr" textFill="white">
@@ -26,7 +25,7 @@
          <Font size="64.0"/>
       </font>
    </Label>
-   <Button fx:id="bttnStart" layoutX="5.0" layoutY="373.0" mnemonicParsing="false" onAction="#startGame"
+   <Button fx:id="btnStart" layoutX="5.0" layoutY="373.0" mnemonicParsing="false" onAction="#startGame"
            prefHeight="40.0" prefWidth="137.0" text="Start Game" textAlignment="CENTER">
       <font>
          <Font size="18.0"/>
@@ -71,8 +70,8 @@
    </Button>
    <Pane fx:id="pResumeDialog" layoutX="129.0" layoutY="220.0" prefHeight="122.0" prefWidth="200.0"
          style="-fx-background-color: White;" visible="false">
-      <Button layoutX="53.0" layoutY="71.0" mnemonicParsing="false" text="Resume Game"/>
-      <TextField layoutX="54.0" layoutY="41.0" prefHeight="25.0" prefWidth="92.0"/>
+      <Button layoutX="53.0" layoutY="71.0" mnemonicParsing="false" text="Resume Game" onAction="#resumeGame"/>
+      <TextField fx:id="txtSIDInput" layoutX="54.0" layoutY="41.0" prefHeight="25.0" prefWidth="92.0"/>
       <Label layoutX="56.0" layoutY="14.0" text="Your Code:">
          <font>
             <Font size="18.0"/>
