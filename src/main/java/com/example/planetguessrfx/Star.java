@@ -21,12 +21,13 @@ public class Star extends Generator {
   
   
   @Override
-  // Methoden
+  // Generator
   public void generate() {
     Random rdm = new Random();
     type = rdm.nextInt(4);
   }
   
+  // Get
   public int getType()
   {
     return type;
