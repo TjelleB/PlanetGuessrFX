@@ -7,9 +7,11 @@ String pstatement = null;           //Prepared Statement
 int number = 0;                       //Variable, damit in die Prepared statements eingesetzt werden kann
 int scoreID = 0;                    //scoreID, um Spielernamen und score zu verknüpfen
 int saveID = 0;                     //Eine ID; die am Ende dem User gegeben wird, um das gespeicherte Spiel fortzuführen
-int[] score = new int[4];           //Array für Spielerscore
+int[] score = new int[4];           //Array für Spieler score
 String[] playerNameArray = new String[4];       //Array für Spielernamen
-int players = 0;         //Spieleranzahl
+    boolean b = true;
+    int SA = 0;
+    int ID;
 
     //String t2 = "SELECT count(*) FROM sqlite_master where type='table'"; // Test
 
@@ -28,13 +30,15 @@ int players = 0;         //Spieleranzahl
             if(number == 1)
             {
                 System.out.println(number);
-                for(int i = 1; i < players; i++) {    //Save score
+                for(int i = 1; i <= 4; i++) {    //Save score
                     myStmt.setInt(1, scoreID);
                     myStmt.setInt(2, saveID);
                     myStmt.setString(3, playerNameArray[i - 1]);
                     myStmt.setInt(4, score[i - 1]);
 
+                    myStmt.execute();
                 }
+                b = false;
             }
             else if (number == 2)
             {
@@ -44,15 +48,26 @@ int players = 0;         //Spieleranzahl
                 myStmt.setString(3, playerNameArray[1]);
                 myStmt.setString(4, playerNameArray[2]);
                 myStmt.setString(5, playerNameArray[3]);
+                myStmt.setInt(6, SA);
+                myStmt.execute();
+                b = false;
             }
             else if (number == 3) //scoreID
             {
                 System.out.println("scoreID");
             } else if (number == 4) {     //SaveID,
                 System.out.println("SaveID");
+            } else if (number == 5) {
+                myStmt.setInt(1, ID);
+                System.out.println("getSpieleranzahl");
+            } else if (number == 6) {
+                System.out.println(number);
+                //TODO
             }
             System.out.println(myStmt);
-            result = myStmt.executeQuery();
+            if (b) {
+                result = myStmt.executeQuery();
+            }
             if (number ==1) {
 
             } else if (number == 2) {
@@ -63,12 +78,20 @@ int players = 0;         //Spieleranzahl
             } else if (number ==4){   //SaveID
                 saveID = result.getInt("MAX(SaveID)") + 1;
                 System.out.println(saveID);
+            } else if (number == 5) {
+                SA = result.getInt("SpielerAnzahl");
+                System.out.println(SA);
+            } else if (number == 6) {
+                //TODO
             }
+
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
             try {
                 if (conn != null) {
+                    b = true;
                     conn.close();
                     System.out.println("Conn closed");
                 }
@@ -103,8 +126,9 @@ int players = 0;         //Spieleranzahl
         //Array für den score
     }
 
-    public void save(String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4) throws SQLException {
+    public void save(int SAu, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4) throws SQLException {
         System.out.println("Save before SaveID");
+        SA = SAu;
         generateSaveID();
         System.out.println("Save after SaveID, before NewScoreID");
         getNewScoreID();
@@ -113,11 +137,11 @@ int players = 0;         //Spieleranzahl
 
         String InsertScore = "INSERT INTO SCOREBOARD VALUES (?, ?, ?, ?)";
         number = 1;
-        getPS(InsertScore); //übergibt ps ohne eingaben
+        getPS(InsertScore); //übergibt ps, ohne eingaben
 
 
-// Zum speichern des Spiels
-        String InsertSave = "INSERT INTO Saves VALUES (?, ?, ?, ?, ?)";
+// Zum Speichern des Spiels
+        String InsertSave = "INSERT INTO Saves VALUES (?, ?, ?, ?, ?, ?)";
         number = 2;
         getPS(InsertSave);
 
@@ -131,5 +155,18 @@ int players = 0;         //Spieleranzahl
 
         number = 3;
         getPS(ScoreIDSQL);
+    }
+    public void loadGame(int IDn){
+        ID = IDn; //Schreibt die übergebene SpielID in eine Globale Valirable rein
+        String spielerAnzahl = "Select Spieleranzahl where SaveID = ?";     //Für die Spieleranzahl
+        number = 5;
+        getPS(spielerAnzahl);
+
+        String load = "Select SpielerID, Score FROM Scoreboard where SaveID = ?"; //in createArray() einfügen
+        number = 6;
+        getPS(load);
+
+        //Zurückgegeben werden SpielerNamen und Scores, sowie Spieleranzahl
+
     }
 }
