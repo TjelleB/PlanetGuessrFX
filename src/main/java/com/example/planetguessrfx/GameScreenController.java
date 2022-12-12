@@ -87,7 +87,7 @@ public class GameScreenController {
     //@Ivo / @Tjelle >Generiert einen neuen Planeten und holt sich den Namen und Wert aus der Math-Klasse, legt den Hintergrund passend zum Planetentypen fest
     public void genNewPlanet() {
         this.addDataToTbl();
-        m.calcFinalVal();
+        m.calculateValue();
         lblPlanetName.setText(m.name.getName());
         chgBackground();
         setBaseHints();
@@ -226,22 +226,22 @@ public class GameScreenController {
         if (!isLockedP4) checkP4();
         //Wenn alle Spieler eingeloggt haben: Punkte berechnen und auf den Ergebnis-Screen wechseln
         if(btnConfirm1.isDisabled()&& players == 1){
-            gainedScore1 =  m.calcPts(redMP1, guess1);
+            gainedScore1 =  m.calculateScore(redMP1, guess1);
             showResult(event);
         } else if(players == 2 && btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
-            gainedScore1 =  m.calcPts(redMP1, guess1);
-            gainedScore2 =  m.calcPts(redMP2, guess2);
+            gainedScore1 =  m.calculateScore(redMP1, guess1);
+            gainedScore2 =  m.calculateScore(redMP2, guess2);
             showResult(event);
         }else if( players == 3&& btnConfirm3.isDisabled()&&btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
-            gainedScore1 =  m.calcPts(redMP1, guess1);
-            gainedScore2 =  m.calcPts(redMP2, guess2);
-            gainedScore3 =  m.calcPts(redMP3, guess3);
+            gainedScore1 =  m.calculateScore(redMP1, guess1);
+            gainedScore2 =  m.calculateScore(redMP2, guess2);
+            gainedScore3 =  m.calculateScore(redMP3, guess3);
             showResult(event);
         }else if(players == 4&&btnConfirm4.isDisabled()&& btnConfirm3.isDisabled()&&btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
-            gainedScore1 =  m.calcPts(redMP1, guess1);
-            gainedScore2 =  m.calcPts(redMP2, guess2);
-            gainedScore3 =  m.calcPts(redMP3, guess3);
-            gainedScore4 =  m.calcPts(redMP4, guess4);
+            gainedScore1 =  m.calculateScore(redMP1, guess1);
+            gainedScore2 =  m.calculateScore(redMP2, guess2);
+            gainedScore3 =  m.calculateScore(redMP3, guess3);
+            gainedScore4 =  m.calculateScore(redMP4, guess4);
             showResult(event);
         }
     }
@@ -274,29 +274,29 @@ public class GameScreenController {
 
     //@Tjelle >Setzt den Hintergrund zum passenden Planeten
     public void chgBackground() {
-      ivPlanet.setImage(PlanetGuessr.getPictures(m.detImg()));
+      ivPlanet.setImage(PlanetGuessr.getPictures(m.determineImage()));
     }
 
     //@Ivo >Erstellt String für die Basistipps
     public String createStringBH() {
         return "Basis Wert: 50.000.000" +
-                "\nOberfläche: " + m.getBh1() +
-                "\nStern: " + m.getBh2() +
+                "\nOberfläche: " + m.getBaseHint1() +
+                "\nStern: " + m.getBaseHint2() +
                 "\n";
     }
 
     //@Ivo >Erstellt String für Tipp 1, Basistipps + neue Tipps
     public String createStringH1() {
         return this.createStringBH() +
-                "Tipp 1:\nAtmosphäre: " + m.getH11() +
-                "\nWetter: " + m.getH12() +
+                "Tipp 1:\nAtmosphäre: " + m.getHint1Part1() +
+                "\nWetter: " + m.getHint1Part2() +
                 "\n";
     }
 
     //@Ivo >Erstellt String für Tipp 2, Basistipps + Tipp 1 + neuen Tipp
     public String createStringH2() {
         return this.createStringH1() +
-                "Tipp 2:\nBewohnbar: " + m.getH2() +
+                "Tipp 2:\nBewohnbar: " + m.getHint2() +
                 "\n";
     }
 
