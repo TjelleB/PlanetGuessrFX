@@ -1,5 +1,4 @@
 package com.example.planetguessrfx;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,13 +11,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 public class MainMenuController {
     //FXML Objects
     public Pane pMainBackground;
@@ -31,7 +27,6 @@ public class MainMenuController {
     public TextField txtPlayer2Name;
     public ChoiceBox cbPlayers;
     public TextField txtSIDInput;
-
     private final ObservableList<String> playerList = FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
     public String playerName1;
     public String playerName2;
@@ -40,14 +35,14 @@ public class MainMenuController {
     public int players = 1;
     public ImageView ivBackground;
 
-    //@Tjelle >Lädt das Bild aus der Main klasse und legt es als Hintergrund fest
+    //@Tjelle >Lädt das Bild aus der Main-Klasse und legt es als Hintergrund fest
     @FXML
     private void initialize(){
         cbPlayers.setItems(playerList);
         ivBackground.setImage(PlanetGuessr.getPictures(5));
     }
 
-    //@Tjelle >prüft ob ein Spielername eingegeben wurde. wenn nicht wird ein Standardname zugewiesen
+    //@Tjelle >Prüft, ob ein Spielername eingegeben wurde. Wenn nicht, wird ein Standardname zugewiesen
     public void checkNames(){
         String[] playerNames = new String[]{txtPlayer1Name.getText(), txtPlayer2Name.getText(), txtPlayer3Name.getText(), txtPlayer4Name.getText()};
         String[] defaultNames = new String[]{"Player 1", "Player 2", "Player 3", "Player 4"};
@@ -76,7 +71,7 @@ public class MainMenuController {
         stage.show();
     }
 
-    //@Ivo >übergibt die eingegebene SaveID an die Datenbank und übergibt Namen und Scores
+    //@Ivo >übergibt die eingegebene SaveID an die Datenbank und holt Namen und Scores. Lädt GameScreen mit den Namen/Scores.
     public void resumeGame(ActionEvent event) throws IOException {
         try {
             int sID = Integer.parseInt(txtSIDInput.getText());
@@ -85,12 +80,16 @@ public class MainMenuController {
             int playercount = db.loadSpielerAnzahl();
             String[] playernames = db.loadPlayerNameGame();
             int[] playerscore = db.loadPlayerScore();
-
+            //Lädt GameScreen.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
             Parent root = loader.load();
             GameScreenController controller = loader.getController();
+
+            //Legt die geladenen Spielernamen und zugehörigen Scores fest
             controller.setPlayers(playercount, playernames[0], playernames[1], playernames[2], playernames[3]);
             controller.setScores(playerscore[0], playerscore[1], playerscore[2], playerscore[3]);
+
+            //Lädt GameScreen.fxml
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root, 480, 640);
             stage.setScene(scene);
@@ -100,29 +99,30 @@ public class MainMenuController {
             System.out.println("Keine SaveID");
         }
     }
-    //@ Tjelle >Zeigt die option an, mit einem code ein spiel weiterzuführen
-    public void showResumeDialog(){
+
+    //@ Tjelle >Zeigt die Option an, mit einem Code ein Spiel weiterzuführen
+    public void showResumeDialog() {
         pResumeDialog.setVisible(true);
     }
 
-    //@ Tjelle >zeigt/versteckt bei Änderung der Spieleranzahl die Namenseingabefelder
+    //@ Tjelle >Zeigt/versteckt bei Änderung der Spieleranzahl die Namenseingabefelder
     public void playersSelected(){
-        if(cbPlayers.getValue() == "1 Player"){
+        if(cbPlayers.getValue() == "1 Player") {
             players = 1;
             txtPlayer2Name.setVisible(false);
             txtPlayer3Name.setVisible(false);
             txtPlayer4Name.setVisible(false);
-        } else if(cbPlayers.getValue() == "2 Players"){
+        } else if(cbPlayers.getValue() == "2 Players") {
             players = 2;
             txtPlayer2Name.setVisible(true);
             txtPlayer3Name.setVisible(false);
             txtPlayer4Name.setVisible(false);
-        } else if(cbPlayers.getValue() == "3 Players"){
+        } else if(cbPlayers.getValue() == "3 Players") {
             players = 3;
             txtPlayer2Name.setVisible(true);
             txtPlayer3Name.setVisible(true);
             txtPlayer4Name.setVisible(false);
-        } else if(cbPlayers.getValue() == "4 Players"){
+        } else if(cbPlayers.getValue() == "4 Players") {
             players = 4;
             txtPlayer2Name.setVisible(true);
             txtPlayer3Name.setVisible(true);
