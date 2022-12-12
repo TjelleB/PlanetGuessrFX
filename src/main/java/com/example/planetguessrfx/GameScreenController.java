@@ -170,9 +170,10 @@ public class GameScreenController {
             }
         } catch (NumberFormatException e) {
 
-            if(players >1)
+            if(players >1) {
                 btnConfirm2.setSelected(false);
-            System.out.println("Fehler:Eingabe 2 ist kein Integer");
+                System.out.println("Fehler:Eingabe 2 ist kein Integer");
+            }
         }
     }
 
