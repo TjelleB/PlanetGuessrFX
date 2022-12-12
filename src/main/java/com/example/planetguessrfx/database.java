@@ -62,12 +62,23 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
                 System.out.println("getSpieleranzahl");
             } else if (number == 6) {
                 System.out.println(number);
+
+                    myStmt.setInt(1, ID);
+                }
                 //TODO
+            else if (number == 7) {
+                System.out.println(number);
+
+                myStmt.setInt(1, ID);
+
             }
+
+
             System.out.println(myStmt);
             if (b) {
                 result = myStmt.executeQuery();
             }
+
             if (number ==1) {
 
             } else if (number == 2) {
@@ -82,9 +93,19 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
                 SA = result.getInt("SpielerAnzahl");
                 System.out.println(SA);
             } else if (number == 6) {
-                //TODO
-            }
+                //Abfrage der Spielernamen
+                for (int j = 0; j <=4; j++)
+                {
+                    playerNameArray[j-1] = result.getString(String.valueOf(result.next()));
+                }
+            } else if (number == 7) {
+                //Abfrage der Spieler scores
+                for (int j = 0; j <=4; j++)
+                {
+                    score[j-1] = result.getInt(String.valueOf(result.next()));
+                }
 
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -156,16 +177,21 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
         number = 3;
         getPS(ScoreIDSQL);
     }
+
+
     public void loadGame(int IDn){
         ID = IDn; //Schreibt die übergebene SpielID in eine Globale Valirable rein
         String spielerAnzahl = "Select Spieleranzahl where SaveID = ?";     //Für die Spieleranzahl
         number = 5;
         getPS(spielerAnzahl);
-
-        String load = "Select SpielerID, Score FROM Scoreboard where SaveID = ?"; //in createArray() einfügen
+//Playername
+        String loadPlayerName = "Select SpielerID FROM Scoreboard where SaveID = ?"; //in createArray() einfügen
         number = 6;
-        getPS(load);
-
+        getPS(loadPlayerName);
+        //PlayerScore
+        String loadPlayerScore = "Select Score FROM scoreboard where saveID = ?";
+        number = 7;
+        getPS(loadPlayerScore);
         //Zurückgegeben werden SpielerNamen und Scores, sowie Spieleranzahl
 
     }
