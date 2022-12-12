@@ -36,6 +36,7 @@ public class MainMenuController {
     public String playerName3;
     public String playerName4 ;
     public int players = 1;
+    public TextField txtSIDInput;
 
     @FXML
     private void initialize(){
@@ -70,7 +71,33 @@ public class MainMenuController {
         stage.setScene(scene);
         stage.show();
     }
+    public void resumeGame(ActionEvent event) throws IOException {
+        try {
+            int sID = Integer.parseInt(txtSIDInput.getText());
+            database db = new database();
+            db.loadGame(sID);
+            int playercount = db.loadSpielerAnzahl();
+            String[] playernames = db.loadPlayerNameGame();
+            int[] playerscore = db.loadPlayerScore();
+            for (int i = 0; i < 4; i++) {
+                System.out.println(playercount);
+                System.out.println(playernames[i]);
+                System.out.println(playerscore[i]);
+            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
+            Parent root = loader.load();
+            GameScreenController controller = loader.getController();
+            controller.setPlayers(playercount, playernames[0], playernames[1], playernames[2], playernames[3]);
+            controller.setScores(playerscore[0], playerscore[1], playerscore[2], playerscore[3]);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 480, 640);
+            stage.setScene(scene);
+            stage.show();
 
+        } catch (NumberFormatException e) {
+            System.out.println("Keine SaveID");
+        }
+    }
     //Zeigt die option an, mit einem code ein spiel weiterzuführen
     public void showResumeDialog(){
         pResumeDialog.setVisible(true);

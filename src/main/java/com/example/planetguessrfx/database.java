@@ -79,11 +79,7 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
                 result = myStmt.executeQuery();
             }
 
-            if (number ==1) {
-
-            } else if (number == 2) {
-
-            } else if (number == 3) { // scoreID
+            if (number == 3) { // scoreID
                 scoreID = result.getInt("MAX(ScoreID)") + 1;
                 System.out.println(scoreID);
             } else if (number ==4){   //SaveID
@@ -94,15 +90,20 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
                 System.out.println(SA);
             } else if (number == 6) {
                 //Abfrage der Spielernamen
-                for (int j = 0; j <=4; j++)
+                for (int j = 0; j < playerNameArray.length; j++)
                 {
-                    playerNameArray[j-1] = result.getString(String.valueOf(result.next()));
+                    result.next();
+                    playerNameArray[j] = result.getString("SpielerID");
+                    System.out.println(playerNameArray[j]);
+
                 }
             } else if (number == 7) {
                 //Abfrage der Spieler scores
-                for (int j = 0; j <=4; j++)
+                for (int j = 0; j < score.length; j++)
                 {
-                    score[j-1] = result.getInt(String.valueOf(result.next()));
+                    result.next();
+                    score[j] = result.getInt("Score");
+
                 }
 
             }
@@ -181,7 +182,7 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
 
     public void loadGame(int IDn){
         ID = IDn; //Schreibt die übergebene SpielID in eine Globale Valirable rein
-        String spielerAnzahl = "Select Spieleranzahl where SaveID = ?";     //Für die Spieleranzahl
+        String spielerAnzahl = "Select Spieleranzahl FROM Saves where SaveID = ?";     //Für die Spieleranzahl
         number = 5;
         getPS(spielerAnzahl);
 //Playername
@@ -194,5 +195,14 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
         getPS(loadPlayerScore);
         //Zurückgegeben werden SpielerNamen und Scores, sowie Spieleranzahl
 
+    }
+    public String[] loadPlayerNameGame() {
+        return playerNameArray;
+    }
+    public int[] loadPlayerScore() {
+        return score;
+    }
+    public int loadSpielerAnzahl() {
+        return SA;
     }
 }
