@@ -13,6 +13,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -29,6 +30,7 @@ public class MainMenuController {
     public TextField txtPlayer3Name;
     public TextField txtPlayer2Name;
     public ChoiceBox cbPlayers;
+    public TextField txtSIDInput;
 
     private final ObservableList<String> playerList = FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
     public String playerName1;
@@ -36,11 +38,12 @@ public class MainMenuController {
     public String playerName3;
     public String playerName4 ;
     public int players = 1;
-    public TextField txtSIDInput;
+    public ImageView ivBackground;
 
     @FXML
     private void initialize(){
         cbPlayers.setItems(playerList);
+        ivBackground.setImage(PlanetGuessr.getPictures(5));
     }
     //Überprüft ob ein spieler einen Namen eigegeben hat, wenn nicht wird ein standardname verwendet
     public void checkNames(){
@@ -57,7 +60,6 @@ public class MainMenuController {
         playerName3 = playerNames[2];
         playerName4 = playerNames[3];
     }
-
 
     //lädt den Game screen und übergibt die spielernamen
     public void startGame(ActionEvent event) throws IOException{
