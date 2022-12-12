@@ -6,7 +6,7 @@ public class database { ResultSet result = null;           //Result der executeQ
 String pstatement = null;           //Prepared Statement
 int number = 0;                       //Variable, damit in die Prepared statements eingesetzt werden kann
 int scoreID = 0;                    //scoreID, um Spielernamen und score zu verknüpfen
-int saveID = 0;                     //Eine ID; die am ende dem User gegeben wird, um das gespeicherte Spiel fortzuführen
+int saveID = 0;                     //Eine ID; die am Ende dem User gegeben wird, um das gespeicherte Spiel fortzuführen
 int[] score = new int[4];           //Array für Spielerscore
 String[] playerNameArray = new String[4];       //Array für Spielernamen
 int players = 0;         //Spieleranzahl
@@ -58,9 +58,11 @@ int players = 0;         //Spieleranzahl
             } else if (number == 2) {
 
             } else if (number == 3) { // scoreID
-                scoreID = result.getInt(String.valueOf(result)) + 1;
+                scoreID = result.getInt("MAX(ScoreID)") + 1;
+                System.out.println(scoreID);
             } else if (number ==4){   //SaveID
-                saveID = result.getInt(String.valueOf(result)) + 1;
+                saveID = result.getInt("MAX(SaveID)") + 1;
+                System.out.println(saveID);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -68,6 +70,7 @@ int players = 0;         //Spieleranzahl
             try {
                 if (conn != null) {
                     conn.close();
+                    System.out.println("Conn closed");
                 }
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
@@ -108,13 +111,13 @@ int players = 0;         //Spieleranzahl
         System.out.println("Save after NewScoreID");
         createArray(SN1, SN2, SN3, SN4, SC1, SC2, SC3,SC4);
 
-        String InsertScore = "INSERT INTO SCOREBOARD(?, ?, ?, ?)";
+        String InsertScore = "INSERT INTO SCOREBOARD VALUES (?, ?, ?, ?)";
         number = 1;
         getPS(InsertScore); //übergibt ps ohne eingaben
 
 
 // Zum speichern des Spiels
-        String InsertSave = "INSERT INTO Saves(?, ?, ?, ?, ?)";
+        String InsertSave = "INSERT INTO Saves VALUES (?, ?, ?, ?, ?)";
         number = 2;
         getPS(InsertSave);
 
