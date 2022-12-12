@@ -8,17 +8,22 @@ public class Name extends Generator {
   private String finalName;
   @Override
   public void generate() {
+    
+    // Auswahl des griechischen Buchstabens
     Random rdm = new Random(); 
     int index = rdm.nextInt(greek_letters.length); 
     finalName = (greek_letters[index]) + " ";
-
+    
+    // Auswahl des Namens
     index = rdm.nextInt(name.length);
     finalName += (name[index]);
-
+    
+    // Auswahl des Buchstabens
     index = rdm.nextInt(letter.length);
     if(index >=3){finalName +=  "-";}
     finalName += (letter[index]);
-
+    
+    // Auswahl der Nummer
     index = rdm.nextInt(numbers.length);
     if(index >=3){finalName +=  " ";}
     finalName +=(numbers[index]);

@@ -21,6 +21,7 @@ public class Surface extends Generator {
   }
 
   //checkType() = @Ivo
+  // Checken, ob die generierten Werte logisch zusammenpassen | falls nicht, Werte ändern
   public void checkType(int atmos) {
     if (atmos == 0) {
       type = 0;
