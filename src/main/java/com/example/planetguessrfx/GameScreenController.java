@@ -223,8 +223,8 @@ public class GameScreenController {
             gainedScore1 =  m.calcPts(redMP1, guess1);
             showResult(event);
         } else if(players == 2 && btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
-            gainedScore1 =  m.calcPts(redMP1, guess2);
-            gainedScore2 =  m.calcPts(redMP2, guess3);
+            gainedScore1 =  m.calcPts(redMP1, guess1);
+            gainedScore2 =  m.calcPts(redMP2, guess2);
             showResult(event);
         }else if( players == 3&& btnConfirm3.isDisabled()&&btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
             gainedScore1 =  m.calcPts(redMP1, guess1);

@@ -138,8 +138,8 @@ public class Math {
     //Berechnen der Punkte mit dem Wert des Users und seinem reduzierten Tipp-Multiplikator
     public int calcPts(double redM, long sc) {
         //Arrays zum Speichern der Grenzwert für die Punkteberechnung
-        long[] lwrBorders = new long[25];
-        long[] uprBorders = new long[25];
+        long[] lwrBorders = new long[100];
+        long[] uprBorders = new long[100];
         //Schritte in 1% bis 25% (25% = Maximal erlaubte Abweichung zum tatsächlichen Wert)
         double multi = 0;
         for (int i = 0; i < lwrBorders.length; i++) {
@@ -154,7 +154,7 @@ public class Math {
         } else {
             //Der score wird mit jedem Grenzwert verglichen, jeder den er überschreitet, reduziert die Punkte um 2% (Max 50%)
             for (int v = 0; v < uprBorders.length; v++) {
-                reduce += 0.02;
+                reduce += 0.01;
                 if (sc == value) {
                     return (int) ((value / 10000) * redM);
                 } else if (sc >= lwrBorders[v] && sc <= uprBorders[v]) {
