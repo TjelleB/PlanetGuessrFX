@@ -125,7 +125,7 @@ public class GameScreenController {
     //Übergibt daten an die database klasse
     public void saveScore() throws SQLException {
         database db = new database();
-        db.save(playerName1,playerName2,playerName3,playerName4,score1,score2,score3,score4);
+        db.save(players, playerName1,playerName2,playerName3,playerName4,score1,score2,score3,score4);
         lblYourCode.setText("Your code is: " + db.getSaveID());
         btnSave.setDisable(true);
     }
@@ -170,9 +170,10 @@ public class GameScreenController {
             }
         } catch (NumberFormatException e) {
 
-            if(players >1)
+            if(players >1) {
                 btnConfirm2.setSelected(false);
-            System.out.println("Fehler:Eingabe 2 ist kein Integer");
+                System.out.println("Fehler:Eingabe 2 ist kein Integer");
+            }
         }
     }
 
@@ -223,8 +224,8 @@ public class GameScreenController {
             gainedScore1 =  m.calcPts(redMP1, guess1);
             showResult(event);
         } else if(players == 2 && btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
-            gainedScore1 =  m.calcPts(redMP1, guess2);
-            gainedScore2 =  m.calcPts(redMP2, guess3);
+            gainedScore1 =  m.calcPts(redMP1, guess1);
+            gainedScore2 =  m.calcPts(redMP2, guess2);
             showResult(event);
         }else if( players == 3&& btnConfirm3.isDisabled()&&btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
             gainedScore1 =  m.calcPts(redMP1, guess1);
