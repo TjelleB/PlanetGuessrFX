@@ -40,16 +40,16 @@ public class ResultScreenController {
     private int updatedScore1;
     private int updatedScore2;
     private int updatedScore3;
-    private     int updatedScore4;
+    private int updatedScore4;
 
-    //Übernimmt die Spieleranzahl und Namen von der GameScreenController Klasse
+    //@Tjelle >Übernimmt die Spieleranzahl und Namen von der GameScreenController Klasse
     public void setPlayers(int p, String p1, String p2, String p3, String p4) {
         players = p;
         playerName1 = p1;
         playerName2 = p2;
         playerName3 = p3;
         playerName4 = p4;
-        // Bestimmt wie viele vboxen angezeigt wird, jede vbox zeigt den score von einem spieler an
+        // Bestimmt wie viele vBoxen angezeigt werden, jede vBox zeigt den Score von einem Spieler an
         switch (p) {
             case 1 -> {
                 box2.setVisible(false);
@@ -63,11 +63,11 @@ public class ResultScreenController {
             case 3 -> box4.setVisible(false);
         }
     }
-    //Zeigt die Spiel speichern Option an
+    //@Tjelle >zeigt die Speichern Option an
     public void displaySaveOption(){
         pSaveGame.setVisible(true);
     }
-    //Übernimmt den score(s1-4) und die erhaltenden punkte(gs1-4) der letzten runde und zeigt diese an
+    //@Tjelle >Übernimmt den Score(s1-4) und die erhaltenden Punkte(gs1-4) der letzten Runde und zeigt diese an
     public void displayScore(int s1, int s2, int s3, int s4,int gs1, int gs2, int gs3, int gs4){
         updatedScore1 = gs1 + s1;
         updatedScore2 = gs2 + s2;
@@ -82,14 +82,14 @@ public class ResultScreenController {
         txtNr4Score.setText("Player 4: " + playerName4 + " + " + gs4);
         txtNr4UpdatedScore.setText("Updated score: " + updatedScore4);
     }
-    //Übergibt die Spielernamen und den Updated score an die database klasse
+    //@Tjelle >Übergibt die Spielernamen und die aktualisierten Punkte an die Database klasse
     public void saveScore() throws SQLException {
         database db = new database();
         db.save(players, playerName1,playerName2,playerName3,playerName4,updatedScore1,updatedScore2,updatedScore3,updatedScore4);
         lblYourCode.setText("Your code is: " + db.getSaveID());
         btnSave.setDisable(true);
     }
-    //Lädt eine neue instanz des game screens und einen neuen Planeten, übergibt den score und spieleranzahl+namen
+    //@Tjelle >Lädt den Game-Screen und übergibt Namen und Punkte
     public void nextPlanet(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
         Parent root = loader.load();
@@ -100,7 +100,7 @@ public class ResultScreenController {
         stage.setScene(new Scene(root, 480, 640));
         stage.show();
     }
-    //Wechselt zum Hauptmenü
+    //@Tjelle >Wechselt zum Hauptmenü
     public void returnToMain(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
