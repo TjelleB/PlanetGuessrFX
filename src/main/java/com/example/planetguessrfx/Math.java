@@ -147,7 +147,7 @@ public class Math {
             lwrBorders[i] = (long) (value - value * multi);
             uprBorders[i] = (long) (value + value * multi);
         }
-        double reduce = 0;
+        double reduce = -0.01;
         //Wenn der score außerhalb der 25 % liegt, wird 0 als Punkte zurückgegeben
         if(sc < lwrBorders[lwrBorders.length-1] || sc > uprBorders[uprBorders.length-1]) {
             return 0;
