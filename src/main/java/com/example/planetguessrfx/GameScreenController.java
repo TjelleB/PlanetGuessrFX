@@ -147,7 +147,7 @@ public class GameScreenController {
                 isLockedP1 = true; //If-Bedingung wird gesperrt
             }
         } catch (NumberFormatException e) {
-            System.out.println("Fehler: Die Eingabe ist kein Integer");
+            System.out.println("Fehler:Eingabe 1 ist kein Integer");
         }
 
     }
@@ -164,7 +164,7 @@ public class GameScreenController {
                 isLockedP2 = true;
             }
         } catch (NumberFormatException e) {
-            System.out.println("Fehler: Die Eingabe ist kein Integer");
+            System.out.println("Fehler:Eingabe 2 ist kein Integer");
         }
     }
 
@@ -181,7 +181,7 @@ public class GameScreenController {
                 isLockedP3 = true;
             }
         } catch (NumberFormatException e) {
-            System.out.println("Fehler: Die Eingabe ist kein Integer");
+            System.out.println("Fehler:Eingabe 3 ist kein Integer");
         }
     }
     public void checkP4() {
@@ -197,7 +197,7 @@ public class GameScreenController {
                 isLockedP4 = true;
             }
         } catch (NumberFormatException e) {
-            System.out.println("Fehler: Die Eingabe ist kein Integer");
+            System.out.println("Fehler:Eingabe 4 ist kein Integer");
         }
     }
     public void checkConfirmation(ActionEvent event) throws IOException{
