@@ -92,11 +92,12 @@ public class ResultScreenController {
     //Lädt eine neue instanz des game screens und einen neuen Planeten, übergibt den score und spieleranzahl+namen
     public void nextPlanet(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
+        Parent root = loader.load();
         GameScreenController controller = loader.getController();
         controller.setScores(updatedScore1, updatedScore2, updatedScore3, updatedScore4);
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(loader.load(), 480, 640));
+        stage.setScene(new Scene(root, 480, 640));
         stage.show();
     }
     //Wechselt zum Hauptmenü

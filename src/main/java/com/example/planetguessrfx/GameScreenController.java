@@ -206,10 +206,14 @@ public class GameScreenController {
     //Zeigt den Spielernamen in der inputbox an und setzt sie auf sichtbar, jenachdem wie viele da sind
     public void setPlayers(int p, String p1, String p2, String p3, String p4){
         players = p;
-        txtInput1.setPromptText(p1 + "'s Guess");
-        txtInput2.setPromptText(p2 + "'s Guess");
-        txtInput3.setPromptText(p3 + "'s Guess");
-        txtInput4.setPromptText(p4 + "'s Guess");
+        playerName1 = p1;
+        txtInput1.setPromptText(playerName1 + "'s Guess");
+        playerName2 = p2;
+        txtInput2.setPromptText(playerName2 + "'s Guess");
+        playerName3 = p3;
+        txtInput3.setPromptText(playerName3 + "'s Guess");
+        playerName4 = p4;
+        txtInput4.setPromptText(playerName4 + "'s Guess");
 
         switch (players){
             case 1 -> {
