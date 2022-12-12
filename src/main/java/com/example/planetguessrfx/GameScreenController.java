@@ -135,47 +135,69 @@ public class GameScreenController {
     }
 
     public void checkP1() {
-        txtInput1.setEditable(!btnConfirm1.isSelected()); //Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
-        btnConfirm1.setDisable(btnConfirm1.isSelected()); //Der ToggleButton wird deaktiviert, wenn er gedrückt ist
-        if (btnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
-            if (btnHint3.isSelected()) redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
-            else if (btnHint2.isSelected()) redMP1 = 0.70;
-            else if (btnHint1.isSelected()) redMP1 = 0.85;
-            else redMP1 = 1;
-            isLockedP1 = true; //If-Bedingung wird gesperrt
+        try {
+            score1 = Integer.parseInt(txtInput1.getText());
+            txtInput1.setEditable(!btnConfirm1.isSelected()); //Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
+            btnConfirm1.setDisable(btnConfirm1.isSelected()); //Der ToggleButton wird deaktiviert, wenn er gedrückt ist
+            if (btnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
+                if (btnHint3.isSelected()) redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
+                else if (btnHint2.isSelected()) redMP1 = 0.70;
+                else if (btnHint1.isSelected()) redMP1 = 0.85;
+                else redMP1 = 1;
+                isLockedP1 = true; //If-Bedingung wird gesperrt
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Fehler: Die Eingabe ist kein Integer");
         }
+
     }
     public void checkP2() {
-        txtInput2.setEditable(!btnConfirm2.isSelected());
-        btnConfirm2.setDisable(btnConfirm2.isSelected());
-        if (btnConfirm2.isDisabled()) {
-            if (btnHint3.isSelected()) redMP2 = 0.65;
-            else if (btnHint2.isSelected()) redMP2 = 0.70;
-            else if (btnHint1.isSelected()) redMP2 = 0.85;
-            else redMP2 = 1;
-            isLockedP2 = true;
+        try {
+            score2 = Integer.parseInt(txtInput2.getText());
+            txtInput2.setEditable(!btnConfirm2.isSelected());
+            btnConfirm2.setDisable(btnConfirm2.isSelected());
+            if (btnConfirm2.isDisabled()) {
+                if (btnHint3.isSelected()) redMP2 = 0.65;
+                else if (btnHint2.isSelected()) redMP2 = 0.70;
+                else if (btnHint1.isSelected()) redMP2 = 0.85;
+                else redMP2 = 1;
+                isLockedP2 = true;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Fehler: Die Eingabe ist kein Integer");
         }
     }
+
     public void checkP3() {
-        txtInput3.setEditable(!btnConfirm3.isSelected());
-        btnConfirm3.setDisable(btnConfirm3.isSelected());
-        if (btnConfirm3.isDisabled()) {
-            if (btnHint3.isSelected()) redMP3 = 0.65;
-            else if (btnHint2.isSelected()) redMP3 = 0.70;
-            else if (btnHint1.isSelected()) redMP3 = 0.85;
-            else redMP3 = 1;
-            isLockedP3 = true;
+        try {
+            score3 = Integer.parseInt(txtInput3.getText());
+            txtInput3.setEditable(!btnConfirm3.isSelected());
+            btnConfirm3.setDisable(btnConfirm3.isSelected());
+            if (btnConfirm3.isDisabled()) {
+                if (btnHint3.isSelected()) redMP3 = 0.65;
+                else if (btnHint2.isSelected()) redMP3 = 0.70;
+                else if (btnHint1.isSelected()) redMP3 = 0.85;
+                else redMP3 = 1;
+                isLockedP3 = true;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Fehler: Die Eingabe ist kein Integer");
         }
     }
     public void checkP4() {
-        txtInput4.setEditable(!btnConfirm4.isSelected());
-        btnConfirm4.setDisable(btnConfirm4.isSelected());
-        if (btnConfirm4.isDisabled()) {
-            if (btnHint3.isSelected()) redMP4 = 0.65;
-            else if (btnHint2.isSelected()) redMP4 = 0.70;
-            else if (btnHint1.isSelected()) redMP4 = 0.85;
-            else redMP4 = 1;
-            isLockedP4 = true;
+        try {
+            score4 = Integer.parseInt(txtInput4.getText());
+            txtInput4.setEditable(!btnConfirm4.isSelected());
+            btnConfirm4.setDisable(btnConfirm4.isSelected());
+            if (btnConfirm4.isDisabled()) {
+                if (btnHint3.isSelected()) redMP4 = 0.65;
+                else if (btnHint2.isSelected()) redMP4 = 0.70;
+                else if (btnHint1.isSelected()) redMP4 = 0.85;
+                else redMP4 = 1;
+                isLockedP4 = true;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Fehler: Die Eingabe ist kein Integer");
         }
     }
     public void checkConfirmation(ActionEvent event) throws IOException{
