@@ -2,7 +2,7 @@ package com.example.planetguessrfx;
 
 import java.sql.*;
 
-public class database { // Paul >
+public class Database { // Paul >
     ResultSet result = null;           //Result der executeQuery
 String pstatement = null;           //Prepared Statement
 int number = 0;                       //Variable, damit in die Prepared statements eingesetzt werden kann
@@ -162,5 +162,14 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
         getPS(loadPlayerScore);
         //Zurückgegeben werden SpielerNamen und Scores, sowie Spieleranzahl
 
+    }
+    public String[] loadPlayerNameGame() {
+        return playerNameArray;
+    }
+    public int[] loadPlayerScore() {
+        return score;
+    }
+    public int loadSpielerAnzahl() {
+        return sa;
     }
 }
