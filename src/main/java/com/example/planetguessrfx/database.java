@@ -24,6 +24,7 @@ int players = 0;         //Spieleranzahl
 
 //Ausführen von Prepared Statement
             PreparedStatement myStmt = conn.prepareStatement(pstatement);
+            System.out.println("Save after set Statement");
             if(number == 1)
             {
                 System.out.println(number);
@@ -50,15 +51,16 @@ int players = 0;         //Spieleranzahl
             } else if (number == 4) {     //SaveID,
                 System.out.println("SaveID");
             }
+            System.out.println(myStmt);
             result = myStmt.executeQuery();
             if (number ==1) {
 
             } else if (number == 2) {
 
             } else if (number == 3) { // scoreID
-                scoreID = result.getInt(String.valueOf(result));
+                scoreID = result.getInt(String.valueOf(result)) + 1;
             } else if (number ==4){   //SaveID
-                saveID = result.getInt(String.valueOf(result));
+                saveID = result.getInt(String.valueOf(result)) + 1;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -80,12 +82,13 @@ int players = 0;         //Spieleranzahl
 
     public void generateSaveID() throws SQLException {
          String SaveIDSQL = "SELECT MAX(SaveID) from Saves";
+         System.out.println("generateSaveID");
          number =4;
          getPS(SaveIDSQL);
     }
 
-    public void createArray(int SA, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4){
-
+    public void createArray(String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4){
+        System.out.println("createArray");
         playerNameArray[0] = SN1;
         playerNameArray[1] = SN2;
         playerNameArray[2] = SN3;
@@ -97,11 +100,13 @@ int players = 0;         //Spieleranzahl
         //Array für den score
     }
 
-    public void save(int SA, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4) throws SQLException {
-
+    public void save(String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4) throws SQLException {
+        System.out.println("Save before SaveID");
         generateSaveID();
+        System.out.println("Save after SaveID, before NewScoreID");
         getNewScoreID();
-        createArray(SA, SN1, SN2, SN3, SN4, SC1, SC2, SC3,SC4);
+        System.out.println("Save after NewScoreID");
+        createArray(SN1, SN2, SN3, SN4, SC1, SC2, SC3,SC4);
 
         String InsertScore = "INSERT INTO SCOREBOARD(?, ?, ?, ?)";
         number = 1;
