@@ -1,5 +1,5 @@
 package com.example.planetguessrfx;
-import      javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,7 +8,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
@@ -71,7 +70,6 @@ public class GameScreenController {
     private int gainedScore3;
     private int gainedScore4;
     private final Math m = new Math();
-    private Image imgCurrentPlanet;
     private int players;
     private double redMP1;
     private double redMP2;
@@ -82,10 +80,11 @@ public class GameScreenController {
     private boolean isLockedP3 = false;
     private boolean isLockedP4 = false;
 
+    //@Tjelle
     @FXML
     private void initialize() {genNewPlanet();}
 
-    // generiert einen neuen Planeten und holt sich den namen und wert aus der math klasse, legt den hintergrund passend zum Planetentypen fest
+    //@Ivo / @Tjelle >Generiert einen neuen Planeten und holt sich den Namen und Wert aus der Math-Klasse, legt den Hintergrund passend zum Planetentypen fest
     public void genNewPlanet() {
         this.addDataToTbl();
         m.calcFinalVal();
@@ -94,7 +93,7 @@ public class GameScreenController {
         setBaseHints();
     }
 
-    //Lädt das Main menu
+    //@Tjelle >Lädt das Main-Menu
     public void returnToMain(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         Parent root = loader.load();
@@ -104,7 +103,7 @@ public class GameScreenController {
         stage.show();
     }
 
-    //Lädt den result screeen und übergibt spieler anzahl, namen und punkte
+    //@Tjelle >Lädt den Result-Screen und übergibt Spieleranzahl, Namen und Punkte
     public void showResult(ActionEvent event)throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resultScreen.fxml"));
         Parent root = loader.load();
@@ -117,12 +116,12 @@ public class GameScreenController {
         stage.show();
     }
 
-    //Zeigt Speicheroption an
+    //@Tjelle >Zeigt Speicheroption an
     public void displaySaveOption(){
         pSaveGame.setVisible(true);
     }
 
-    //Übergibt daten an die database klasse
+    //@Tjelle >Übergibt Daten an die Database-Klasse
     public void saveScore() throws SQLException {
         database db = new database();
         db.save(players, playerName1,playerName2,playerName3,playerName4,score1,score2,score3,score4);
@@ -130,32 +129,34 @@ public class GameScreenController {
         btnSave.setDisable(true);
     }
 
-    //Setzt den aktuellen score aller Spieler
+    //@Tjelle >Setzt den aktuellen Score aller Spieler
     public  void setScores(int s1, int s2, int s3, int s4){
         score1 = s1;
         score2 = s2;
         score3 = s3;
         score4 = s4;
     }
-
+    //@Ivo / @Tjelle >checkP1-4 identische Funktion
     public void checkP1() {
         try {
-            guess1 = Integer.parseInt(txtInput1.getText());
-            txtInput1.setEditable(!btnConfirm1.isSelected()); //Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
-            btnConfirm1.setDisable(btnConfirm1.isSelected()); //Der ToggleButton wird deaktiviert, wenn er gedrückt ist
-            if (btnConfirm1.isDisabled()) { //Wenn der Spieler seine Schätzung festgelegt hat
-                if (btnHint3.isSelected()) redMP1 = 0.65; //Wird der niedrigste Multiplikator ausgewählt
+            guess1 = Integer.parseInt(txtInput1.getText()); //Speichert den Guess
+            txtInput1.setEditable(!btnConfirm1.isSelected()); //>Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
+            btnConfirm1.setDisable(btnConfirm1.isSelected()); //>Der ToggleButton wird deaktiviert, wenn er gedrückt ist
+            //>Wenn der Spieler seine Schätzung festlegt:
+            if (btnConfirm1.isDisabled()) {
+                //>Wählt den reduzierten Multiplikator, basierend auf den aufgedeckten Tipps (-15% pro Tipp)
+                if (btnHint3.isSelected()) redMP1 = 0.65;
                 else if (btnHint2.isSelected()) redMP1 = 0.70;
                 else if (btnHint1.isSelected()) redMP1 = 0.85;
                 else redMP1 = 1;
-                isLockedP1 = true; //If-Bedingung wird gesperrt
+                isLockedP1 = true; //>Methode wird gesperrt, um erneuten Aufruf zu verhindern
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { //Wenn keine Integer im Textfield steht
             btnConfirm1.setSelected(false);
-            System.out.println("Fehler:Eingabe 1 ist kein Integer");
+            System.out.println("Fehler: Eingabe 1 ist kein Integer");
         }
-
     }
+    //@Ivo / @Tjelle
     public void checkP2() {
         try {
             guess2 = Integer.parseInt(txtInput2.getText());
@@ -172,11 +173,11 @@ public class GameScreenController {
 
             if(players >1) {
                 btnConfirm2.setSelected(false);
-                System.out.println("Fehler:Eingabe 2 ist kein Integer");
+                System.out.println("Fehler: Eingabe 2 ist kein Integer");
             }
         }
     }
-
+    //@Ivo / @Tjelle
     public void checkP3() {
         try {
             guess3 = Integer.parseInt(txtInput3.getText());
@@ -192,10 +193,11 @@ public class GameScreenController {
         } catch (NumberFormatException e) {
             if(players > 2) {
                 btnConfirm3.setSelected(false);
-                System.out.println("Fehler:Eingabe 3 ist kein Integer");
+                System.out.println("Fehler: Eingabe 3 ist kein Integer");
             }
         }
     }
+    //@Ivo / @Tjelle
     public void checkP4() {
         try {
             guess4 = Integer.parseInt(txtInput4.getText());
@@ -211,15 +213,18 @@ public class GameScreenController {
         } catch (NumberFormatException e) {
             if(players > 3) {
                 btnConfirm4.setSelected(false);
-                System.out.println("Fehler:Eingabe 4 ist kein Integer");
+                System.out.println("Fehler: Eingabe 4 ist kein Integer");
             }
         }
     }
+    //@Ivo / @Tjelle >Aufruf beim Drücken der "Set"-Buttons
     public void checkConfirmation(ActionEvent event) throws IOException{
-            if (!isLockedP1) checkP1();
-            if (!isLockedP2) checkP2();
-            if (!isLockedP3) checkP3();
-            if (!isLockedP4) checkP4();
+        //Einmaliges Bestimmen des reduzierten Multiplikators
+        if (!isLockedP1) checkP1();
+        if (!isLockedP2) checkP2();
+        if (!isLockedP3) checkP3();
+        if (!isLockedP4) checkP4();
+        //Wenn alle Spieler eingeloggt haben: Punkte berechnen und auf den Ergebnis-Screen wechseln
         if(btnConfirm1.isDisabled()&& players == 1){
             gainedScore1 =  m.calcPts(redMP1, guess1);
             showResult(event);
@@ -240,7 +245,7 @@ public class GameScreenController {
             showResult(event);
         }
     }
-    //Zeigt den Spielernamen in der inputbox an und setzt sie auf sichtbar, jenachdem wie viele da sind
+    //@Tjelle >Zeigt den Spielernamen in der Inputbox an und setzt sie auf sichtbar, je nachdem wie viele da sind
     public void setPlayers(int p, String p1, String p2, String p3, String p4){
         players = p;
         playerName1 = p1;
@@ -267,42 +272,42 @@ public class GameScreenController {
         }
     }
 
-    //Setzt den hintergrund zum passenden planeten
+    //@Tjelle >Setzt den Hintergrund zum passenden Planeten
     public void chgBackground() {
       ivPlanet.setImage(PlanetGuessr.getPictures(m.detImg()));
     }
 
-    //createStringBH() = @Ivo
-    public String createStringBH() { //String für Basistipps
+    //@Ivo >Erstellt String für die Basistipps
+    public String createStringBH() {
         return "Basis Wert: 50.000.000" +
                 "\nOberfläche: " + m.getBh1() +
                 "\nStern: " + m.getBh2() +
                 "\n";
     }
 
-    //createStringH1() = @Ivo
-    public String createStringH1() { //String für Tipp 1
+    //@Ivo >Erstellt String für Tipp 1, Basistipps + neue Tipps
+    public String createStringH1() {
         return this.createStringBH() +
                 "Tipp 1:\nAtmosphäre: " + m.getH11() +
                 "\nWetter: " + m.getH12() +
                 "\n";
     }
 
-    //createStringH2() = @Ivo
-    public String createStringH2() { //String für Tipp 2
+    //@Ivo >Erstellt String für Tipp 2, Basistipps + Tipp 1 + neuen Tipp
+    public String createStringH2() {
         return this.createStringH1() +
                 "Tipp 2:\nBewohnbar: " + m.getH2() +
                 "\n";
     }
 
-    //createStringH3() = @Ivo
-    public String createStringH3() { //String für Tipp 3
+    //@Ivo >Erstellt String für Tipp 3, Basistipps + Tipp 1 + Tipp 2 + neuen Tipp
+    public String createStringH3() {
         return this.createStringH2() +
                 "Tipp 3:\nRessourcenmenge der Wertetabelle hinzugefügt!";
     }
 
-    //setBaseHints() = @Ivo
-    public void setBaseHints() { //Basistipps werden in TextArea geschrieben, Button für Tipp 1 wird verfügbar
+    //@Ivo >Basistipps werden in TextArea geschrieben, Button für Tipp 1 wird verfügbar
+    public void setBaseHints() {
         txtBaseInfos.setEditable(false);
         txtBaseInfos.setText(this.createStringBH());
         btnHint1.setDisable(false);
@@ -310,34 +315,33 @@ public class GameScreenController {
         btnHint3.setDisable(true);
     }
 
-    //setHint1() = @Ivo
-    public void setHint1() { //Tipp 1 wird in TextArea geschrieben, Button für Tipp 2 wird verfügbar
+    //@Ivo >Tipp 1 wird in TextArea geschrieben, Button für Tipp 2 wird verfügbar
+    public void setHint1() {
         txtBaseInfos.setText(this.createStringH1());
         btnHint1.setDisable(true);
         btnHint2.setDisable(false);
-        System.out.println(m.value);
     }
 
-    //setHint2() = @Ivo
-    public void setHint2() { //Tipp 2 wird in TextArea geschrieben, Button für Tipp 3 wird verfügbar
+    //@Ivo >Tipp 2 wird in TextArea geschrieben, Button für Tipp 3 wird verfügbar
+    public void setHint2() {
         txtBaseInfos.setText(this.createStringH2());
         btnHint2.setDisable(true);
         btnHint3.setDisable(false);
     }
 
-    //setHint3() = @Ivo
-    public void setHint3() { //Tipp 3 werden in TextArea geschrieben, zusätzliche Tabellenspalte wird angezeigt, Tipp 3 Button wird deaktiviert
+    //@Ivo >ipp 3 werden in TextArea geschrieben, zusätzliche Tabellenspalte wird angezeigt, Tipp 3 Button wird deaktiviert
+    public void setHint3() {
         tblColAmount.setVisible(true);
         txtBaseInfos.setText(this.createStringH3());
         btnHint3.setDisable(true);
     }
 
-    //openTblRes() = @Ivo
+    //@Ivo >Pane mit Tabelle wird angezeigt
     public void openTblRes() { //Ändert die Visibility der Tabelle zum derzeitigen Gegenteil
         tblPane.setVisible(!tblPane.isVisible());
     }
 
-    //addDataToTbl() = @Ivo
+    //@Ivo >Tabellenspalten werden mit Daten befüllt
     public void addDataToTbl() {
         String[][] data = new String[m.res.getArrayLength()][3]; //2D-Array mit 3 Spalten und Rows = Anzahl Ressourcen
         String[] resources = {"Salz", "Kobalt", "Silber", "Gold", "Platin", "Kohlenstoff", "Natrium",
