@@ -1,6 +1,7 @@
 package com.example.planetguessrfx;
+//@Ivo
 public class Math {
-    //>Attribute
+    //@Ivo >Attribute
     protected long value;
     private final Surface surf = new Surface();
     private final Star star = new Star();
@@ -14,7 +15,7 @@ public class Math {
     private String hint1Part2;
     private String hint2;
 
-    //>Methoden
+    //@Ivo >Methoden
     //@Ivo >Berechnet den finalen Wert eines Planeten
     public void calculateValue() {
         this.generate(); //Alle Random-Wert werden neu generiert
