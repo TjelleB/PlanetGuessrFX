@@ -4,6 +4,7 @@ Ersteller: Frederick
 */
 import java.util.Random;
 public class Resources extends Generator {
+  // Häufigkeits-Konstanten
   private static final int VERY_FREQUENTLY = 1001;
   private static final int FREQUENTLY = 751;
   private static final int COMMON = 651;
@@ -11,6 +12,7 @@ public class Resources extends Generator {
   private static final int RARE = 351;
   private static final int VERY_RARE = 301;
   private static final int EXTREMELY_RARE = 101;
+  
   private final int[] amounts = new int[15]; // Ressources-Mengen-Array
   private final double[] values = new double[15]; //Ressources-Werte-Array
   private int type;
