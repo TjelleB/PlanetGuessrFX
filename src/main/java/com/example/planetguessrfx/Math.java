@@ -148,11 +148,11 @@ public class Math {
             uprBorders[i] = (long) (value + value * multi);
         }
         double reduce = 0;
-        //Wenn der Score außerhalb der 25 % liegt, wird 0 als Punkte zurückgegeben
+        //Wenn der score außerhalb der 25 % liegt, wird 0 als Punkte zurückgegeben
         if(sc < lwrBorders[lwrBorders.length-1] || sc > uprBorders[uprBorders.length-1]) {
             return 0;
         } else {
-            //Der Score wird mit jedem Grenzwert verglichen, jeder den er überschreitet, reduziert die Punkte um 2% (Max 50%)
+            //Der score wird mit jedem Grenzwert verglichen, jeder den er überschreitet, reduziert die Punkte um 2% (Max 50%)
             for (int v = 0; v < uprBorders.length; v++) {
                 reduce += 0.02;
                 if (sc == value) {
