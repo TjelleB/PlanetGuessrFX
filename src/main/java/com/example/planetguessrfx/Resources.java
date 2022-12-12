@@ -15,7 +15,7 @@ public class Resources extends Generator {
   
   private final int[] amounts = new int[15]; // Ressources-Mengen-Array
   private final double[] values = new double[15]; //Ressources-Werte-Array
-  private int type;
+  private int type; // Multiplier für die Math-Klasse
   
   public Resources() {
     this.generate();
@@ -59,6 +59,7 @@ public class Resources extends Generator {
     values[12] = 3;
     values[13] = rdm2.nextInt(41-32)+32;
     values[14] = rdm2.nextInt(64-50)+50;
+    
     
     Random rdm3 = new Random();
     type = rdm3.nextInt(4);

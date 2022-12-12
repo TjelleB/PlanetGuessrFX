@@ -13,8 +13,9 @@ public abstract class Generator {
   {
     this.setPlanetID(planetID);
   }
-  // start methods
+
   
+  // Abstrakte Methode, kein Algorithmus vorzugeben
   protected abstract void generate();
   
   
@@ -25,6 +26,5 @@ public abstract class Generator {
   public void setPlanetID(int planetIDNew) {
     planetID = planetIDNew;
   }
-
-  // end methods
+  
 }
