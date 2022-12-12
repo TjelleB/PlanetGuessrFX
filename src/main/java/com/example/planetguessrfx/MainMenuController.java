@@ -40,12 +40,14 @@ public class MainMenuController {
     public int players = 1;
     public ImageView ivBackground;
 
+    //@Tjelle >Lädt das Bild aus der Main klasse und legt es als Hintergrund fest
     @FXML
     private void initialize(){
         cbPlayers.setItems(playerList);
         ivBackground.setImage(PlanetGuessr.getPictures(5));
     }
-    //Überprüft ob ein spieler einen Namen eigegeben hat, wenn nicht wird ein standardname verwendet
+
+    //@Tjelle >prüft ob ein Spielername eingegeben wurde. wenn nicht wird ein Standardname zugewiesen
     public void checkNames(){
         String[] playerNames = new String[]{txtPlayer1Name.getText(), txtPlayer2Name.getText(), txtPlayer3Name.getText(), txtPlayer4Name.getText()};
         String[] defaultNames = new String[]{"Player 1", "Player 2", "Player 3", "Player 4"};
@@ -61,7 +63,7 @@ public class MainMenuController {
         playerName4 = playerNames[3];
     }
 
-    //lädt den Game screen und übergibt die spielernamen
+    //@Tjelle >lädt den Game-Screen und übergibt die Spielernamen
     public void startGame(ActionEvent event) throws IOException{
         checkNames();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
@@ -73,6 +75,8 @@ public class MainMenuController {
         stage.setScene(scene);
         stage.show();
     }
+
+    //@Ivo >übergibt die eingegebene SaveID an die Datenbank und übergibt Namen und Scores
     public void resumeGame(ActionEvent event) throws IOException {
         try {
             int sID = Integer.parseInt(txtSIDInput.getText());
@@ -81,11 +85,7 @@ public class MainMenuController {
             int playercount = db.loadSpielerAnzahl();
             String[] playernames = db.loadPlayerNameGame();
             int[] playerscore = db.loadPlayerScore();
-            for (int i = 0; i < 4; i++) {
-                System.out.println(playercount);
-                System.out.println(playernames[i]);
-                System.out.println(playerscore[i]);
-            }
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("gameScreen.fxml"));
             Parent root = loader.load();
             GameScreenController controller = loader.getController();
@@ -100,12 +100,12 @@ public class MainMenuController {
             System.out.println("Keine SaveID");
         }
     }
-    //Zeigt die option an, mit einem code ein spiel weiterzuführen
+    //@ Tjelle >Zeigt die option an, mit einem code ein spiel weiterzuführen
     public void showResumeDialog(){
         pResumeDialog.setVisible(true);
     }
 
-    //zeigt/versteckt bei änderung der spieleranzahl die Namenseingabe felder
+    //@ Tjelle >zeigt/versteckt bei Änderung der Spieleranzahl die Namenseingabefelder
     public void playersSelected(){
         if(cbPlayers.getValue() == "1 Player"){
             players = 1;
