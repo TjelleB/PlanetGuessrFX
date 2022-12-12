@@ -18,9 +18,10 @@ public class Star extends Generator {
   public Star() {
     this.generate();
   }
-  // start methods
+  
   
   @Override
+  // Methoden
   public void generate() {
     Random rdm = new Random();
     type = rdm.nextInt(4);
