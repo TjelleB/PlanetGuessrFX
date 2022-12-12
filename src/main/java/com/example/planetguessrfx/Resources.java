@@ -11,8 +11,8 @@ public class Resources extends Generator {
   private static final int RARE = 351;
   private static final int VERY_RARE = 301;
   private static final int EXTREMELY_RARE = 101;
-  private final int[] amounts = new int[15];
-  private final double[] values = new double[15];
+  private final int[] amounts = new int[15]; // Ressources-Mengen-Array
+  private final double[] values = new double[15]; //Ressources-Werte-Array
   private int type;
   
   public Resources() {
@@ -22,7 +22,8 @@ public class Resources extends Generator {
   @Override
   public void generate()
   {
-    Random rdm1 = new Random(); // creating Random object
+    // Generierung des Ressources-Menge
+    Random rdm1 = new Random();
     amounts[0] = rdm1.nextInt(FREQUENTLY);
     amounts[1] = rdm1.nextInt(MODERATE);
     amounts[2] = rdm1.nextInt(RARE);
@@ -39,7 +40,8 @@ public class Resources extends Generator {
     amounts[13] = rdm1.nextInt(MODERATE);
     amounts[14] = rdm1.nextInt(MODERATE);
 
-    Random rdm2 = new Random(); // creating Random object
+    // Generierung der Ressources-Werte
+    Random rdm2 = new Random();
     values[0] = (rdm2.nextInt(5-1)+1)/10.0;
     values[1] = rdm2.nextInt(87-71)+71;
     values[2] = rdm2.nextInt(710-640)+640;
