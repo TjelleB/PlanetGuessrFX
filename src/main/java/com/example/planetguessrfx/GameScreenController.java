@@ -108,6 +108,7 @@ public class GameScreenController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resultScreen.fxml"));
         Parent root = loader.load();
         ResultScreenController controller = loader.getController();
+        controller.setPlanetVal(m.value);
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
         controller.displayScore(score1, score2, score3, score4, gainedScore1, gainedScore2, gainedScore3, gainedScore4);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

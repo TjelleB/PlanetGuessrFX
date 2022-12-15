@@ -31,6 +31,7 @@ public class ResultScreenController {
     public Button btnMenu;
     public Button btnSave;
     public Label lblYourCode;
+    public Label lblPlanetVal;
     private Stage stage;
     private int players;
     private String playerName1;
@@ -41,6 +42,8 @@ public class ResultScreenController {
     private int updatedScore2;
     private int updatedScore3;
     private int updatedScore4;
+    private long planetVal;
+
 
     //@Tjelle >Übernimmt die Spieleranzahl und Namen von der GameScreenController Klasse
     public void setPlayers(int p, String p1, String p2, String p3, String p4) {
@@ -67,6 +70,12 @@ public class ResultScreenController {
     public void displaySaveOption(){
         pSaveGame.setVisible(true);
     }
+
+    public void setPlanetVal(long p){
+        planetVal = p;
+        lblPlanetVal.setText("Planet value: " + planetVal);
+    }
+
     //@Tjelle >Übernimmt den Score(s1-4) und die erhaltenden Punkte(gs1-4) der letzten Runde und zeigt diese an
     public void displayScore(int s1, int s2, int s3, int s4,int gs1, int gs2, int gs3, int gs4){
         updatedScore1 = gs1 + s1;
