@@ -123,7 +123,7 @@ public class GameScreenController {
 
     //@Tjelle >Übergibt Daten an die Database-Klasse
     public void saveScore() throws SQLException {
-        database db = new database();
+        Database db = new Database();
         db.save(players, playerName1,playerName2,playerName3,playerName4,score1,score2,score3,score4);
         lblYourCode.setText("Your code is: " + db.getSaveID());
         btnSave.setDisable(true);

@@ -12,11 +12,8 @@ public class PlanetGuessr extends Application {
     private static Image ice = new Image("com/example/planetguessrfx/Pictures 1/Planet Imgs/Ice.gif");
     private static Image noAtmos = new Image("com/example/planetguessrfx/Pictures 1/Planet Imgs/No Atmos.gif");
     private static Image background = new Image("com/example/planetguessrfx/Pictures 1/BackgroundGalaxy.gif");
-
-
     @Override
     public void start(Stage stage) throws IOException {
-
         stage.setTitle("PlanetGuessr");
         stage.setScene(new Scene(new FXMLLoader(getClass().getResource("mainMenu.fxml")).load(), 480, 640));
         stage.show();
@@ -31,6 +28,5 @@ public class PlanetGuessr extends Application {
             default -> background;
         };
     }
-
     public static void main(String[] args) {launch();}
 }

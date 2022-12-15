@@ -84,7 +84,7 @@ public class ResultScreenController {
     }
     //@Tjelle >Übergibt die Spielernamen und die aktualisierten Punkte an die Database klasse
     public void saveScore() throws SQLException {
-        database db = new database();
+        Database db = new Database();
         db.save(players, playerName1,playerName2,playerName3,playerName4,updatedScore1,updatedScore2,updatedScore3,updatedScore4);
         lblYourCode.setText("Your code is: " + db.getSaveID());
         btnSave.setDisable(true);

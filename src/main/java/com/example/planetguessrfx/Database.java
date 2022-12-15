@@ -47,10 +47,8 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
             } else if (number == 5) {
                 myStmt.setInt(1, id);
             } else if (number == 6) {
-                    myStmt.setInt(1, id);
-                }
-
-            else if (number == 7) {
+                myStmt.setInt(1, id);
+            } else if (number == 7) {
                 myStmt.setInt(1, id);
             }
             if (b) {
@@ -64,19 +62,17 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
                 sa = result.getInt("SpielerAnzahl");
             } else if (number == 6) {
                 //Abfrage der Spielernamen
-                for (int j = 0; j <4; j++)
-                {
-                    playerNameArray[j] = result.getString(String.valueOf(result.next()));
+                for (int j = 0; j <4; j++) {
+                    result.next();
+                    playerNameArray[j] = result.getString("SpielerID");
                 }
             } else if (number == 7) {
                 //Abfrage der Spieler scores
-                for (int j = 0; j < 4; j++)
-                {
-                    score[j] = result.getInt(String.valueOf(result.next()));
+                result.next();
+                for (int j = 0; j < 4; j++) {
+                    score[j] = result.getInt("Score");
                 }
-
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -144,7 +140,7 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
 
     public void loadGame(int IDn){  //Paul > Lädt einen vorher gespeicherten Spielstand
         id = IDn; //Schreibt die übergebene SpielID in eine globale Variable rein
-        String spielerAnzahl = "Select Spieleranzahl where SaveID = ?";     //Für die Spieleranzahl
+        String spielerAnzahl = "Select SpielerAnzahl FROM Saves where SaveID = ?";     //Für die Spieleranzahl
         number = 5;
         getPS(spielerAnzahl);
 //Player name
