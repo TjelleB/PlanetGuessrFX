@@ -84,7 +84,8 @@ public class GameScreenController {
     @FXML
     private void initialize() {genNewPlanet();}
 
-    //@Ivo / @Tjelle >Generiert einen neuen Planeten und holt sich den Namen und Wert aus der Math-Klasse, legt den Hintergrund passend zum Planetentypen fest
+    //@Ivo / @Tjelle >Generiert einen neuen Planeten und holt sich den Namen und
+    // Wert aus der Math-Klasse, legt den Hintergrund passend zum Planetentypen fest
     public void genNewPlanet() {
         this.addDataToTbl();
         m.calculateValue();
@@ -110,7 +111,8 @@ public class GameScreenController {
         ResultScreenController controller = loader.getController();
         controller.setPlanetVal(m.value);
         controller.setPlayers(players, playerName1, playerName2, playerName3, playerName4);
-        controller.displayScore(score1, score2, score3, score4, gainedScore1, gainedScore2, gainedScore3, gainedScore4);
+        controller.displayScore(score1, score2, score3, score4, gainedScore1, gainedScore2,
+                gainedScore3, gainedScore4);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 480, 640);
         stage.setScene(scene);
@@ -140,9 +142,11 @@ public class GameScreenController {
     //@Ivo / @Tjelle >checkP1-4 identische Funktion
     public void checkP1() {
         try {
-            guess1 = Integer.parseInt(txtInput1.getText()); //Speichert den Guess
-            txtInput1.setEditable(!btnConfirm1.isSelected()); //>Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
-            btnConfirm1.setDisable(btnConfirm1.isSelected()); //>Der ToggleButton wird deaktiviert, wenn er gedrückt ist
+            guess1 = Integer.parseInt(txtInput1.getText()); //>Speichert den Guess
+            //>Das Textfield kann nicht bearbeitet werden, wenn der ToggleButton gedrückt ist
+            txtInput1.setEditable(!btnConfirm1.isSelected());
+            //>Der ToggleButton wird deaktiviert, wenn er gedrückt ist
+            btnConfirm1.setDisable(btnConfirm1.isSelected());
             //>Wenn der Spieler seine Schätzung festlegt:
             if (btnConfirm1.isDisabled()) {
                 //>Wählt den reduzierten Multiplikator, basierend auf den aufgedeckten Tipps (-15% pro Tipp)
@@ -238,7 +242,8 @@ public class GameScreenController {
             gainedScore2 =  m.calculateScore(redMP2, guess2);
             gainedScore3 =  m.calculateScore(redMP3, guess3);
             showResult(event);
-        }else if(players == 4&&btnConfirm4.isDisabled()&& btnConfirm3.isDisabled()&&btnConfirm2.isDisabled()&& btnConfirm1.isDisabled()){
+        }else if(players == 4&&btnConfirm4.isDisabled()&& btnConfirm3.isDisabled()&&btnConfirm2.isDisabled()
+                && btnConfirm1.isDisabled()){
             gainedScore1 =  m.calculateScore(redMP1, guess1);
             gainedScore2 =  m.calculateScore(redMP2, guess2);
             gainedScore3 =  m.calculateScore(redMP3, guess3);
@@ -330,7 +335,8 @@ public class GameScreenController {
         btnHint3.setDisable(false);
     }
 
-    //@Ivo >ipp 3 werden in TextArea geschrieben, zusätzliche Tabellenspalte wird angezeigt, Tipp 3 Button wird deaktiviert
+    //@Ivo >ipp 3 werden in TextArea geschrieben, zusätzliche Tabellenspalte wird angezeigt,
+    // Tipp 3 Button wird deaktiviert
     public void setHint3() {
         tblColAmount.setVisible(true);
         txtBaseInfos.setText(this.createStringH3());
@@ -344,17 +350,20 @@ public class GameScreenController {
 
     //@Ivo >Tabellenspalten werden mit Daten befüllt
     public void addDataToTbl() {
-        String[][] data = new String[m.res.getArrayLength()][3]; //2D-Array mit 3 Spalten und Rows = Anzahl Ressourcen
+        //>2D-Array mit 3 Spalten und Rows = Anzahl Ressourcen
+        String[][] data = new String[m.res.getArrayLength()][3];
         String[] resources = {"Salz", "Kobalt", "Silber", "Gold", "Platin", "Kohlenstoff", "Natrium",
                                 "Tritium", "Eisen", "Kupfer", "Ammonium", "Uran", "Dioxid", "Phosphor",
                                 "Dihydrogen"};
-        //2D-Array wird mit den Ressourcen und ihren Werten/Mengen befüllt
+        //>2D-Array wird mit den Ressourcen und ihren Werten/Mengen befüllt
         for (int i = 0; i < m.res.getArrayLength(); i++) {
             data[i][0] = "" + resources[i];
             data[i][1] = "" + m.res.getValues(i);
             data[i][2] = "" + m.res.getAmounts(i);
         }
-        tblColRes.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
+        //>Setzt die Werte des Arrays als Daten für die einzelnen Zellen
+        tblColRes.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<String[], String> p) {
                 String[] x = p.getValue();
@@ -365,7 +374,8 @@ public class GameScreenController {
                 }
             }
         });
-        tblColVal.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
+        tblColVal.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<String[], String> p) {
                 String[] x = p.getValue();
@@ -376,7 +386,8 @@ public class GameScreenController {
                 }
             }
         });
-        tblColAmount.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
+        tblColAmount.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<String[], String> p) {
                 String[] x = p.getValue();
