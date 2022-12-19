@@ -15,6 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Objects;
+
 public class MainMenuController {
     //FXML Objects
     public Pane pMainBackground;
@@ -50,7 +52,7 @@ public class MainMenuController {
         String[] defaultNames = new String[]{"Player 1", "Player 2", "Player 3", "Player 4"};
 
         for(int i = 0; i < playerNames.length; i++){
-            if(playerNames[i] == ""){
+            if(Objects.equals(playerNames[i], "")){
                 playerNames[i] = defaultNames[i];
             }
         }
