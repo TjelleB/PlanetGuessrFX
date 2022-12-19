@@ -32,6 +32,9 @@ public class Math {
                     * this.getAtmosphereMultiplier() * this.getResourceMultiplier()
                     * this.getHabitableMultiplier() * this.getWeatherMultiplier();
         } else {
+            this.getSurfaceMultiplier();
+            this.getHabitableMultiplier();
+            this.getWeatherMultiplier();
             return this.getStarMultiplier()
                     * this.getAtmosphereMultiplier() * this.getResourceMultiplier();
         }
