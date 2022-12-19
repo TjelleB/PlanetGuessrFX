@@ -27,7 +27,8 @@ public class MainMenuController {
     public TextField txtPlayer2Name;
     public ChoiceBox cbPlayers;
     public TextField txtSIDInput;
-    private final ObservableList<String> playerList = FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
+    private final ObservableList<String> playerList =
+            FXCollections.observableArrayList("1 Player","2 Players","3 Players","4 Players");
     public String playerName1;
     public String playerName2;
     public String playerName3;
@@ -44,7 +45,8 @@ public class MainMenuController {
 
     //@Tjelle >Prüft, ob ein Spielername eingegeben wurde. Wenn nicht, wird ein Standardname zugewiesen
     public void checkNames(){
-        String[] playerNames = new String[]{txtPlayer1Name.getText(), txtPlayer2Name.getText(), txtPlayer3Name.getText(), txtPlayer4Name.getText()};
+        String[] playerNames = new String[]{txtPlayer1Name.getText(), txtPlayer2Name.getText(),
+                txtPlayer3Name.getText(), txtPlayer4Name.getText()};
         String[] defaultNames = new String[]{"Player 1", "Player 2", "Player 3", "Player 4"};
 
         for(int i = 0; i < playerNames.length; i++){
@@ -71,7 +73,8 @@ public class MainMenuController {
         stage.show();
     }
 
-    //@Ivo >übergibt die eingegebene SaveID an die Datenbank und holt Namen und Scores. Lädt GameScreen mit den Namen/Scores.
+    //@Ivo >übergibt die eingegebene SaveID an die Datenbank und holt Namen und Scores.
+    // Lädt GameScreen mit den Namen/Scores.
     public void resumeGame(ActionEvent event) throws IOException {
         try {
             int sID = Integer.parseInt(txtSIDInput.getText());
