@@ -41,7 +41,6 @@ public class ResultScreenController {
     private int updatedScore2;
     private int updatedScore3;
     private int updatedScore4;
-    private long planetVal;
 
 
     //@Tjelle >Übernimmt die Spieleranzahl und Namen von der GameScreenController Klasse
@@ -65,14 +64,13 @@ public class ResultScreenController {
             case 3 -> box4.setVisible(false);
         }
     }
-    //@Tjelle >zeigt die Speichern Option an
+    //@Tjelle >zeigt die Speichern-Option an
     public void displaySaveOption(){
         pSaveGame.setVisible(true);
     }
 
     public void setPlanetVal(long p){
-        planetVal = p;
-        lblPlanetVal.setText("Planet value: " + planetVal);
+        lblPlanetVal.setText("Planet value: " + p);
     }
 
     //@Tjelle >Übernimmt den Score(s1-4) und die erhaltenden Punkte(gs1-4) der letzten Runde und zeigt diese an
