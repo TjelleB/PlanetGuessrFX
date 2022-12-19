@@ -20,7 +20,7 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
             String url = "jdbc:sqlite:src/main/resources/com/example/planetguessrfx/GalaxyDB.db";   //Link in der Local directory
             // create a connection to the database
             conn = DriverManager.getConnection(url);
-//Ausführen von Prepared Statement
+            //Ausführen von Prepared Statement
             PreparedStatement myStmt = conn.prepareStatement(pstatement);
             if(number == 1)
             {
@@ -92,13 +92,13 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
         connect();
     }
 
-    public void generateSaveID() throws SQLException {      //Paul > Generiert die SaveID
+    public void generateSaveID() {      //Paul > Generiert die SaveID
          String SaveIDSQL = "SELECT MAX(SaveID) from Saves";
          number =4;
          getPS(SaveIDSQL);
     }
-
-    public void createArray(String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4){ //Paul > Füllt die Arrays mit Namen und Scores
+    //Paul > Füllt die Arrays mit Namen und Scores
+    public void createArray(String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4){
         playerNameArray[0] = SN1;
         playerNameArray[1] = SN2;
         playerNameArray[2] = SN3;
@@ -109,8 +109,8 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
         score[3] = SC4;
         //Array für den score
     }
-
-    public void save(int SAu, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4) throws SQLException { //Paul > zum Speichern eines Spielstands
+    //Paul > zum Speichern eines Spielstands
+    public void save(int SAu, String SN1, String SN2, String SN3, String SN4, int SC1, int SC2, int SC3, int SC4) {
         sa = SAu;
         generateSaveID();
         getNewScoreID();
@@ -131,7 +131,7 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
     public int getSaveID(){                        // Paul >
         return saveID;
     }
-    public void getNewScoreID() throws SQLException {  // Paul > Generiert eine neue ScoreID
+    public void getNewScoreID() {  // Paul > Generiert eine neue ScoreID
                String ScoreIDSQL = "SELECT MAX(scoreID) from Scoreboard";
         number = 3;
         getPS(ScoreIDSQL);
@@ -143,7 +143,7 @@ String[] playerNameArray = new String[4];       //Array für Spielernamen
         String spielerAnzahl = "Select SpielerAnzahl FROM Saves where SaveID = ?";     //Für die Spieleranzahl
         number = 5;
         getPS(spielerAnzahl);
-//Player name
+        //Player name
         String loadPlayerName = "Select SpielerID FROM Scoreboard where SaveID = ?"; //in createArray() einfügen
         number = 6;
         getPS(loadPlayerName);
