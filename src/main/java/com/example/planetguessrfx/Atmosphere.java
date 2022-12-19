@@ -32,7 +32,7 @@ public class Atmosphere extends Generator {
     Random rdm = new Random();
     atmosphere_type = rdm.nextInt(4);
   }
-  
+
   // Generierung des Wetter-Typs
   public void generateW() {
     Random rdm = new Random();
@@ -61,7 +61,7 @@ public class Atmosphere extends Generator {
         // Falls Stein-Oberfläche, keine Probleme
         break;
       case 1:
-        // Falls Wasser-Oberfläche, keine Vetrocknung möglich
+        // Falls Wasser-Oberfläche, keine Vertrocknung möglich
         if(weather_type == 7) {
           while(weather_type == 7) {
             this.generateW();
