@@ -10,16 +10,12 @@ Ersteller: Frederick
 import java.util.Random;
 
 public class Star extends Generator {
-
-  // start attributes
   private int type;
-  // end attributes
   
   public Star() {
     this.generate();
   }
-  
-  
+
   @Override
   // Generator
   public void generate() {
