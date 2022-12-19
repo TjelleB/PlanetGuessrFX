@@ -172,4 +172,4 @@ public class Math {
     public String getHint1Part1() {return hint1Part1;}
     public String getHint1Part2() {return hint1Part2;}
     public String getHint2() {return hint2;}
-} // end of class Math
+}
