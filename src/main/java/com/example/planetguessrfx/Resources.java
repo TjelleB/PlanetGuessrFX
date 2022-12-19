@@ -4,7 +4,7 @@ Ersteller: Frederick
 */
 import java.util.Random;
 public class Resources extends Generator {
-  // Häufigkeits-Konstanten
+  // Häufigkeit-Konstanten
   private static final int VERY_FREQUENTLY = 1001;
   private static final int FREQUENTLY = 751;
   private static final int COMMON = 651;
@@ -13,8 +13,8 @@ public class Resources extends Generator {
   private static final int VERY_RARE = 301;
   private static final int EXTREMELY_RARE = 101;
   
-  private final int[] amounts = new int[15]; // Ressources-Mengen-Array
-  private final double[] values = new double[15]; //Ressources-Werte-Array
+  private final int[] amounts = new int[15]; // Ressourcen-Mengen-Array
+  private final double[] values = new double[15]; //Ressourcen-Werte-Array
   private int type; // Multiplier für die Math-Klasse
   
   public Resources() {
@@ -24,7 +24,7 @@ public class Resources extends Generator {
   @Override
   public void generate()
   {
-    // Generierung des Ressources-Menge
+    // Generierung der Ressourcenmenge
     Random rdm1 = new Random();
     amounts[0] = rdm1.nextInt(FREQUENTLY);
     amounts[1] = rdm1.nextInt(MODERATE);
@@ -42,7 +42,7 @@ public class Resources extends Generator {
     amounts[13] = rdm1.nextInt(MODERATE);
     amounts[14] = rdm1.nextInt(MODERATE);
 
-    // Generierung der Ressources-Werte
+    // Generierung der Ressourcenwerte
     Random rdm2 = new Random();
     values[0] = (rdm2.nextInt(5-1)+1)/10.0;
     values[1] = rdm2.nextInt(87-71)+71;
@@ -74,7 +74,7 @@ public class Resources extends Generator {
   public double getValues(int c) {
     return values[c];
   }
-  public int getArrayLength() { //Wiedergabe der Array-Laenge
-    return amounts.length;    //Welches Array egal, da sie gleichlang sein muessen
+  public int getArrayLength() { //Wiedergabe der Array-Länge
+    return amounts.length; //Welches Array egal, da sie gleichlang sein müssen
   }
  }
