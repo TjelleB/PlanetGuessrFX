@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -24,7 +25,7 @@
          <Font size="64.0"/>
       </font>
    </Label>
-   <Button layoutX="5.0" layoutY="373.0" mnemonicParsing="false" onAction="#startGame"
+   <Button fx:id="btnStart" layoutX="5.0" layoutY="373.0" mnemonicParsing="false" onAction="#startGame"
            prefHeight="40.0" prefWidth="137.0" text="Start Game" textAlignment="CENTER">
       <font>
          <Font size="18.0"/>
